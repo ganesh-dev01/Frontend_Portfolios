@@ -1,0 +1,9 @@
+.bdy-container{
+    background-color: rgb(65, 65, 65);
+}
+
+.box{
+    height: 30vh;
+    background-color: aqua;
+    border: 2px solid red;
+}
