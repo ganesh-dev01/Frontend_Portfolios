@@ -1,0 +1,32 @@
+@media screen and (max-width:1024px){
+
+ .bdy-container{
+    width: 60%;
+ }
+
+}
+
+@media screen and (max-width:991px){
+
+  .bdy-container{
+    width: 80%;
+  }
+
+  .box{
+    font-size: 100px;
+  }
+
+}
+
+@media screen and (max-width:768px){
+  
+    .bdy-container{
+     width: 90%;
+     margin-top: 15%;
+   }
+
+   .box{
+    height: 20vh;
+  }
+
+}

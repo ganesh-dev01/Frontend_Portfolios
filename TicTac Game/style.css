@@ -1,9 +1,54 @@
 .bdy-container{
-    background-color: rgb(65, 65, 65);
+    margin-top: 2%;
 }
 
 .box{
     height: 30vh;
-    background-color: aqua;
-    border: 2px solid red;
+    background-color:rgba(242,40,83);
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 150px;
+   
+}
+
+.box1{
+    border-right:2px dashed white;
+    border-bottom: 2px dashed white;
+}
+
+.box2{
+    border-right:2px dashed white;
+    border-bottom: 2px dashed white;
+}
+
+.box3{
+    border-bottom: 2px dashed white;
+}
+
+.box4{
+    border-right:2px dashed white;
+    border-bottom: 2px dashed white;
+}
+
+.box5{
+    border-right:2px dashed white;
+    border-bottom: 2px dashed white;
+}
+
+.box6{
+    border-bottom: 2px dashed white;
+}
+
+.box7{
+    border-right:2px dashed white;
+}
+
+.box8{
+    border-right:2px dashed white;
+}
+
+.box9{
+    
 }
