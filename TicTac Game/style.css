@@ -1,9 +1,11 @@
 .bdy-container{
-    margin-top: 2%;
+    margin-top: 1%;
+    background-color: rgba(242,40,83);
+    width: 50%;
 }
 
 .box{
-    height: 30vh;
+    height: 26vh;
     background-color:rgba(242,40,83);
     text-align: center;
     justify-content: center;
@@ -51,4 +53,19 @@
 
 .box9{
     
+}
+
+.top-display{
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px solid white;
+}
+.winner-display{
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px solid white;
 }
