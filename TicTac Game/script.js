@@ -10,4 +10,3 @@ var box7 = document.getElementById('box-7');
 var box8 = document.getElementById('box-8');
 var box9 = document.getElementById('box-9');
     
-
