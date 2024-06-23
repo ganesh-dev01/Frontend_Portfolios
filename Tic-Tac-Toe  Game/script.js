@@ -29,6 +29,7 @@ function handleBoxClick(boxId) {
   
     if (moves === 9) {
         gameActive = false;
+         document.querySelector('.top-display').style.display = 'none';
         document.getElementById('winner-player').textContent = 'It\'s a tie!';
         document.querySelector('.winner-display').style.display = 'block';
         return;
