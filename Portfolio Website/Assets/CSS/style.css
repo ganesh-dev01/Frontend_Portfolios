@@ -1,6 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+
+#option-nm{
+    margin-left: auto;
+}
+
 #option-nm li a{
     color:black;
+    font-size: 20px;
+    padding: 10px 20px;  
+    font-family: "Playwrite GB S", cursive;
 } 
+
+#navbar-brand{
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    font-weight:bold;
+  
+}
+
 
 
 

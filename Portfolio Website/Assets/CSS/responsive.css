@@ -1,0 +1,12 @@
+@media only screen and (max-width: 1024px) {
+    
+}
+
+
+@media only screen and (max-width: 768px) {
+    
+    #option-nm li a {
+        padding: 13px 0px;
+        text-align: left;
+    }
+}
