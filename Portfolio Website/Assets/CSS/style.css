@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
-
+*{
+    color: white;
+}
 body{
     margin: 0;
     background-color: rgb(23, 21, 59);
@@ -26,9 +28,37 @@ body{
     font-family: "Dancing Script", cursive;
     font-size: 24px;
     font-weight:bold;
-  
 }
 
+.home-bdy-container{
+    /* border: 2px solid red; */
+    margin-top: 10px;
+}
 
+.intro{
+    margin-top: 25vh;
+    margin-left: 20%;
+}
 
+.intro .text{
+    font-weight: bold;
+    font-size: 30px;
+    line-height:1.8;
+}
 
+.intro p{
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.intro .name{
+    font-size: 45px;
+}
+
+.intro .role{
+    font-size: 40px;
+}
+
+.intro .location{
+    font-size: 36px;
+}
