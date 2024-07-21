@@ -36,13 +36,12 @@ body{
 }
 
 .intro{
-    margin-top: 25vh;
-    margin-left: 20%;
+    margin-top: 27vh;
+    margin-left: 13%;
 }
 
 .intro .text{
     font-weight: bold;
-    font-size: 30px;
     line-height:1.8;
 }
 
@@ -52,7 +51,7 @@ body{
 }
 
 .intro .name{
-    font-size: 45px;
+    font-size: 50px;
 }
 
 .intro .role{
@@ -60,5 +59,15 @@ body{
 }
 
 .intro .location{
-    font-size: 36px;
+    font-size: 34px;
+}
+
+.image-box{
+    height: 380px;
+    width: 380px;
+    margin:0 auto;
+    margin-top: 19vh;
+    
+    border-radius: 50%;
+    background-color: red;
 }

@@ -1,5 +1,22 @@
 @media only screen and (max-width: 1024px) {
     
+    .image-box{
+    height: 350px;
+    width: 350px;
+    margin: 20vh auto;
+}
+
+.intro .text{
+    font-weight: bold;
+    font-size: 37px;
+    line-height:1.8;
+}
+
+.intro{
+    margin-top: 28vh;
+    margin-left: 10%;
+}
+
 }
 
 
