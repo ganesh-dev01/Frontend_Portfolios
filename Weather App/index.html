@@ -8,6 +8,8 @@
 </head>
 <link rel="stylesheet" href="./Assets/CSS/bootstrap.min.css">
 <link rel="stylesheet" href="./Assets/CSS/style.css">
+<link rel="stylesheet" href="./Assets/CSS/responsive.css">
+
 
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -24,9 +26,9 @@
 
         <div class="search_block">
 
-          <input type="search" class="search_bar">
+          <input type="search" class="search_bar" placeholder="Search city/country" id="search">
 
-          <div class="search-btn">
+          <div class="search-btn" id="search-btn">
             <span class="material-symbols-outlined" id="search-icon">
               search
             </span>
@@ -42,8 +44,8 @@
     <div class="row justify-content-center mt-1">
 
       <div class="col-8 location_block">
-        <p class="d-inline">Search for : </p>
-        <p class="d-inline">kolkata </p>
+        <p class="d-inline">Search result : </p>
+        <p class="d-inline"><span id="location">kolkata </span></p>
       </div>
 
     </div>
@@ -53,25 +55,25 @@
         <img src="./Assets/images/116.webp" id="condition_icon">
       </div>
       <div class="col-lg-3 col-6 condition-box">
-        <p class="w_condition">Light Rain</p>
+        <p class="w_condition"><span id="w_condition">Light Rain</span></p>
       </div>
     </div>
 
     <div class="row mt-3 gap-5 justify-content-center">
-      <div class="col-2 box">
-        <p>C : 29<sup>o</sup></p>
+      <div class="col-4 box">
+        <p>C : <span id="cel">29</span><sup>o</sup></p>
       </div>
-      <div class="col-2 box">
-        <p>100</p>
+      <div class="col-4 box">
+        <p>Cloud <span id="cloud">100</span></p>
       </div>
     </div>
 
     <div class="row mt-3 gap-5 justify-content-center">
-      <div class="col-2 box">
-        <p>F : 29<sup>o</sup></p>
+      <div class="col-4 box">
+        <p>F : <span id="fer">100</span><sup>o</sup></p>
       </div>
-      <div class="col-2 box">
-        <p>100</p>
+      <div class="col-4 box">
+        <p>Humidity <span id="hum">100</span></p>
       </div>
     </div>
 
