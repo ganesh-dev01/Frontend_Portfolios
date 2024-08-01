@@ -4,10 +4,17 @@
   box-sizing: border-box;
 }
 
+#display_report{
+display: none;
+}
+
+#no_loaction{
+  display: none;
+}
 
 body {
   background-color: #A0E9FF;
-  /* background-image: url("../Images_Icons/g1vA.gif"); */
+  background-image: url("../Images_Icons/g1vA.gif");
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center;
