@@ -16,6 +16,3 @@ Additionally, I worked on the navigation section, ensuring proper linking betwee
 - Focused on enhancing user experience and accessibility.
 
 The mentioned pages are solely developed by me and reflect my individual contributions to the projects.
-
-
-
