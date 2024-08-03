@@ -1,0 +1,101 @@
+.exchange{
+	position: relative;
+	width: 150%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 1em;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-o-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	overflow: visible;
+}
+.exchange::before, .exchange::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 40px;
+	height: 100%;
+	filter: blur(3px);
+	/* background-color: #ebebeb; */
+	display: block;
+	z-index: 99;
+}
+.exchange::before{
+	left: -15px;
+}
+.exchange::after{
+	right: -15px;
+}
+.exchange-content{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: box;
+	display: flex;
+	-webkit-animation-name: exchange;
+	        animation-name: exchange;
+	-webkit-animation-play-state: running;
+	        animation-play-state: running;
+	-webkit-animation-duration: 30s;
+	        animation-duration: 30s;
+	-webkit-animation-timing-function: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	        animation-timing-function: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+}
+.exchange-content:hover{
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.exchange-content{
+	transform: translateX(-50%);
+}
+.exchange-single{
+	font-weight: 700;
+	text-wrap: nowrap;
+	padding: 0 60px;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-align: center;
+	-o-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-o-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	font-size: 120px;
+	height: 120px;
+	color: #ebebeb;
+}
+@-webkit-keyframes exchangea{
+	0%{
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100%{
+		-webkit-transform: translate(-50%);
+		-ms-transform: translate(-50%);
+		transform: translate(-50%);
+	}
+}
+@keyframes exchangea{
+	0%{
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100%{
+		-webkit-transform: translate(-50%);
+		-ms-transform: translate(-50%);
+		transform: translate(-50%);
+	}
+}

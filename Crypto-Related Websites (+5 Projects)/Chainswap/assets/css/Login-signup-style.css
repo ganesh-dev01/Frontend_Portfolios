@@ -1,0 +1,124 @@
+body {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    background-color: #120b37;
+    background-image:url('../Images/bg-theme.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
+    
+}
+
+#brand-icon {
+    position: absolute; 
+    top: 20px;
+    left: 5%; 
+    width: 25%;
+    max-width: 150px; 
+    height: auto; 
+    z-index: 999; 
+}
+
+.login-signup-section {
+    margin-right: 5vw;
+}
+
+.login-box {
+    width: 90%; 
+    max-width: 400px; 
+    padding: 30px;
+    background: #562238;
+    background: linear-gradient(135deg, #562238 0%, #361623 50%, #6f253c 100%);
+    box-shadow: rgba(0, 0, 0, 0.65) 0px 5px 15px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.login-section {
+    margin-bottom: 20px;
+}
+
+.signin-btn, .signup-btn {
+    background: #562238;
+    background: radial-gradient(circle, #562238 0%, #582d3f 50%, #6f253c 100%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover, .signin-btn:hover,
+.signup-btn:focus, .signin-btn:focus,
+.signup-btn:active, .signin-btn:active,
+.signup-btn:focus-visible, .signin-btn:focus-visible {
+    background: #562238;
+    background: radial-gradient(circle, #562238 100%, #582d3f 50%, #6f253c 0%);
+    box-shadow: rgba(0, 0, 0, 0.65) 0px 5px 15px;
+    color: #fff;
+}
+
+.signup-btn:focus, .signin-btn:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(133, 32, 64, 0.5); 
+}
+
+.login-signup-section a, .signup-link:hover {
+    color: #ffc107;
+}
+
+#email, #password, #signup-email, #signup-password, #signup-password-confirm, #captcha {
+    background: radial-gradient(circle, #562238 0%, #582d3f 50%, #6f253c 100%);
+    color:white;
+}
+
+
+#email::placeholder,
+#password::placeholder,
+#signup-email::placeholder,
+#signup-password::placeholder,
+#signup-password-confirm::placeholder,
+#captcha::placeholder{
+    color: white;
+    font-size: 14px;
+}
+
+
+#captchaCanvas {
+    margin-top: 10px;
+    width: 8vw;
+}
+
+
+@media (max-width: 768px) { 
+    .signin-btn, .signup-btn{
+        margin-top: 20px;
+    }
+
+}
+
+
+
+@media (min-width: 768px) { 
+    .login-box {
+        width: 60%;
+    }
+}
+
+@media (min-width: 992px) { 
+    .login-box {
+        width: 50%;
+    }
+
+    #brand-icon {
+        right: 10%; 
+    }
+}

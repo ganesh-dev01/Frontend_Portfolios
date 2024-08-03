@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chainswap Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="login-signup-bdy">
+    <a href="./Affiliate.html">
+    <img src="./assets/images/icons/chainswap.png" id="brand-icon">
+    </a>
+    <div class="container-fluid login-signup-section">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8 login-box">
+                <!-- Sign in form -->
+                <div id="signin-form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center mb-4">Sign in</h2>
+                        </div>
+                    </div>
+                    <div class="row login-section">
+                        <div class="col-md-12">
+                            <form onsubmit="return validateForm()">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Your Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                                </div>
+                                   <!-- CAPTCHA input field and showing box in the same row -->
+                                   <div class="form-row align-items-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" id="captcha" placeholder="Enter CAPTCHA">
+                                    </div>
+                                    <div class="col">
+                                        <canvas id="captchaCanvas"></canvas>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-block signin-btn">Sign in</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12 text-center">
+                            <p class="mb-0">Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sign up form (Initially hidden) -->
+                <div id="signup-form" style="display: none;" class="signup-box">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center mb-4">Sign up</h2>
+                        </div>
+                    </div>
+                    <div class="row login-section">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group">
+                                    <label for="signup-email">Email Address</label>
+                                    <input type="email" class="form-control" id="signup-email" placeholder="Enter Your Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-password">Create Password</label>
+                                    <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-password-confirm">Confirm Password</label>
+                                    <input type="password" class="form-control" id="signup-password-confirm" placeholder="Retype password">
+                                </div>
+                                <button type="submit" class="btn signup-btn btn-block">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12 text-center">
+                            <p class="mb-0">Already have an account? <a href="#" id="signin-link">Sign in</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./assets/js/main.js"></script>
+
+</body>
+</html>
