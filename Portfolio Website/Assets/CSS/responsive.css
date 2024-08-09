@@ -92,3 +92,64 @@
 
 /*------------------------------- Projects page -----------------------------------------*/
 
+@media (max-width: 1024px) {
+    .project-bdy-container {
+        padding: 15px;
+    }
+
+    .project-headline {
+        font-size: 2.25rem;
+        margin-bottom: 25px;
+    }
+
+    .project-card {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+
+    .icon-box {
+        height: 180px;
+    }
+
+    .title-hd,
+    .tech-hd,
+    .desc-hd {
+        font-size: 0.85rem;
+    }
+
+    .title-text,
+    .tech-text,
+    .desc-text {
+        font-size: 0.85rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .project-headline {
+        font-size: 2rem;
+        margin: 20px 0;
+    }
+
+    .icon-box {
+        height: 150px;
+    }
+
+    .project-card {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-headline {
+        font-size: 1.75rem;
+    }
+
+    .icon-box {
+        height: 120px;
+    }
+
+    .project-card {
+        padding: 8px;
+    }
+}
