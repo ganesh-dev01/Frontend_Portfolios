@@ -97,7 +97,7 @@
         padding: 15px;
     }
 
-    .project-headline {
+    .projet-headline {
         font-size: 2.25rem;
         margin-bottom: 25px;
     }
@@ -114,7 +114,7 @@
     .title-hd,
     .tech-hd,
     .desc-hd {
-        font-size: 0.85rem;
+        font-size: 11px;
     }
 
     .title-text,
@@ -126,7 +126,7 @@
 
 
 @media (max-width: 768px) {
-    .project-headline {
+    .projet-headline {
         font-size: 2rem;
         margin: 20px 0;
     }
@@ -141,7 +141,7 @@
 }
 
 @media (max-width: 576px) {
-    .project-headline {
+   .projet-headline {
         font-size: 1.75rem;
     }
 

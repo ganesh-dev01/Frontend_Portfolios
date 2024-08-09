@@ -109,26 +109,75 @@ body {
     box-sizing: border-box;
 }
 
-.project-headline {
+.projet-headline {
     font-size: 2.5rem;
     margin-bottom: 30px;
-    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-family: "Playwrite GB S", cursive;
     text-transform: uppercase;
 }
 
 .project-card {
+    position: relative;
     border: 2px solid red;
     padding: 15px;
-    margin:1px;
     border-radius: 8px;
-    background-color: white;
+    background-color: #fff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.overlay .btn-primary {
+    background-color: #007bff;
+}
+
+.overlay .btn-secondary {
+    background-color: #6c757d;
+}
+
+.overlay .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.overlay .btn-secondary:hover {
+    background-color: #5a6268;
 }
 
 .icon-box {
@@ -155,3 +204,5 @@ body {
     margin-bottom: 15px;
     color: black;
 }
+
+
