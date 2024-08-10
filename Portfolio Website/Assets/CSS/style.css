@@ -104,22 +104,28 @@ body {
 
 .project-bdy-container {
     padding: 20px;
-    border: 2px solid red;
     height: 100%;
     box-sizing: border-box;
+    border: 2px solid red;
 }
 
 .projet-headline {
-    font-size: 2.5rem;
+    margin-top: 60px;
+    font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
     font-family: "Playwrite GB S", cursive;
     text-transform: uppercase;
 }
 
+.projects-row{
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 10px;
+}
+
 .project-card {
     position: relative;
-    border: 2px solid red;
     padding: 15px;
     border-radius: 8px;
     background-color: #fff;
@@ -181,7 +187,7 @@ body {
 }
 
 .icon-box {
-    background-color: aqua;
+    background-image: linear-gradient(skyblue,rgb(234, 6, 203));
     margin-bottom: 10px;
     height: 200px;
     border-radius: 8px;
@@ -204,5 +210,30 @@ body {
     margin-bottom: 15px;
     color: black;
 }
+
+ .coming-soon-container {
+    padding-top:90px;
+    border-radius: 10px;
+}
+
+#add_icon {
+    width: 70px; 
+    margin-bottom: 20px;
+}
+
+.coming-soon-text {
+    font-size: 1.8rem;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    margin-top:20px;
+}
+
+/*------------------------------- Abouts page -----------------------------------------*/
+
+.abouts-bdy-container{
+    height: 100vh;
+    border: 2px solid red;
+}
+
 
 
