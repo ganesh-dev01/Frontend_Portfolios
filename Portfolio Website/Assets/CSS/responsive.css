@@ -1,93 +1,92 @@
-
 /*------------------------------- Home page -----------------------------------------*/
 
 @media only screen and (max-width: 1024px) {
-    
-    .image-box{
-    height: 350px;
-    width: 350px;
-    margin: 20vh auto;
-}
 
-.intro .text{
-    font-weight: bold;
-    font-size: 37px;
-    line-height:1.8;
-}
+    .image-box {
+        height: 350px;
+        width: 350px;
+        margin: 20vh auto;
+    }
 
-.intro{
-    margin-top: 28vh;
-    margin-left: 10%;
-}
+    .intro .text {
+        font-weight: bold;
+        font-size: 37px;
+        line-height: 1.8;
+    }
+
+    .intro {
+        margin-top: 28vh;
+        margin-left: 10%;
+    }
 
 }
 
 @media only screen and (max-width: 768px) {
 
-.home-bdy-container{
-   height: auto;
-   padding-top: 50px;
-}
-    
-.image-box{
-    height: 350px;
-    width: auto;
-    margin: 5vh auto;
-}   
+    .home-bdy-container {
+        height: auto;
+        padding-top: 50px;
+    }
 
-.intro{
-    margin-top: 15vh;
-    margin-left: none;
-}
+    .image-box {
+        height: 350px;
+        width: auto;
+        margin: 5vh auto;
+    }
 
-.intro .name{
-    font-size: 25px;
-}
+    .intro {
+        margin-top: 15vh;
+        margin-left: none;
+    }
 
-.intro .role{
-    font-size: 25px;
-}
+    .intro .name {
+        font-size: 25px;
+    }
 
-.intro .location{
-    font-size: 20px;
-}
+    .intro .role {
+        font-size: 25px;
+    }
+
+    .intro .location {
+        font-size: 20px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
 
-    .home-bdy-container{
+    .home-bdy-container {
 
-    height: auto;
-   padding-top: 50px;
-  }
-    
+        height: auto;
+        padding-top: 50px;
+    }
+
     #option-nm li a {
         padding: 13px 0px;
         text-align: left;
     }
 
-    .image-box{
-    height: 350px;
-    width: auto;
-    margin: 5vh auto;
-}
+    .image-box {
+        height: 350px;
+        width: auto;
+        margin: 5vh auto;
+    }
 
-.intro{
-    margin-top: 3vh;
-    margin-left: none;
-}
+    .intro {
+        margin-top: 3vh;
+        margin-left: none;
+    }
 
-.intro .name{
-    font-size: 25px;
-}
+    .intro .name {
+        font-size: 25px;
+    }
 
-.intro .role{
-    font-size: 25px;
-}
+    .intro .role {
+        font-size: 25px;
+    }
 
-.intro .location{
-    font-size: 20px;
-}
+    .intro .location {
+        font-size: 20px;
+    }
 }
 
 /*------------------------------- Projects page -----------------------------------------*/
@@ -97,10 +96,10 @@
         padding: 15px;
     }
 
-.projects-row{
-    margin-left:0;
-    margin-right:0;
-}
+    .projects-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
     .projet-headline {
         font-size: 2.25rem;
@@ -136,10 +135,10 @@
         margin: 20px 0;
     }
 
-.projects-row{
-    margin-left:0;
-    margin-right:0;
-}
+    .projects-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
 
     .icon-box {
@@ -153,14 +152,14 @@
 
 @media (max-width: 576px) {
 
-   .projet-headline {
+    .projet-headline {
         font-size: 1.75rem;
     }
 
-.projects-row{
-    margin-left:0;
-    margin-right:0;
-}
+    .projects-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
 
     .icon-box {
@@ -174,5 +173,9 @@
 
 /*------------------------------- Abouts page -----------------------------------------*/
 
+@media (max-width: 1024px) {}
 
 
+@media (max-width: 768px) {}
+
+@media (max-width: 576px) {}

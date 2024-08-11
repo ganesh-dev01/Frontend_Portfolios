@@ -8,22 +8,22 @@
 }
 
 ::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
     height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: white; 
-    border-radius: 10px; 
+    background-color: white;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color:#EB3678; 
-     
+    background-color: #EB3678;
+
 }
 
 body {
-    scrollbar-width: thin; 
+    scrollbar-width: thin;
     margin: 0;
     background-color: rgb(23, 21, 59);
 }
@@ -118,7 +118,7 @@ body {
     text-transform: uppercase;
 }
 
-.projects-row{
+.projects-row {
     margin-left: 80px;
     margin-right: 80px;
     margin-top: 10px;
@@ -187,7 +187,7 @@ body {
 }
 
 .icon-box {
-    background-image: linear-gradient(skyblue,rgb(234, 6, 203));
+    background-image: linear-gradient(skyblue, rgb(234, 6, 203));
     margin-bottom: 10px;
     height: 200px;
     border-radius: 8px;
@@ -211,13 +211,13 @@ body {
     color: black;
 }
 
- .coming-soon-container {
-    padding-top:90px;
+.coming-soon-container {
+    padding-top: 90px;
     border-radius: 10px;
 }
 
 #add_icon {
-    width: 70px; 
+    width: 70px;
     margin-bottom: 20px;
 }
 
@@ -225,15 +225,147 @@ body {
     font-size: 1.8rem;
     letter-spacing: 1.5px;
     line-height: 1.5;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 /*------------------------------- Abouts page -----------------------------------------*/
 
-.abouts-bdy-container{
-    height: 100vh;
+.abouts-bdy-container {
+    height: auto;
+    border: 2px solid red;
+}
+
+.abouts-haedline {
+    margin-top: 80px;
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: "Playwrite GB S", cursive;
+    text-transform: uppercase;
+}
+
+.about_main_box {
+    margin-top: 10px;
+}
+
+.Experience-hd,
+.Education-hd {
+    font-size: 1.2rem;
+}
+
+.Experience,
+.Education {
     border: 2px solid red;
 }
 
 
+.road-box {
+    position: relative;
+    display: inline-block;
+}
 
+.road-box .round {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.road-box .line {
+    width: 12px;
+    height: 205px;
+    background-color: white;
+    margin: -10px auto;
+}
+
+.Education .content {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin: 10px;
+    padding-left: 20px;
+    padding-top: 25px;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.Education .arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    top: 40%;
+    left: -3%;
+    rotate: 45deg;
+}
+
+
+
+
+.Education .content-1 {
+    height: 150px;
+}
+
+.Education .content-2,
+.Education .content-3 {
+    height: 150px;
+}
+
+.details {
+    position: absolute;
+    line-height: 1;
+}
+
+.inst_nm,
+.cmplt_time,
+.marks {
+    color: #212529;
+    font-family: 'Arial', sans-serif;
+}
+
+.inst_nm {
+    font-weight: bold;
+}
+
+.Education .road-box {
+    padding-top: 40px;
+}
+
+.Education .road-box .line-1,
+.Education .road-box .line-2 {
+    height: 145px;
+}
+
+
+.Experience .content {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin: 10px;
+    padding-left: 20px;
+    padding-top: 25px;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.Experience .arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    top: 40%;
+    right: -3%;
+    rotate: 45deg;
+}
+
+.Experience .details p {
+    color: black;
+    color: #212529;
+    font-family: 'Arial', sans-serif;
+}
+
+.company_nm {
+    font-weight: bold;
+}
