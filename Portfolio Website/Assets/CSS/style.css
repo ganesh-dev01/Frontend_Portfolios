@@ -58,7 +58,6 @@ body {
 /*------------------------------- Home page -----------------------------------------*/
 
 .home-bdy-container {
-    border: 2px solid red;
     height: 100vh;
 }
 
@@ -99,6 +98,23 @@ body {
     background-color: green;
 }
 
+#dw_resume-btn {
+    width: 20%;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin-top: 50px;
+    margin-left: 30px;
+    border-radius: 10px;
+    background-color: rgb(67, 61, 139);
+    font-size: 18px;
+}
+
+#dowload_icon {
+    width: 25px;
+    margin: auto;
+}
+
 /*------------------------------- Projects page -----------------------------------------*/
 
 
@@ -106,7 +122,6 @@ body {
     padding: 20px;
     height: 100%;
     box-sizing: border-box;
-    border: 2px solid red;
 }
 
 .projet-headline {
@@ -232,7 +247,6 @@ body {
 
 .abouts-bdy-container {
     height: auto;
-    border: 2px solid red;
 }
 
 .abouts-haedline {
@@ -470,6 +484,88 @@ body {
 /*---------------------------------- Contact page -------------------------------------*/
 
 .contact-bdy-container {
-    border: 2px solid red;
-    height: 100vh;
+    height: auto;
+}
+
+.contact-hadline {
+    margin-top: 40px;
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: "Playwrite GB S", cursive;
+    text-transform: uppercase;
+}
+
+.main-msgbox {
+    width: 60%;
+    padding: 50px 0;
+    margin: auto;
+    height: auto;
+    border-radius: 20px;
+    background-color: rgba(68, 61, 139, 0.701);
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#name,
+#email {
+    border: none;
+    outline: none;
+    width: 42%;
+    height: 50px;
+    margin: 20px 3%;
+    padding-left: 15px;
+    background-color: rgb(23, 21, 59);
+}
+
+#msg {
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 200px;
+    margin: 20px 3%;
+    padding: 20px;
+    background-color: rgb(23, 21, 59);
+}
+
+#send-btn {
+    margin: auto;
+    width: 20%;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: rgb(23, 21, 59);
+}
+
+.social-box {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.477);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.social {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social_icon {
+    width: 100px;
 }
