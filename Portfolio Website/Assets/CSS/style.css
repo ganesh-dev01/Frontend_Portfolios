@@ -55,6 +55,11 @@ body {
     font-weight: bold;
 }
 
+.spcl {
+    font-weight: bold;
+    color: black;
+}
+
 /*------------------------------- Home page -----------------------------------------*/
 
 .home-bdy-container {
