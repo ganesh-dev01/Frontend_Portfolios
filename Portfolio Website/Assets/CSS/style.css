@@ -206,6 +206,10 @@ body {
     margin-bottom: 10px;
     height: 200px;
     border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-hd,
@@ -241,6 +245,10 @@ body {
     letter-spacing: 1.5px;
     line-height: 1.5;
     margin-top: 20px;
+}
+
+.project_icon {
+    width: 100px;
 }
 
 /*------------------------------- Abouts page -----------------------------------------*/
