@@ -28,31 +28,141 @@ body {
     background-color: rgb(23, 21, 59);
 }
 
+.hidden {
+    display: none;
+}
 
-.navbar {
-    position: fixed;
+
+
+.P_navbar {
     width: 100%;
-    margin-top: 0;
+    height: 7vh;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     z-index: 5;
     background-color: rgb(67, 61, 139);
 }
 
-#option-nm {
-    margin-left: auto;
-}
-
-#option-nm li a {
-    color: white;
-    font-size: 20px;
-    padding: 10px 20px;
-    font-family: "Playwrite GB S", cursive;
-}
-
-#navbar-brand {
+.P_brand {
+    width: 15%;
+    height: 100%;
     color: white;
     font-family: "Dancing Script", cursive;
     font-size: 24px;
     font-weight: bold;
+}
+
+.P_nav-items {
+    width: 40%;
+    height: 100%;
+    margin-left: auto;
+    position: relative;
+}
+
+
+.P_nav-items ul {
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    text-align: end;
+}
+
+
+.P_nav-items ul li {
+    display: inline-block;
+    height: 100%;
+    padding: 1vh 30px;
+    cursor: pointer;
+}
+
+
+.P_nav-items ul a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.bar {
+    height: 100%;
+    display: none;
+    position: relative;
+}
+
+.bar .line {
+    position: relative;
+    width: 50%;
+    height: 3px;
+    margin: 5px auto;
+    background-color: aliceblue;
+}
+
+
+@media screen and (max-width:768px) {
+    #close_icon {
+        display: none;
+        position: absolute;
+        width: 50%;
+        left: 25%;
+        top: 8px;
+    }
+
+    .bar {
+        width: 8%;
+        display: block;
+        margin-left: auto;
+        padding-top: 3px;
+    }
+
+    .P_nav-items {
+        display: none;
+        position: absolute;
+        top: 7vh;
+        width: 100%;
+        height: auto;
+        background-color: rgba(68, 61, 139, 0.763);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+
+    .P_nav-items.show {
+        display: block;
+        max-height: 500px;
+        opacity: 1;
+    }
+
+
+    .P_nav-items ul {
+        text-align: left;
+    }
+
+    .P_nav-items ul li {
+        display: block;
+    }
+
+    .bar .line {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .bar {
+        width: 10%;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .bar {
+        width: 12%;
+    }
+
+    .bar .line {
+        width: 60%;
+    }
 }
 
 .spcl {
