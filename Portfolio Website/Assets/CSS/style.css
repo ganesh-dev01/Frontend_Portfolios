@@ -52,10 +52,19 @@ body {
     font-family: "Dancing Script", cursive;
     font-size: 24px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.P_brand a {
+    text-decoration: none;
+    color: white;
+}
+
+
 .P_nav-items {
-    width: 40%;
+    width: 60%;
     height: 100%;
     margin-left: auto;
     position: relative;
@@ -85,6 +94,8 @@ body {
     font-family: "Playwrite GB S", cursive;
 }
 
+
+
 .bar {
     height: 100%;
     display: none;
@@ -99,76 +110,6 @@ body {
     background-color: aliceblue;
 }
 
-
-@media screen and (max-width:768px) {
-    #close_icon {
-        display: none;
-        position: absolute;
-        width: 50%;
-        left: 25%;
-        top: 8px;
-    }
-
-    .bar {
-        width: 8%;
-        display: block;
-        margin-left: auto;
-        padding-top: 3px;
-    }
-
-    .P_nav-items {
-        display: none;
-        position: absolute;
-        top: 7vh;
-        width: 100%;
-        height: auto;
-        background-color: rgba(68, 61, 139, 0.763);
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.5s ease, opacity 0.5s ease;
-    }
-
-    .P_nav-items.show {
-        display: block;
-        max-height: 500px;
-        opacity: 1;
-    }
-
-
-    .P_nav-items ul {
-        text-align: left;
-    }
-
-    .P_nav-items ul li {
-        display: block;
-    }
-
-    .bar .line {
-        width: 55%;
-    }
-}
-
-@media screen and (max-width:576px) {
-    .bar {
-        width: 10%;
-    }
-}
-
-@media screen and (max-width:375px) {
-    .bar {
-        width: 12%;
-    }
-
-    .bar .line {
-        width: 60%;
-    }
-}
-
-.spcl {
-    font-weight: bold;
-    color: black;
-}
 
 /*------------------------------- Home page -----------------------------------------*/
 
