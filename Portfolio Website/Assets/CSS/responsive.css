@@ -297,6 +297,24 @@
 
 
 @media (max-width: 768px) {
+    .Experience-hd {
+        border-bottom: 2px solid #ccc;
+    }
+
+    .Education-hd {
+        display: none;
+    }
+
+    .mb-education-hd {
+        width: 100%;
+    }
+
+    .Education-hd2 {
+        display: block;
+        width: 100%;
+        border-bottom: 2px solid #ccc;
+    }
+
     .Experience .arrow {
         right: -2.5%;
         rotate: 45deg;
@@ -330,7 +348,7 @@
     }
 
     .skill_box {
-        width: 25%;
+        width: 40%;
         padding: 3px;
     }
 

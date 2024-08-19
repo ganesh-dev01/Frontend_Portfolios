@@ -328,10 +328,19 @@ body {
 
 .Experience-hd,
 .Education-hd {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
 }
 
+
+
+.Education-hd2 {
+    display: none;
+}
 
 
 
@@ -409,6 +418,7 @@ body {
 .Education .road-box .line-1,
 .Education .road-box .line-2 {
     height: 168px;
+    background-color: rgba(68, 61, 139, 0.796);
 }
 
 
@@ -464,12 +474,8 @@ body {
     width: 20px;
 }
 
-.dev-prs-hd,
-.skill_hd {
-    font-weight: bold;
-    font-size: 17px;
-    font-style: italic;
-}
+
+
 
 .dev-prs-main {
     position: relative;
@@ -498,7 +504,6 @@ body {
 .pr-line {
     width: 100px;
     height: 5px;
-    background-color: whitesmoke;
 }
 
 .pr_icon {
@@ -513,33 +518,73 @@ body {
     font-style: italic;
 }
 
+.dev-prs-hd,
 .skill_hd {
+    font-weight: 600;
+    font-size: 18px;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+.dev-prs-hd {
+    margin-top: 40px;
     margin-bottom: 35px;
+}
+
+.skill_hd {
+    margin-top: 50px;
+    margin-bottom: 55px;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .skill_main {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+    padding: 0 15px;
 }
 
 .skill_box {
     width: 18%;
-    height: 100px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(68, 61, 139, 0.796);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.skill_box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .skill_icon {
-    width: 40px;
-    margin-top: 5px;
-    margin-bottom: 8px;
+    width: 50px;
+    margin-top: 10px;
+    margin-bottom: 12px;
 }
+
+.skill_text {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin-top: 8px;
+}
+
+
+
 
 .br {
     width: 100%;
