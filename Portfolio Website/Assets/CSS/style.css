@@ -25,7 +25,7 @@
 body {
     scrollbar-width: thin;
     margin: 0;
-    background-color: rgb(23, 21, 59);
+    background-color: #1E201E;
 }
 
 .hidden {
@@ -42,13 +42,13 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     z-index: 5;
-    background-color: rgb(67, 61, 139);
+    background-color: #697565;
 }
 
 .P_brand {
     width: 15%;
     height: 100%;
-    color: white;
+    color: #ECDFCC;
     font-family: "Dancing Script", cursive;
     font-size: 24px;
     font-weight: bold;
@@ -82,7 +82,7 @@ body {
 .P_nav-items ul li {
     display: inline-block;
     height: 100%;
-    padding: 1vh 30px;
+    padding: 1.4vh 30px;
     cursor: pointer;
 }
 
@@ -91,7 +91,7 @@ body {
     color: white;
     font-size: 20px;
     text-decoration: none;
-    font-family: "Playwrite GB S", cursive;
+    /* font-family: "Playwrite GB S", cursive; */
 }
 
 
@@ -161,8 +161,7 @@ body {
     outline: none;
     margin-top: 50px;
     margin-left: 30px;
-    border-radius: 10px;
-    background-color: rgb(67, 61, 139);
+    background-color: #3C3D37;
     font-size: 18px;
 }
 
@@ -185,7 +184,7 @@ body {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
-    font-family: "Playwrite GB S", cursive;
+    /* font-family: "Playwrite GB S", cursive; */
     text-transform: uppercase;
 }
 
@@ -318,7 +317,7 @@ body {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
-    font-family: "Playwrite GB S", cursive;
+    /* font-family: "Playwrite GB S", cursive; */
     text-transform: uppercase;
 }
 
@@ -334,6 +333,9 @@ body {
     text-transform: capitalize;
     padding-bottom: 4px;
     margin-bottom: 12px;
+    color: #ECDFCC;
+    background-color: #3C3D37;
+    border-radius: 10px;
 }
 
 
@@ -353,13 +355,13 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #ECDFCC;
 }
 
 .road-box .line {
     width: 9px;
     height: 200px;
-    background-color: white;
+    background-color: #ECDFCC;
     margin: -10px auto;
 }
 
@@ -371,15 +373,15 @@ body {
     padding-left: 20px;
     padding-top: 25px;
     border-radius: 15px;
-    background-color: white;
+    background-color: #3C3D37;
     margin-bottom: 30px;
 }
 
 .Education .arrow {
     position: absolute;
     width: 30px;
-    height: 30px;
-    background-color: white;
+    height: 25px;
+    background-color: #3C3D37;
     top: 40%;
     left: -3%;
     rotate: 45deg;
@@ -418,9 +420,12 @@ body {
 .Education .road-box .line-1,
 .Education .road-box .line-2 {
     height: 168px;
-    background-color: rgba(68, 61, 139, 0.796);
 }
 
+.Education .details p {
+    color: #ECDFCC;
+    font-family: 'Arial', sans-serif;
+}
 
 .Experience .content {
     position: relative;
@@ -430,23 +435,22 @@ body {
     padding-left: 15px;
     padding-top: 25px;
     border-radius: 15px;
-    background-color: white;
+    background-color: #3C3D37;
     margin-bottom: 30px;
 }
 
 .Experience .arrow {
     position: absolute;
     width: 30px;
-    height: 30px;
-    background-color: white;
+    height: 25px;
+    background-color: #3C3D37;
     top: 40%;
     right: -3%;
     rotate: 45deg;
 }
 
 .Experience .details p {
-    color: black;
-    color: #212529;
+    color: #ECDFCC;
     font-family: 'Arial', sans-serif;
 }
 
@@ -494,7 +498,7 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background-color: whitesmoke;
+    background-color: #697565;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -504,6 +508,7 @@ body {
 .pr-line {
     width: 100px;
     height: 5px;
+    background-color: white;
 }
 
 .pr_icon {
@@ -512,7 +517,7 @@ body {
 }
 
 .pr-text {
-    color: rgb(23, 21, 59);
+    color: whitesmoke;
     font-size: 16px;
     font-weight: bold;
     font-style: italic;
@@ -557,7 +562,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(68, 61, 139, 0.796);
+    background-color: #3c3d37ec;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -597,11 +602,11 @@ body {
 }
 
 .contact-hadline {
-    margin-top: 40px;
+    margin-top: 60px;
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
-    font-family: "Playwrite GB S", cursive;
+    /* font-family: "Playwrite GB S", cursive; */
     text-transform: uppercase;
 }
 
