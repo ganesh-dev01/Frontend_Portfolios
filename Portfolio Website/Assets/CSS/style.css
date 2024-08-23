@@ -18,7 +18,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #EB3678;
+    background-color: #697565;
 
 }
 
@@ -198,7 +198,7 @@ body {
     position: relative;
     padding: 15px;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #4D4D4D;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
@@ -208,6 +208,23 @@ body {
     transform: translateY(-10px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+.icon-box {
+    background-color: #2B2B2B;
+    margin-bottom: 10px;
+    height: 200px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.icon-box:hover {
+    background-color: #444444;
+    /* Darker background on hover */
+}
+
 
 .overlay {
     position: absolute;
@@ -240,6 +257,8 @@ body {
     transition: background 0.3s ease;
 }
 
+
+
 .overlay .btn-primary {
     background-color: #007bff;
 }
@@ -256,16 +275,7 @@ body {
     background-color: #5a6268;
 }
 
-.icon-box {
-    background-image: linear-gradient(skyblue, rgb(234, 6, 203));
-    margin-bottom: 10px;
-    height: 200px;
-    border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .title-hd,
 .tech-hd,
@@ -274,7 +284,7 @@ body {
     text-transform: uppercase;
     font-size: 0.9rem;
     margin-bottom: 5px;
-    color: black;
+    color: #ECDFCC;
 }
 
 .title-text,
@@ -282,7 +292,12 @@ body {
 .desc-text {
     font-size: 0.9rem;
     margin-bottom: 15px;
-    color: black;
+    color: whitesmoke;
+}
+
+.spcl {
+    font-weight: bold;
+    color: white;
 }
 
 .coming-soon-container {
@@ -409,9 +424,7 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.inst_nm {
-    font-weight: bold;
-}
+
 
 .Education .road-box {
     padding-top: 50px;
@@ -423,9 +436,15 @@ body {
 }
 
 .Education .details p {
+    color: white;
+}
+
+#inst_nm {
     color: #ECDFCC;
     font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
+
 
 .Experience .content {
     position: relative;
@@ -450,6 +469,10 @@ body {
 }
 
 .Experience .details p {
+    color: white;
+}
+
+#company_nm {
     color: #ECDFCC;
     font-family: 'Arial', sans-serif;
 }
@@ -498,7 +521,7 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background-color: #697565;
+    background-color: #4D4D4D;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -508,7 +531,8 @@ body {
 .pr-line {
     width: 100px;
     height: 5px;
-    background-color: white;
+    background-color: #ECDFCC;
+    ;
 }
 
 .pr_icon {
@@ -616,7 +640,7 @@ body {
     margin: auto;
     height: auto;
     border-radius: 20px;
-    background-color: rgba(68, 61, 139, 0.701);
+    background-color: #3C3D37;
     margin-bottom: 90px;
     display: flex;
     flex-direction: row;
@@ -638,7 +662,8 @@ form {
     height: 50px;
     margin: 20px 3%;
     padding-left: 15px;
-    background-color: rgb(23, 21, 59);
+    color: #ECDFCC;
+    background-color: #2B2B2B;
 }
 
 #msg {
@@ -648,7 +673,8 @@ form {
     height: 200px;
     margin: 20px 3%;
     padding: 20px;
-    background-color: rgb(23, 21, 59);
+    color: #ECDFCC;
+    background-color: #2B2B2B;
 }
 
 #send-btn {
@@ -659,7 +685,9 @@ form {
     outline: none;
     margin-top: 20px;
     border-radius: 10px;
-    background-color: rgb(23, 21, 59);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.477);
+    background-color: #2B2B2B;
 }
 
 .social-box {

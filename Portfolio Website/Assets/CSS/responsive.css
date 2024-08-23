@@ -72,10 +72,7 @@
     }
 }
 
-.spcl {
-    font-weight: bold;
-    color: black;
-}
+
 
 
 
@@ -419,12 +416,12 @@
     }
 
     .pr {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
     }
 
     .pr-line {
-        width: 10px;
+        width: 18px;
     }
 
     .pr-text {
@@ -469,6 +466,14 @@
         width: 40%;
         height: 50px;
         margin-top: 10px;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .pr {
+        width: 50px;
+        height: 50px;
     }
 
 }

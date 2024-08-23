@@ -108,7 +108,7 @@
                   <div class="arrow"></div>
 
                   <div class="details">
-                    <p class="company_nm">Webskitters Academy — React JS Bootcamp</p>
+                    <p class="company_nm" id="company_nm">Webskitters Academy — React JS Bootcamp</p>
                     <p class="st_ed_time">June 2024 - Present</p>
                     <p class="company_lc">Kolkata, West Bengal, India · On-site</p>
                     <p class="wrk-detail">
@@ -122,7 +122,8 @@
                 <div class="content content-2">
                   <div class="arrow"></div>
                   <div class="details">
-                    <p class="company_nm">Pattern Drive Pvt Ltd — Frontend Developer (Apprenticeship)</p>
+                    <p class="company_nm" id="company_nm">Pattern Drive Pvt Ltd — Frontend Developer (Apprenticeship)
+                    </p>
                     <p class="st_ed_time">March 2024 - May 2024 </p>
                     <p class="company_lc">Kolkata, West Bengal, India · On-site</p>
                     <p class="wrk-detail">
@@ -184,7 +185,7 @@
 
                   <div class="details">
 
-                    <p class="inst_nm">Dinabandhu Andrews Institute of Technology & <br>
+                    <p class="inst_nm" id="inst_nm">Dinabandhu Andrews Institute of Technology & <br>
                       Management, Kolkata — BCA
                     </p>
 
@@ -199,7 +200,7 @@
                 <div class="content content-2">
                   <div class="arrow"></div>
                   <div class="details">
-                    <p class="inst_nm">Naktala High School, Kolkata — 10+2 standard</p>
+                    <p class="inst_nm" id="inst_nm">Naktala High School, Kolkata — 10+2 standard</p>
 
                     <p class="cmplt_time">Complete, January 2020 - February 2022</p>
 
@@ -209,7 +210,7 @@
                 <div class="content content-3">
                   <div class="arrow"></div>
                   <div class="details">
-                    <p class="inst_nm">Naktala High School, Kolkata — 10th standard</p>
+                    <p class="inst_nm" id="inst_nm">Naktala High School, Kolkata — 10th standard</p>
 
                     <p class="cmplt_time">Complete, January 2013 - December 2019</p>
 
@@ -528,10 +529,13 @@
       <div class="row">
         <div class="col-12">
           <div class="main-msgbox">
-            <form>
-              <input type="text" placeholder="Name" id="name" required>
-              <input type="email" placeholder="Email" id="email" required>
-              <textarea id="msg" placeholder="Enter Message here..." required></textarea>
+            <form action="https://api.web3forms.com/submit" method="POST">
+
+              <input type="hidden" name="access_key" value="208733a0-8c9b-46eb-9bf2-2ae17ca845bc">
+
+              <input type="text" placeholder="Name" id="name" name="name" required>
+              <input type="email" placeholder="Email" id="email" name="email" required>
+              <textarea id="msg" placeholder="Enter Message here..." name="message" required></textarea>
               <button type="submit" id="send-btn">Send</button>
             </form>
             <div class="social-box">
@@ -559,6 +563,8 @@
 
 
 
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
