@@ -91,7 +91,6 @@ body {
     color: white;
     font-size: 20px;
     text-decoration: none;
-    /* font-family: "Playwrite GB S", cursive; */
 }
 
 
@@ -145,14 +144,39 @@ body {
 }
 
 .image-box {
-    height: 380px;
-    width: 380px;
+    position: relative;
+    height: 450px;
+    width: 460px;
     margin: 0 auto;
     margin-top: 19vh;
-
-    border-radius: 50%;
-    background-color: green;
+    border-top-left-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #56ab2f, #a8e063);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
+
+.image-box:hover {
+    box-shadow: -10px 8px 20px #ECDFCC;
+}
+
+.dp_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 50%;
+    filter: grayscale(30%);
+    transition: filter 1s ease, transform 0.3s ease;
+}
+
+.dp_img:hover {
+    filter: grayscale(0%);
+}
+
 
 #dw_resume-btn {
     width: 20%;
@@ -184,7 +208,6 @@ body {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
-    /* font-family: "Playwrite GB S", cursive; */
     text-transform: uppercase;
 }
 
@@ -222,7 +245,6 @@ body {
 
 .icon-box:hover {
     background-color: #444444;
-    /* Darker background on hover */
 }
 
 
@@ -630,7 +652,6 @@ body {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
-    /* font-family: "Playwrite GB S", cursive; */
     text-transform: uppercase;
 }
 

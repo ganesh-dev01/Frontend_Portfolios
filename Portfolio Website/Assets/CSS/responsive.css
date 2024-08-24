@@ -5,6 +5,8 @@
 }
 
 @media screen and (max-width:768px) {
+
+
     #close_icon {
         display: none;
         position: absolute;
@@ -26,7 +28,7 @@
         top: 7vh;
         width: 100%;
         height: auto;
-        background-color: rgba(68, 61, 139, 0.763);
+        background-color: #4d4d4dcd;
         overflow: hidden;
     }
 
