@@ -1,0 +1,50 @@
+.card-box {
+
+    width: 100%;
+    height: auto;
+    padding: 20px 2vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.card {
+    width: 25%;
+}
+
+.slider {
+    width: 80%;
+    height: 40vh;
+    margin: 30px auto;
+    margin-top: 10px;
+}
+
+.slide-img {
+    width: 100%;
+    height: 40vh;
+}
+
+.cityname {
+    position: absolute;
+    padding: 10px 20px;
+    top: 45%;
+    margin-left: 35vw;
+    background-color: rgba(255, 255, 0, 0.695);
+}
+
+
+@media screen and (max-width:800px) {
+
+    .card-box {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+}
