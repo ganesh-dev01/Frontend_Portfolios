@@ -6,7 +6,7 @@ import slide1 from '../../../Images/img1.jpg';
 import slide2 from '../../../Images/img2.jpg';
 import slide3 from '../../../Images/img3.jpg';
 
-function CarouselComponent(props) {
+function CarouselComponent() {
     var items = [
         { image: slide1 },
         { image: slide2 },
@@ -15,18 +15,18 @@ function CarouselComponent(props) {
 
     return (
         <Carousel
-            navButtonsProps={{
-                style: {
-                    backgroundColor: 'transparent',
-                    color: 'white',
-                    borderRadius: 0,
-                    marginTop: '-50px'
-                }
-            }}
+            navButtonsAlwaysVisible={false}
+
             navButtonsWrapperProps={{
                 style: {
                     top: '50%',
-                    transform: 'translateY(-50%)'
+                    transform: 'translateY(-50%)',
+                }
+            }}
+
+            navButtonsProps={{
+                style: {
+                    backgroundColor: '#138808cb'
                 }
             }}
             interval={3000}

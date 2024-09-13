@@ -109,7 +109,7 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }} >
-                        <h4>Varanasi, Uttar Pradesh</h4>
+                        <h3>Varanasi, Uttar Pradesh</h3>
                         <br></br>
                         <p>
                             Description: One of the oldest continuously inhabited cities in the world,
@@ -140,7 +140,7 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h4>Goa</h4>
+                        <h3>Goa</h3>
                         <br></br>
                         <p>
                             Description: Known for its stunning beaches, vibrant nightlife, and Portuguese
@@ -157,7 +157,7 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h4>Leh-Ladakh, Jammu & Kashmir</h4>
+                        <h3>Leh-Ladakh, Jammu & Kashmir</h3>
                         <br></br>
                         <p>
                             Description: Situated in the northernmost region of India, Leh-Ladakh is renowned
@@ -190,7 +190,7 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h4>Mysore, Karnataka</h4>
+                        <h3>Mysore, Karnataka</h3>
                         <br></br>
                         <p>
                             Description:Mysore is known for its rich history, grand palaces, and vibrant
@@ -219,7 +219,10 @@ function Slick() {
     };
     return (
         <>
-            <h3 style={{ textAlign: "center", fontSize: "30px", marginTop: "20px" }}>
+            <h3 style={{
+                textAlign: "center", fontSize: "30px", marginTop: "20px", fontFamily: 'cursive',
+                color: '#138808cb'
+            }}>
                 Mega cities in India</h3>
             <Slider {...settings} className='slider'>
                 <div>
