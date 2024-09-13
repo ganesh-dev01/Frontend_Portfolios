@@ -7,7 +7,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Container, Grid, Card, CardMedia, CardContent, CardActions, Typography, IconButton, Paper } from '@mui/material';
-import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import img1 from '../../Images/img1.jpg';
 import img2 from '../../Images/img2.jpg';
 import img3 from '../../Images/img3.jpg';
@@ -21,10 +20,7 @@ import city3 from '../../Images/city3.jpg';
 import city4 from '../../Images/city4.jpg';
 import city5 from '../../Images/city5.jpg';
 import city6 from '../../Images/city6.jpg';
-import team1 from '../../Images/team1.jpg';
-import team2 from '../../Images/team2.jpg';
-import team3 from '../../Images/team3.jpg';
-import team4 from '../../Images/team4.jpg';
+
 
 
 function ActionAreaCard() {
@@ -267,116 +263,6 @@ function Slick() {
     );
 }
 
-function Team() {
-    const teamMembers = [
-        {
-            id: 1,
-            name: "Albert",
-            position: "Kolkata",
-            image: team1,
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            instagram: "https://www.instagram.com",
-        },
-        {
-            id: 2,
-            name: "John",
-            position: "Delhi",
-            image: team2,
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            instagram: "https://www.instagram.com",
-        },
-        {
-            id: 3,
-            name: "William",
-            position: "Hyderabad",
-            image: team3,
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            instagram: "https://www.instagram.com",
-        },
-        {
-            id: 4,
-            name: "Stephen",
-            position: "Mumbai",
-            image: team4,
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            instagram: "https://www.instagram.com",
-        }
-    ];
-
-    return (
-        <Container>
-            <Typography
-                gutterBottom
-                variant="h4"
-                component="div"
-                sx={{ marginY: '60px', textAlign: 'center', fontWeight: 'bold' }}
-            >
-                Team of Tourist guides
-            </Typography>
-
-            <Grid
-                container
-                spacing={2}
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                sx={{ marginBottom: '50px' }}
-            >
-                {teamMembers.map((teamMember, id) => (
-                    <Grid
-                        item
-                        xs={12}
-                        sm={6}
-                        md={3}
-                        key={teamMember.id}
-                    >
-                        <Paper elevation={3} sx={{ borderRadius: '10px', backgroundColor: '#f5f5f5' }}>
-                            <Card sx={{ maxWidth: 500 }}>
-                                <CardMedia
-                                    sx={{ height: 200, width: 290, objectFit: 'contain' }}
-                                    image={teamMember.image}
-                                    title={teamMember.name}
-                                />
-                                <CardContent>
-                                    <Typography
-                                        gutterBottom
-                                        variant="h5"
-                                        component="div"
-                                        sx={{ textAlign: 'center', fontWeight: 'bold' }}
-                                    >
-                                        {teamMember.name}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.secondary"
-                                        sx={{ textAlign: 'center', color: '#1877f2' }}
-                                    >
-                                        {teamMember.position}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-                                    <IconButton href={teamMember.facebook} target="_blank" color="inherit" sx={{ '&:hover': { color: '#1877f2' } }}>
-                                        <Facebook />
-                                    </IconButton>
-                                    <IconButton href={teamMember.twitter} target="_blank" color="inherit" sx={{ '&:hover': { color: '#1da1f2' } }}>
-                                        <Twitter />
-                                    </IconButton>
-                                    <IconButton href={teamMember.instagram} target="_blank" color="inherit" sx={{ '&:hover': { color: '#e1306c' } }}>
-                                        <Instagram />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-                        </Paper>
-                    </Grid>
-                ))}
-            </Grid>
-        </Container>
-    );
-}
 
 
 
@@ -396,7 +282,6 @@ function Home() {
 
             <Slick />
 
-            <Team />
         </div>
     )
 }
