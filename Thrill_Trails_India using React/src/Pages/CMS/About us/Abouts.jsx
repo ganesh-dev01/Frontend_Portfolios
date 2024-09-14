@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import './Abouts.css'
 import { Typography } from '@mui/material';
 
+import bannerbg from '../../Images/img1.jpg'
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
     ...theme.typography.body2,
@@ -44,11 +46,44 @@ function Banner() {
     return (
         <>
             <Grid container lg={12}
-                style={{ border: '2px solid red', height: '50vh' }}>
+                sx={{ position: 'relative', width: '100%', height: { xs: '30vh', sm: '50vh' } }}>
                 <Grid item>
-                    <Typography>Hello</Typography>
+                    <img
+                        src={bannerbg}
+                        style={{ position: 'absolute', width: '100%', height: '100%' }}
+                        alt="banner"
+                    />
+                    <Box
+                        sx={{
+                            width: '100%',
+                            position: 'absolute',
+                            top: '40%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                color: 'white',
+                                fontSize: { xs: '3.5vw', sm: '2.5vw' }
+                            }}
+                        >
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </Typography>
+                        <Typography
+                            sx={{
+                                color: 'white',
+                                fontSize: { xs: '2.5vw', sm: '1.5vw' }
+                            }}
+                        >
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </Typography>
+                    </Box>
                 </Grid>
             </Grid>
+
         </>
     )
 }
