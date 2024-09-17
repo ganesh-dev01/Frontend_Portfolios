@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { makeStyles } from '@mui/styles';
 import { Container, Grid, Card, CardMedia, CardContent, CardActions, Typography, IconButton, Paper } from '@mui/material';
 import img1 from '../../Images/img1.jpg';
 import img2 from '../../Images/img2.jpg';
@@ -22,31 +21,6 @@ import city4 from '../../Images/city4.jpg';
 import city5 from '../../Images/city5.jpg';
 import city6 from '../../Images/city6.jpg';
 
-const useStyles = makeStyles({
-    dotsContainer: {
-        '& ul': {
-            margin: 0,
-            padding: 0,
-            display: 'flex',
-            justifyContent: 'center',
-            listStyle: 'none',
-        },
-        '& li': {
-            width: '12px',
-            height: '12px',
-            margin: '0 5px',
-            '& button': {
-                '&:before': {
-                    fontSize: '12px',
-                    color: 'gray', // Inactive dot color
-                }
-            }
-        },
-        '& li.slick-active button:before': {
-            color: 'green', // Active dot color
-        }
-    }
-});
 
 
 
@@ -238,17 +212,13 @@ function Blog() {
 
 
 function Slick() {
-    const classes = useStyles();
-
     var settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        appendDots: (dots) => <ul className={classes.dotsContainer}>{dots}</ul>,
     };
-
     return (
         <>
             <h3 style={{
@@ -257,50 +227,47 @@ function Slick() {
             }}>
                 <span style={{ color: 'orange' }}>Mega </span>cities in
                 <span style={{ color: 'green' }}> India</span></h3>
-            <Slick {...settings} className={classes.dotsContainer}>
+            <Slider {...settings} className='slider' appendDots={(dots) => <div className='custom-dots'>{dots}</div>}>
                 <div>
                     <h4 className='cityname'>
                         Mumbai
                     </h4>
-                    <img src={city1} className='slide-img' alt='Mumbai' />
+                    <img src={city1} className='slide-img'></img>
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Kolkata
                     </h4>
-                    <img src={city2} className='slide-img' alt='Kolkata' />
+                    <img src={city2} className='slide-img'></img>
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Delhi
                     </h4>
-                    <img src={city3} className='slide-img' alt='Delhi' />
+                    <img src={city3} className='slide-img'></img>
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Bangalore
                     </h4>
-                    <img src={city4} className='slide-img' alt='Bangalore' />
+                    <img src={city4} className='slide-img'></img>
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Chennai
                     </h4>
-                    <img src={city5} className='slide-img' alt='Chennai' />
+                    <img src={city5} className='slide-img'></img>
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Hyderabad
                     </h4>
-                    <img src={city6} className='slide-img' alt='Hyderabad' />
+                    <img src={city6} className='slide-img'></img>
                 </div>
-            </Slick>
+            </Slider >
         </>
     );
 }
-
-
-
 
 
 function Home() {
