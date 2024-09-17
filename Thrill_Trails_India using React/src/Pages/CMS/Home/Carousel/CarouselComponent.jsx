@@ -15,6 +15,18 @@ function CarouselComponent() {
 
     return (
         <Carousel
+
+            indicators
+            activeIndicatorIconButtonProps={{
+                className: 'custom-active-indicator-icon',
+                style: { fontSize: 24, color: '#FF671F' },
+            }}
+            indicatorIconButtonProps={{
+                className: 'custom-indicator-icon',
+                style: { fontSize: 24, color: 'green' },
+            }}
+
+
             navButtonsAlwaysVisible={false}
 
             navButtonsWrapperProps={{
@@ -22,7 +34,8 @@ function CarouselComponent() {
                     top: '50%',
                     transform: 'translateY(-50%)',
                 }
-            }}
+            }
+            }
 
             navButtonsProps={{
                 style: {
@@ -32,7 +45,7 @@ function CarouselComponent() {
             interval={3000}
         >
             {items.map((item, i) => <Item key={i} item={item} />)}
-        </Carousel>
+        </Carousel >
     );
 }
 

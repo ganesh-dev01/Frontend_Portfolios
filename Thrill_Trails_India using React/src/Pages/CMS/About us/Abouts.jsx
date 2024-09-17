@@ -7,39 +7,7 @@ import Grid from '@mui/material/Grid';
 import './Abouts.css'
 import { Typography } from '@mui/material';
 
-import bannerbg from '../../Images/img1.jpg'
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-        backgroundColor: '#1A2027',
-    }),
-}));
-
-function BasicGrid() {
-    return (
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-                <Grid item xs={8}>
-                    <Item>xs=8</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={8}>
-                    <Item>xs=8</Item>
-                </Grid>
-            </Grid>
-        </Box>
-    );
-}
+import bannerbg from '../../Images/banner1.jpg'
 
 
 function Banner() {
@@ -57,7 +25,7 @@ function Banner() {
                         sx={{
                             width: '100%',
                             position: 'absolute',
-                            top: '40%',
+                            top: '35%',
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -67,18 +35,21 @@ function Banner() {
                         <Typography
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '3.5vw', sm: '2.5vw' }
+                                fontSize: { xs: '3.5vw', sm: '2.5vw' },
+                                fontFamily: "Playwrite CU, cursive"
                             }}
                         >
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Discover the beauty of India
                         </Typography>
                         <Typography
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '2.5vw', sm: '1.5vw' }
+                                fontSize: { xs: '2.5vw', sm: '1.1vw' },
+                                fontFamily: "Playwrite CU, cursive",
+                                marginTop: '20px'
                             }}
                         >
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Your guid to exploring the wonder of India's Destinations
                         </Typography>
                     </Box>
                 </Grid>
@@ -87,6 +58,8 @@ function Banner() {
         </>
     )
 }
+
+
 
 function Abouts() {
     return (

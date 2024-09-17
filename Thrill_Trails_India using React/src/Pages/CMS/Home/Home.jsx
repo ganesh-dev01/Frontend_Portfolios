@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { makeStyles } from '@mui/styles';
 import { Container, Grid, Card, CardMedia, CardContent, CardActions, Typography, IconButton, Paper } from '@mui/material';
 import img1 from '../../Images/img1.jpg';
 import img2 from '../../Images/img2.jpg';
@@ -20,6 +21,33 @@ import city3 from '../../Images/city3.jpg';
 import city4 from '../../Images/city4.jpg';
 import city5 from '../../Images/city5.jpg';
 import city6 from '../../Images/city6.jpg';
+
+const useStyles = makeStyles({
+    dotsContainer: {
+        '& ul': {
+            margin: 0,
+            padding: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            listStyle: 'none',
+        },
+        '& li': {
+            width: '12px',
+            height: '12px',
+            margin: '0 5px',
+            '& button': {
+                '&:before': {
+                    fontSize: '12px',
+                    color: 'gray', // Inactive dot color
+                }
+            }
+        },
+        '& li.slick-active button:before': {
+            color: 'green', // Active dot color
+        }
+    }
+});
+
 
 
 
@@ -105,18 +133,18 @@ function Blog() {
     return (
         <>
 
-            <Grid container sx={{ px: "5%" }} alignItems="center">
+            <Grid container sx={{ px: "5%" }} alignItems="center" className='blog-container'>
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }} >
-                        <h3>Varanasi, Uttar Pradesh</h3>
+                        <h3 style={{ fontFamily: 'Kanit, sans-serif' }}>Varanasi, Uttar Pradesh</h3>
                         <br></br>
                         <p>
-                            Description: One of the oldest continuously inhabited cities in the world,
+                            <span style={{ color: 'orangered' }}>Description</span>: One of the oldest continuously inhabited cities in the world,
                             Varanasi is a spiritual hub and a major pilgrimage destination for Hindus.
                             The city's ghats along the Ganges River are famous for their evening aarti ceremonies.
                             <br></br>    <br></br>
-                            Why Visit: Experience the spiritual essence of India, witness ancient rituals,
+                            <span style={{ color: 'orangered' }}>Why Visit:</span> Experience the spiritual essence of India, witness ancient rituals,
                             and explore the vibrant streets of this holy city.
                         </p>
                     </Box>
@@ -140,15 +168,15 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h3>Goa</h3>
+                        <h3 style={{ fontFamily: 'Kanit, sans-serif' }}>Goa</h3>
                         <br></br>
                         <p>
-                            Description: Known for its stunning beaches, vibrant nightlife, and Portuguese
+                            <span style={{ color: 'orangered' }}>Description:</span> Known for its stunning beaches, vibrant nightlife, and Portuguese
                             colonial architecture, Goa is a popular destination for both relaxation and adventure.
                             The state's unique blend of Indian and Portuguese cultures is evident in its food,
                             music, and festivals.
                             <br></br>    <br></br>
-                            Why Visit: Perfect for beach lovers, partygoers, and those interested in exploring a
+                            <span style={{ color: 'orangered' }}>Why Visit:</span> Perfect for beach lovers, partygoers, and those interested in exploring a
                             unique cultural fusion.
                         </p>
                     </Box>
@@ -157,15 +185,15 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h3>Leh-Ladakh, Jammu & Kashmir</h3>
+                        <h3 style={{ fontFamily: 'Kanit, sans-serif' }}>Leh-Ladakh, Jammu & Kashmir</h3>
                         <br></br>
                         <p>
-                            Description: Situated in the northernmost region of India, Leh-Ladakh is renowned
+                            <span style={{ color: 'orangered' }}>Description:</span> Situated in the northernmost region of India, Leh-Ladakh is renowned
                             for its breathtaking landscapes, high-altitude deserts, and Buddhist monasteries.
                             It’s an adventurer's paradise with opportunities for trekking, biking, and
                             exploring remote areas.
                             <br></br>    <br></br>
-                            Why Visit: The dramatic landscapes, clear skies, and tranquil monasteries
+                            <span style={{ color: 'orangered' }}>Why Visit:</span> The dramatic landscapes, clear skies, and tranquil monasteries
                             offer a once-in-a-lifetime experience in one of the most picturesque
                             regions of India.
                         </p>
@@ -190,14 +218,14 @@ function Blog() {
 
                 <Grid item lg={8} md={8} sm={6} xs={12}>
                     <Box sx={{ padding: "20px" }}>
-                        <h3>Mysore, Karnataka</h3>
+                        <h3 style={{ fontFamily: 'Kanit, sans-serif' }}>Mysore, Karnataka</h3>
                         <br></br>
                         <p>
-                            Description:Mysore is known for its rich history, grand palaces, and vibrant
+                            <span style={{ color: 'orangered' }}>Description:</span>Mysore is known for its rich history, grand palaces, and vibrant
                             festivals, particularly the famous Dussehra festival. The Mysore Palace is
                             a major attraction, showcasing Indo-Saracenic architecture and an opulent interior.
                             <br></br>    <br></br>
-                            Why Visit: Ideal for history enthusiasts and those interested in exploring
+                            <span style={{ color: 'orangered' }}>Why Visit:</span> Ideal for history enthusiasts and those interested in exploring
                             traditional South Indian culture and royal heritage.
                         </p>
                     </Box>
@@ -210,61 +238,67 @@ function Blog() {
 
 
 function Slick() {
+    const classes = useStyles();
+
     var settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        appendDots: (dots) => <ul className={classes.dotsContainer}>{dots}</ul>,
     };
+
     return (
         <>
             <h3 style={{
-                textAlign: "center", fontSize: "30px", marginTop: "20px", fontFamily: 'cursive',
-                color: '#138808cb'
+                textAlign: "center", fontSize: "30px", marginTop: "20px", fontFamily: 'Source Code Pro, monospace',
+                color: '#4F75FF'
             }}>
-                Mega cities in India</h3>
-            <Slider {...settings} className='slider'>
+                <span style={{ color: 'orange' }}>Mega </span>cities in
+                <span style={{ color: 'green' }}> India</span></h3>
+            <Slick {...settings} className={classes.dotsContainer}>
                 <div>
                     <h4 className='cityname'>
                         Mumbai
                     </h4>
-                    <img src={city1} className='slide-img'></img>
+                    <img src={city1} className='slide-img' alt='Mumbai' />
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Kolkata
                     </h4>
-                    <img src={city2} className='slide-img'></img>
+                    <img src={city2} className='slide-img' alt='Kolkata' />
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Delhi
                     </h4>
-                    <img src={city3} className='slide-img'></img>
+                    <img src={city3} className='slide-img' alt='Delhi' />
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Bangalore
                     </h4>
-                    <img src={city4} className='slide-img'></img>
+                    <img src={city4} className='slide-img' alt='Bangalore' />
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Chennai
                     </h4>
-                    <img src={city5} className='slide-img'></img>
+                    <img src={city5} className='slide-img' alt='Chennai' />
                 </div>
                 <div>
                     <h4 className='cityname'>
                         Hyderabad
                     </h4>
-                    <img src={city6} className='slide-img'></img>
+                    <img src={city6} className='slide-img' alt='Hyderabad' />
                 </div>
-            </Slider>
+            </Slick>
         </>
     );
 }
+
 
 
 

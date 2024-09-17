@@ -39,6 +39,11 @@
     margin-left: 35vw;
 }
 
+.blog-container h3 {
+    color: green;
+}
+
+
 
 @media screen and (max-width:800px) {
 
