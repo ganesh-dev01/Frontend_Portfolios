@@ -1,5 +1,4 @@
 import React from 'react'
-import './Home.css'
 import CarouselComponent from './Carousel/CarouselComponent'
 import CardActionArea from '@mui/material/CardActionArea';
 import Box from '@mui/material/Box';
@@ -20,6 +19,7 @@ import city3 from '../../Images/city3.jpg';
 import city4 from '../../Images/city4.jpg';
 import city5 from '../../Images/city5.jpg';
 import city6 from '../../Images/city6.jpg';
+import './Home.css'
 
 
 

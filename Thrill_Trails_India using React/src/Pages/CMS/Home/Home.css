@@ -44,6 +44,21 @@
 }
 
 
+.slick-dots li button:before {
+    color: orangered !important;
+}
+
+.slick-dots li.slick-active button:before {
+    color: green !important;
+}
+
+
+.custom-dots .slick-dots li.slick-active button:before {
+    color: green !important;
+}
+
+
+
 
 @media screen and (max-width:800px) {
 
