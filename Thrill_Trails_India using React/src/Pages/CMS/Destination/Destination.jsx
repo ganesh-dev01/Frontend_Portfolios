@@ -4,7 +4,7 @@ import './Destination.css';
 function Destination() {
     return (
         <div>
-            <h3>Destination</h3>
+            <h4>Destination</h4>
         </div>
     )
 }

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import './Abouts.css'
 import { Button, Typography } from '@mui/material';
 
-import bannerbg from '../../Images/banner1.jpg'
+import bannerbg from '../../Images/banner2.jpg'
 
 
 function Banner() {
@@ -67,7 +67,7 @@ function Our_journey() {
         <>
             <Grid container
                 sx={{
-                    paddingLeft: '20px',
+                    paddingLeft: { lg: '20px', md: '20px', sm: '10px', xs: '10px' },
                     marginTop: '20px'
                 }}>
 
@@ -75,7 +75,7 @@ function Our_journey() {
                     <Typography
                         sx={{
                             fontSize: {
-                                lg: '2vw', md: '1.9vw', sm: '2.5vw', xs: '3vw'
+                                lg: '30px', md: '25px', sm: '24px', xs: '20px'
                             }
                         }}>
                         Our Journey
@@ -98,13 +98,13 @@ function Why_chooseUS() {
             <Grid container lg={12}
                 sx={{
                     marginTop: '20px',
-                    paddingLeft: '20px'
+                    paddingLeft: { lg: '20px', md: '20px', sm: '10px', xs: '10px' },
                 }}>
                 <Grid item lg={12}>
                     <Typography
                         sx={{
                             fontSize: {
-                                lg: '1.9vw', md: '1.9vw', sm: '2.5vw', xs: '3vw'
+                                lg: '30px', md: '25px', sm: '24px', xs: '20px'
                             }
                         }}>
                         Why choose us?
@@ -120,7 +120,7 @@ function Why_chooseUS() {
                         alignItems: 'center',
                         padding: '10px',
                     }}>
-                    <Grid item lg={3.7} md={3} xs={12}
+                    <Grid item lg={3.7} md={3.6} xs={12}
                         sx={{
                             marginBottom: { sm: '10px', xs: '10px' },
                             padding: '20px',
@@ -139,7 +139,7 @@ function Why_chooseUS() {
                         </Typography>
                     </Grid>
 
-                    <Grid item lg={3.7} md={3} xs={12}
+                    <Grid item lg={3.7} md={3.6} xs={12}
                         sx={{
                             marginBottom: { sm: '10px', xs: '10px' },
                             padding: '20px',
@@ -159,7 +159,7 @@ function Why_chooseUS() {
                         </Typography>
                     </Grid>
 
-                    <Grid item lg={3.7} md={3} xs={12}
+                    <Grid item lg={3.7} md={3.6} xs={12}
                         sx={{
                             marginBottom: { sm: '10px', xs: '10px' },
                             padding: '20px',
@@ -189,7 +189,7 @@ function Traveler_stories() {
         <>
             <Grid container lg={12}
                 sx={{
-                    paddingLeft: '20px',
+                    paddingLeft: { lg: '20px', md: '20px', sm: '10px', xs: '10px' },
                     marginTop: '20px'
                 }}>
 
@@ -197,7 +197,7 @@ function Traveler_stories() {
                     <Typography
                         sx={{
                             fontSize: {
-                                lg: '1.9vw', md: '1.9vw', sm: '2.5vw', xs: '3vw'
+                                lg: '30px', md: '25px', sm: '24px', xs: '20px'
                             }
                         }}>
                         Traveler Stories
@@ -277,18 +277,21 @@ function Our_vision() {
         <>
             <Grid container lg={12}
                 sx={{
-                    paddingLeft: '20px',
+                    paddingLeft: { lg: '20px', md: '20px', sm: '10px', xs: 'unset' },
                     marginTop: '20px'
                 }}>
-                <Grid item lg={12}>
+                <Grid item lg={12}
+                    sx={{
+                        width: '100%'
+                    }}>
                     <Typography
                         sx={{
                             fontSize: {
-                                lg: '1.9vw', md: '1.9vw', sm: '2.5vw', xs: '3vw'
+                                lg: '30px', md: '25px', sm: '24px', xs: '20px'
                             },
                             textAlign: 'center',
-                            marginBottom: '10px'
-                        }}>
+                            marginBottom: '10px',
+                        }} >
                         Our vision
                     </Typography>
                 </Grid>
@@ -322,12 +325,15 @@ function View_direction() {
                 sx={{
                     paddingLeft: '20px',
                     marginTop: '20px',
-                    marginBottom: '30px'
+                    marginBottom: '30px',
+                    display: 'flex',
+                    justifyContent: 'center'
                 }}>
-                <Grid item lg={12}
+                <Grid item lg={12} ms={12}
                     sx={{
                         display: 'flex',
                         justifyContent: 'center'
+
                     }}>
                     <Link to={"/destination"}><Button
                         sx={{
