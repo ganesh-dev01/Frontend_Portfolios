@@ -228,43 +228,33 @@ function Slick() {
                 <span style={{ color: 'orange' }}>Mega </span>cities in
                 <span style={{ color: 'green' }}> India</span></h3>
             <Slider {...settings} className='slider' appendDots={(dots) => <div className='custom-dots'>{dots}</div>}>
-                <div>
-                    <h4 className='cityname'>
-                        Mumbai
-                    </h4>
-                    <img src={city1} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city1} className='slide-img' alt="Mumbai" />
+                    <h4 className='cityname'>Mumbai</h4>
                 </div>
-                <div>
-                    <h4 className='cityname'>
-                        Kolkata
-                    </h4>
-                    <img src={city2} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city2} className='slide-img' alt="Kolkata" />
+                    <h4 className='cityname'>Kolkata</h4>
                 </div>
-                <div>
-                    <h4 className='cityname'>
-                        Delhi
-                    </h4>
-                    <img src={city3} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city3} className='slide-img' alt="Delhi" />
+                    <h4 className='cityname'>Delhi</h4>
                 </div>
-                <div>
-                    <h4 className='cityname'>
-                        Bangalore
-                    </h4>
-                    <img src={city4} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city4} className='slide-img' alt="Bangalore" />
+                    <h4 className='cityname'>Bangalore</h4>
                 </div>
-                <div>
-                    <h4 className='cityname'>
-                        Chennai
-                    </h4>
-                    <img src={city5} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city5} className='slide-img' alt="Chennai" />
+                    <h4 className='cityname'>Chennai</h4>
                 </div>
-                <div>
-                    <h4 className='cityname'>
-                        Hyderabad
-                    </h4>
-                    <img src={city6} className='slide-img'></img>
+                <div className='slide-container'>
+                    <img src={city6} className='slide-img' alt="Hyderabad" />
+                    <h4 className='cityname'>Hyderabad</h4>
                 </div>
-            </Slider >
+            </Slider>
+
+
         </>
     );
 }

@@ -24,20 +24,44 @@
     margin-top: 10px;
 }
 
+.slide-container {
+    display: flex;
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
+    position: relative;
+    /* Maintain positioning context */
+    height: 50vh;
+    /* Set height for the container */
+    overflow: hidden;
+    /* Ensure no overflow */
+}
+
 .slide-img {
     width: 100%;
-    height: 50vh;
+    height: 100%;
+    /* Make the image fill the container */
+    object-fit: cover;
+    /* Ensure the image covers the container */
 }
 
 .cityname {
+    margin-top: -15px;
+    /* Adjust this value as needed */
+    position: relative;
+    /* Set position relative for z-index */
     color: white;
     font-size: 30px;
     font-weight: 700;
-    position: absolute;
     padding: 10px 20px;
-    top: 45%;
-    margin-left: 35vw;
+    z-index: 10;
+    /* Ensure text is above the images */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Optional for better contrast */
 }
+
+
 
 .blog-container h3 {
     color: green;

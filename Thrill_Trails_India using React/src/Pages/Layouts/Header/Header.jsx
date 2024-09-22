@@ -36,7 +36,7 @@ function Header(props) {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                Indian Tourism
+                Thrill Trails India
             </Typography>
             <Divider />
             <List>
@@ -72,7 +72,7 @@ function Header(props) {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        Indian Tourism
+                        Thrill Trails India
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map((item) => (
