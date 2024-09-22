@@ -46,12 +46,12 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-
+    justify-content: center;
     scrollbar-width: thin;
     scrollbar-color: orange #f0f0f0;
 }
 
-span {
+.city {
     color: brown;
 }
 
@@ -83,7 +83,7 @@ span {
 
 .place-card img {
     width: 100%;
-    height: auto;
+    height: 40%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     object-fit: cover;
