@@ -28,7 +28,7 @@ function Footer() {
                 </Grid>
             </Grid>
             <Typography variant="body2" color="textSecondary" align="center" sx={{ marginTop: '20px' }}>
-                © {new Date().getFullYear()} Your Company Name. All rights reserved.
+                © {new Date().getFullYear()} Developer:Ganesh Saha | All rights reserved.
             </Typography>
         </Box>
     );
