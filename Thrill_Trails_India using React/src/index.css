@@ -3,3 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: orange rgba(255, 255, 255, 0.615);
+}

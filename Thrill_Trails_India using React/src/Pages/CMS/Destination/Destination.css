@@ -48,7 +48,7 @@
     flex-direction: row;
     justify-content: center;
     scrollbar-width: thin;
-    scrollbar-color: orange #f0f0f0;
+    scrollbar-color: green #f0f0f0;
 }
 
 .city {
@@ -86,7 +86,7 @@
     height: 40%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .place-card h4,

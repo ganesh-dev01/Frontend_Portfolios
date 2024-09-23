@@ -1,0 +1,23 @@
+.user-icon {
+    width: 10%;
+    margin: 5px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width:1024px) {
+    .user-icon {
+        width: 12%;
+    }
+}
+
+@media screen and (max-width:899px) {
+    .user-icon {
+        width: 5%;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .user-icon {
+        width: 9%;
+    }
+}

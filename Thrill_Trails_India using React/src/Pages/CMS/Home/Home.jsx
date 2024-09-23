@@ -227,6 +227,7 @@ function Slick() {
             }}>
                 <span style={{ color: 'orange' }}>Mega </span>cities in
                 <span style={{ color: 'green' }}> India</span></h3>
+
             <Slider {...settings} className='slider' appendDots={(dots) => <div className='custom-dots'>{dots}</div>}>
                 <div className='slide-container'>
                     <img src={city1} className='slide-img' alt="Mumbai" />

@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 import './Abouts.css'
 import { Button, Typography } from '@mui/material';
 
-import bannerbg from '../../Images/banner2.jpg'
+import bannerbg from '../../Images/banner2.jpg';
+import userimg from '../../Images/user.png'
 
 
 function Banner() {
@@ -76,18 +77,21 @@ function Our_journey() {
                         sx={{
                             fontSize: {
                                 lg: '30px', md: '25px', sm: '24px', xs: '20px'
-                            }
+                            },
+                            color: 'green',
+                            fontFamily: 'Kanit, system-ui',
+                            fontWeight: 600
                         }}>
                         Our Journey
                     </Typography>
                 </Grid>
                 <Grid item>
-                    <Typography>
+                    <Typography sx={{ fontSize: '18px' }}>
                         We aim to provide tourist with the best guide to explore the diverese beauty of India,
                         from it's stunning beaches to majestic mountains, and rich cultural heritage.
                     </Typography>
                 </Grid>
-            </Grid>
+            </Grid >
         </>
     )
 }
@@ -105,7 +109,10 @@ function Why_chooseUS() {
                         sx={{
                             fontSize: {
                                 lg: '30px', md: '25px', sm: '24px', xs: '20px'
-                            }
+                            },
+                            color: 'green',
+                            fontFamily: 'Kanit, system-ui',
+                            fontWeight: 600
                         }}>
                         Why choose us?
                     </Typography>
@@ -130,7 +137,8 @@ function Why_chooseUS() {
                         <Typography
                             sx={{
                                 fontWeight: 'bold',
-                                fontSize: '18px'
+                                fontSize: '18px',
+                                color: '#FF6600'
                             }}>
                             Curated Travel Information
                         </Typography>
@@ -149,7 +157,8 @@ function Why_chooseUS() {
                         <Typography
                             sx={{
                                 fontWeight: 'bold',
-                                fontSize: '18px'
+                                fontSize: '18px',
+                                color: '#FF6600'
                             }}>
                             Handpicked Destinations
                         </Typography>
@@ -169,7 +178,8 @@ function Why_chooseUS() {
                         <Typography
                             sx={{
                                 fontWeight: 'bold',
-                                fontSize: '18px'
+                                fontSize: '18px',
+                                color: '#FF6600'
                             }}>
                             Travel tips & guides
                         </Typography>
@@ -198,7 +208,10 @@ function Traveler_stories() {
                         sx={{
                             fontSize: {
                                 lg: '30px', md: '25px', sm: '24px', xs: '20px'
-                            }
+                            },
+                            color: 'green',
+                            fontFamily: 'Kanit, system-ui',
+                            fontWeight: 600
                         }}>
                         Traveler Stories
                     </Typography>
@@ -215,25 +228,38 @@ function Traveler_stories() {
                     }}>
                     <Grid item lg={3} md={3} xs={12}
                         sx={{
+
                             marginBottom: { sm: '10px', xs: '10px' },
                             marginRight: '20px',
                             padding: '20px',
                             borderRadius: '10px',
-                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'
+                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                            border: '1px dashed green'
                         }}>
+                        <Box sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            width: '100%'
+                        }}>
+                            <img src={userimg} className='user-icon' />
+                            <Typography
+                                sx={{
+                                    flex: 1,
+                                    fontWeight: 'bold',
+                                    fontSize: { lg: '16px', md: '14px', sm: '16px', xs: '15px' },
+                                }}
+                            >
+                                Jane Smith
+                            </Typography>
+                        </Box>
+
                         <Typography
-                            sx={{
-                                fontWeight: 'bold',
-                                fontSize: '18px',
-                                marginBottom: '5px'
-                            }}>
-                            Jane Smith
-                        </Typography>
-                        <Typography>
+                            sx={{ width: '100%' }}>
                             The travel tips were really helpful
                         </Typography>
 
-                        <Stack spacing={1}>
+                        <Stack spacing={1} sx={{ marginTop: '10px' }}>
                             <Rating name="size-large" defaultValue={4} size="large" readOnly />
                         </Stack>
 
@@ -245,21 +271,31 @@ function Traveler_stories() {
                             marginBottom: { sm: '10px', xs: '10px' },
                             padding: '20px',
                             borderRadius: '10px',
-                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'
+                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                            border: '1px dashed green'
                         }}>
-                        <Typography
-                            sx={{
-                                fontWeight: 'bold',
-                                fontSize: '18px',
-                                marginBottom: '5px'
-                            }}>
-                            John Doe
-                        </Typography>
+                        <Box sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            width: '100%'
+                        }}>
+                            <img src={userimg} className='user-icon' />
+                            <Typography
+                                sx={{
+                                    flex: 1,
+                                    fontWeight: 'bold',
+                                    fontSize: { lg: '16px', md: '14px', sm: '16px', xs: '15px' },
+                                }}
+                            >
+                                John Doe
+                            </Typography>
+                        </Box>
                         <Typography>
                             Amazing platform to explore India's beauty!
                         </Typography>
 
-                        <Stack spacing={1}>
+                        <Stack spacing={1} sx={{ marginTop: '10px' }}>
                             <Rating name="size-large" defaultValue={4.5} size="large" precision={0.5} readOnly />
                         </Stack>
 
@@ -291,6 +327,9 @@ function Our_vision() {
                             },
                             textAlign: 'center',
                             marginBottom: '10px',
+                            color: 'green',
+                            fontFamily: 'Kanit, system-ui',
+                            fontWeight: 600
                         }} >
                         Our vision
                     </Typography>
