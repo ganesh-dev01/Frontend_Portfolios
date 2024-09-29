@@ -1,0 +1,49 @@
+.container {
+    border: 2px solid red;
+    width: 70%;
+    margin: 20px auto;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.head {
+    border: 2px solid green;
+    width: 90%;
+    padding: 30px;
+    text-align: center;
+}
+
+.head h4 {
+    font-size: 2rem;
+    font-family: "Open Sans", sans-serif;
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        width: 90%;
+    }
+
+    .head {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .container {
+        width: 90%;
+    }
+
+    .head h4 {
+        font-size: 1.2rem;
+    }
+}
+
+.input_area {
+    width: 90%;
+    margin-top: 20px;
+    border: 2px solid blue;
+}
