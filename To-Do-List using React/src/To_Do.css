@@ -1,14 +1,18 @@
 .container {
-    border: 2px solid red;
     width: 70%;
+    min-height: 95vh;
     margin: 20px auto;
     padding: 10px;
-
+    background:url('./Images/App_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 
 .head {
     width: 90%;
@@ -40,73 +44,102 @@
         font-size: 1.2rem;
     }
 }
-  .add_btn_area {
-      width: 90%;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-  }
 
-  .add_btn_area .add_btn {
-      width: 180px;
-      padding: 12px 24px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-      font-size: 1rem;
-      background-color: #FF0080;
-      color: white;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(255, 0, 128, 0.2);
-  }
-
-  .add_btn_area .add_btn:hover {
-      background-color: #e6007a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(255, 0, 128, 0.3);
-  }
-
-  .add_btn_area .add_btn .add_icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-      .add_btn_area .add_btn {
-          width: 160px;
-          padding: 10px 20px;
-          font-size: 0.95rem;
-      }
-    
-      .add_btn_area .add_btn .add_icon {
-          width: 18px;
-          height: 18px;
-      }
-  }
-
-  @media screen and (max-width: 500px) {
-      .add_btn_area .add_btn {
-          width: 140px;
-          padding: 8px 16px;
-          font-size: 0.9rem;
-      }
-    
-      .add_btn_area .add_btn .add_icon {
-          width: 16px;
-          height: 16px;
-          margin-right: 6px;
-      }
-  }
-.input_area {
+.add_btn_area {
     width: 90%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_btn_area .add_btn {
+    width: 180px;
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #FF0080;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(255, 0, 128, 0.2);
+}
+
+.add_btn_area .add_btn:hover {
+    background-color: #e6007a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 0, 128, 0.3);
+}
+
+.add_btn_area .add_btn .add_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .add_btn_area .add_btn {
+        width: 160px;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .add_btn_area .add_btn .add_icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .add_btn_area .add_btn {
+        width: 140px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .add_btn_area .add_btn .add_icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal .close_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 15px;
+    background-color: rgb(204, 7, 7);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.input_area {
+    width: 60%;
     margin-top: 20px;
     background: #181C14;
     border-radius: 12px;
@@ -155,46 +188,48 @@
     justify-content: center;
     align-items: center;
 }
-  .input_area .submit_btn {
-      padding: 12px 28px;
-      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
-      border: none;
-      border-radius: 25px;
-      color: white;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-  }
 
-  .input_area .submit_btn:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: all 0.5s ease;
-  }
+.input_area .submit_btn {
+    padding: 12px 28px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-  .input_area .submit_btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-  }
+.input_area .submit_btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
 
-  .input_area .submit_btn:hover:before {
-      left: 100%;
-  }
+.input_area .submit_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
 
-  .input_area .submit_btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-  }
+.input_area .submit_btn:hover:before {
+    left: 100%;
+}
+
+.input_area .submit_btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+}
+
 @media screen and (max-width: 768px) {
     .input_area {
         padding: 15px;
@@ -228,7 +263,9 @@
         width: 100%;
         padding: 12px;
     }
-}  .Nav_bar {
+}
+
+.Nav_bar {
     width: 90%;
     margin: 0;
     margin-top: 20px;
@@ -254,13 +291,23 @@
 }
 
 .Nav_bar .pending_btn {
-    background: linear-gradient(45deg, #FF0080, #ff4d94);
+    background: linear-gradient(45deg, #f8bfd2, #ff4d94);
     color: white;
     border-radius: 8px 0 0 8px;
 }
 
+.pending_btn .pending_count {
+    border-radius: 50%;
+    background: #f8f9fa;
+    color: #ff4d94;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
 .Nav_bar .completed_btn {
-    background: linear-gradient(45deg, #4CAF50, #45a049);
+    background: linear-gradient(45deg, #f5f8f5, #1E3E62);
     color: white;
     border-radius: 0;
 }
@@ -279,7 +326,7 @@
     margin: 0;
     font-weight: 600;
     font-size: 0.95rem;
-    background: linear-gradient(45deg, #2196F3, #03A9F4);
+    background: linear-gradient(45deg, #f0f2f3, #03A9F4);
     color: white;
     border-radius: 0 8px 8px 0;
     cursor: pointer;
@@ -303,13 +350,14 @@
 }
 
 @media screen and (max-width: 768px) {
+
     .Nav_bar .pending_btn,
     .Nav_bar .completed_btn,
     .Nav_bar .add_btn {
         padding: 10px 15px;
         font-size: 0.9rem;
     }
-    
+
     .Nav_bar .add_btn_area .add_btn .add_icon {
         width: 18px;
         height: 18px;
@@ -320,7 +368,7 @@
     .Nav_bar {
         flex-direction: row;
     }
-    
+
     .Nav_bar .pending_btn,
     .Nav_bar .completed_btn,
     .Nav_bar .add_btn {
@@ -328,21 +376,134 @@
         font-size: 0.80rem;
         font-weight: 100;
     }
-    
+
     .Nav_bar .add_btn_area .add_btn .add_icon {
         width: 30px;
         height: 30px;
         margin-right: 6px;
     }
 }
+
 .list_area {
     width: 90%;
     margin-top: 20px;
-    border: 2px solid blue;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.list_area .pending_list {
+    width: 100%;
+}
 
+.list_area .task_box {
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0A2647, #081A35);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.list_area .task_box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
 
+.task_content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task_date,
+.task_title,
+.task_description {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.task_date {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.task_title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.button_container {
+    display: flex;
+    gap: 10px;
+}
+
+.completed_btn,
+.delete_btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.completed_btn {
+    background-color: #0F4C75;
+    color: #FFFFFF;
+}
+
+.completed_btn:hover {
+    background-color: #0A2647;
+}
+
+.delete_btn {
+    background-color: #D32F2F;
+    color: #FFFFFF;
+}
+
+.delete_btn:hover {
+    background-color: #B71C1C;
+}
+
+@media (max-width: 480px) {
+    
+    .list_area .task_box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        justify-content: flex-start
+    }
+
+    .button_container {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+
+    .task_date,
+    .task_title,
+    .task_description {
+        font-size: 0.9rem;
+    }
+
+    .completed_btn,
+    .delete_btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}
+
+.tick_icon,.dlt_icon{
+    font-size: 20px;
+}
