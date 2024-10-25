@@ -42,8 +42,74 @@
     }
 }
 
+.add_btn {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+}
+
 .input_area {
     width: 90%;
     margin-top: 20px;
     border: 2px solid blue;
 }
+
+.input_area .title_input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input_area .description_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input_area .btn_area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_area .submit_btn {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.Nav_bar {
+    width: 90%;
+    margin-top: 20px;
+    border: 2px solid blue;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.Nav_bar .pending_btn,.completed_btn {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.list_area {
+    width: 90%;
+    margin-top: 20px;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
