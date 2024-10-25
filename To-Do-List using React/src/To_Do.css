@@ -11,7 +11,6 @@
 }
 
 .head {
-    border: 2px solid green;
     width: 90%;
     padding: 30px;
     text-align: center;
@@ -41,35 +40,113 @@
         font-size: 1.2rem;
     }
 }
+  .add_btn_area {
+      width: 90%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
 
-.add_btn {
-    width: 20%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px;
-}
+  .add_btn_area .add_btn {
+      width: 180px;
+      padding: 12px 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #FF0080;
+      color: white;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(255, 0, 128, 0.2);
+  }
 
+  .add_btn_area .add_btn:hover {
+      background-color: #e6007a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 0, 128, 0.3);
+  }
+
+  .add_btn_area .add_btn .add_icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+      .add_btn_area .add_btn {
+          width: 160px;
+          padding: 10px 20px;
+          font-size: 0.95rem;
+      }
+    
+      .add_btn_area .add_btn .add_icon {
+          width: 18px;
+          height: 18px;
+      }
+  }
+
+  @media screen and (max-width: 500px) {
+      .add_btn_area .add_btn {
+          width: 140px;
+          padding: 8px 16px;
+          font-size: 0.9rem;
+      }
+    
+      .add_btn_area .add_btn .add_icon {
+          width: 16px;
+          height: 16px;
+          margin-right: 6px;
+      }
+  }
 .input_area {
     width: 90%;
     margin-top: 20px;
-    border: 2px solid blue;
+    background: #181C14;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .input_area .title_input {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    width: 100%;
+    padding: 14px;
+    outline: none;
+    border: none;
+    color: wheat;
+    background-color: #3C3D37;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .input_area .description_input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 14px;
+    color: wheat;
+    background-color: #3C3D37;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.input_area .title_input:focus,
+.input_area .description_input:focus {
+    border-color: #FF0080;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1);
 }
 
 .input_area .btn_area {
@@ -78,30 +155,186 @@
     justify-content: center;
     align-items: center;
 }
-.input_area .submit_btn {
-    width: 20%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  .input_area .submit_btn {
+      padding: 12px 28px;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .input_area .submit_btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: all 0.5s ease;
+  }
+
+  .input_area .submit_btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  }
+
+  .input_area .submit_btn:hover:before {
+      left: 100%;
+  }
+
+  .input_area .submit_btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+  }
+@media screen and (max-width: 768px) {
+    .input_area {
+        padding: 15px;
+    }
+
+    .input_area .title_input,
+    .input_area .description_input {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .input_area .submit_btn {
+        min-width: 100px;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
 }
 
-.Nav_bar {
+@media screen and (max-width: 500px) {
+    .input_area {
+        padding: 12px;
+    }
+
+    .input_area .title_input,
+    .input_area .description_input {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .input_area .submit_btn {
+        width: 100%;
+        padding: 12px;
+    }
+}  .Nav_bar {
     width: 90%;
+    margin: 0;
     margin-top: 20px;
-    border: 2px solid blue;
     display: flex;
-    justify-content:flex-start;
+    justify-content: center;
+    align-items: stretch;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
 }
 
-.Nav_bar .pending_btn,.completed_btn {
-    width: 20%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px;
+.Nav_bar .pending_btn,
+.Nav_bar .completed_btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.Nav_bar .pending_btn {
+    background: linear-gradient(45deg, #FF0080, #ff4d94);
+    color: white;
+    border-radius: 8px 0 0 8px;
+}
+
+.Nav_bar .completed_btn {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border-radius: 0;
+}
+
+.Nav_bar .add_btn_area {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.Nav_bar .add_btn_area .add_btn {
+    width: 100%;
+    height: 100%;
+    padding: 12px 20px;
+    border: none;
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: linear-gradient(45deg, #2196F3, #03A9F4);
+    color: white;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Nav_bar .add_btn_area .add_btn .add_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.Nav_bar .pending_btn:hover,
+.Nav_bar .completed_btn:hover,
+.Nav_bar .add_btn:hover {
+    filter: brightness(110%);
+    transform: scale(1.02);
+}
+
+@media screen and (max-width: 768px) {
+    .Nav_bar .pending_btn,
+    .Nav_bar .completed_btn,
+    .Nav_bar .add_btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .Nav_bar .add_btn_area .add_btn .add_icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Nav_bar {
+        flex-direction: row;
+    }
+    
+    .Nav_bar .pending_btn,
+    .Nav_bar .completed_btn,
+    .Nav_bar .add_btn {
+        padding: 2px 10px;
+        font-size: 0.80rem;
+        font-weight: 100;
+    }
+    
+    .Nav_bar .add_btn_area .add_btn .add_icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+    }
+}
 .list_area {
     width: 90%;
     margin-top: 20px;
