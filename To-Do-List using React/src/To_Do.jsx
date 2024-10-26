@@ -4,6 +4,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 function To_Do() {
+
     return (
         <div>
             <div className="container">
@@ -12,23 +13,25 @@ function To_Do() {
                 </div>
 
 
-                {/* <div className='modal'>
+                <div className='modal'>
                     <button className='close_btn'>X</button>
 
                     <div className="input_area">
-                        <input type="text" placeholder='Enter Title' className='title_input' />
-                        <textarea
-                            type="message"
-                            placeholder='Enter Description'
-                            className='description_input'
-                            draggable="true"
-                            rows="3"
-                        />
-                        <div className="btn_area">
-                            <button className='submit_btn'>Submit</button>
-                        </div>
+                        <form>
+                            <input type="text" placeholder='Enter Title' className='title_input' />
+                            <textarea
+                                type="message"
+                                placeholder='Enter Description'
+                                className='description_input'
+                                draggable="true"
+                                rows="3"
+                            />
+                            <div className="btn_area">
+                                <button className='submit_btn' type="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                </div> */}
+                </div>
 
                 <div className="Nav_bar">
                     <button className='pending_btn'>
