@@ -408,13 +408,17 @@
     width: 100%;
     padding: 15px 25px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #0A2647, #081A35);
+    background: linear-gradient(135deg, #088395, #0A2647);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.completed_list .task_box {
+    background: linear-gradient(135deg, #37B7C3, #0A2647);
 }
 
 .list_area .task_box:hover {
