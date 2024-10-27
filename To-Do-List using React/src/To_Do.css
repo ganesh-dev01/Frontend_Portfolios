@@ -399,7 +399,8 @@
     justify-content: center;
 }
 
-.list_area .pending_list {
+.list_area .pending_list,
+.completed_list {
     width: 100%;
 }
 
