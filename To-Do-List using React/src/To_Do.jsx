@@ -4,6 +4,9 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 import { useForm } from 'react-hook-form';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function To_Do() {
 
@@ -26,13 +29,19 @@ function To_Do() {
     //-------------------------------------------------------------------------
 
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
     let [pendings, setPendings] = useState([]);
 
     let [completed, setCompleted] = useState([]);
 
     let Submit_task = (data) => {
+
+        if (data.task_title === "" || data.task_description === "") {
+            Show_error();
+            return
+        }
+
         let fd = new FormData();
         let dt = new Date();
         dt = dt.toLocaleDateString();
@@ -41,8 +50,42 @@ function To_Do() {
         fd.append("task_title", data.task_title);
         fd.append("task_description", data.task_description);
 
-        let Task = Object.fromEntries(fd)
-        setPendings([Task, ...pendings])
+        let Task = Object.fromEntries(fd);
+        setPendings([Task, ...pendings]);
+
+        localStorage.setItem("Task", JSON.stringify(pendings));
+
+
+        setValue("task_title", "");
+        setValue("task_description", "");
+
+        Show_success();
+    }
+
+    let Show_success = () => {
+        toast.success("Task Added Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
+    let Show_error = () => {
+        toast.error("Please Enter Title and Description both", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
     }
 
     let Pdel_task = (id) => {
@@ -64,6 +107,8 @@ function To_Do() {
 
     }
 
+
+
     let Add_New = () =>
         <div className='modal'>
             <button className='close_btn' onClick={switch_taskpanel}>X</button>
@@ -72,20 +117,22 @@ function To_Do() {
             <div className="input_area">
                 <form onSubmit={handleSubmit(Submit_task)}>
                     <input type="text" placeholder='Enter Title' className='title_input'
-                        {...register("task_title", { required: true })} />
+                        {...register("task_title")} />
+
+
                     <textarea
                         type="message"
                         placeholder='Enter Description'
                         className='description_input'
                         draggable="true"
-                        rows="3"
-                        {...register("task_description", { required: true })}
-                    />
+                        {...register("task_description")} />
+
                     <div className="btn_area">
                         <button className='submit_btn' type="submit">Submit</button>
                     </div>
                 </form>
             </div>
+
         </div>
 
 
@@ -171,6 +218,7 @@ function To_Do() {
 
 
             </div>
+            <ToastContainer />
         </div>
     )
 }
