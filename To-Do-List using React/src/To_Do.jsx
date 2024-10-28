@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './To_Do.css'
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
@@ -35,6 +35,33 @@ function To_Do() {
 
     let [completed, setCompleted] = useState([]);
 
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem("Pending_Task"));
+        if (data && data.length > 0) {
+            setPendings(data);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (pendings.length > 0) {
+            localStorage.setItem("Pending_Task", JSON.stringify(pendings));
+        }
+    }, [pendings]);
+
+    useEffect(() => {
+        if (completed.length > 0) {
+            localStorage.setItem("Completed_Task", JSON.stringify(completed));
+        }
+    }, [completed]);
+
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem("Completed_Task"));
+        if (data && data.length > 0) {
+            setCompleted(data);
+        }
+    }, []);
+
+
     let Submit_task = (data) => {
 
         if (data.task_title === "" || data.task_description === "") {
@@ -52,9 +79,6 @@ function To_Do() {
 
         let Task = Object.fromEntries(fd);
         setPendings([Task, ...pendings]);
-
-        localStorage.setItem("Task", JSON.stringify(pendings));
-
 
         setValue("task_title", "");
         setValue("task_description", "");
@@ -90,12 +114,14 @@ function To_Do() {
 
     let Pdel_task = (id) => {
         let c = pendings.filter((v) => pendings.indexOf(v) != id);
-        setPendings(c)
+        setPendings(c);
+        localStorage.setItem("Pending_Task", JSON.stringify(c));
     }
 
     let Cmpdel_task = (id) => {
         let c = completed.filter((v) => completed.indexOf(v) != id);
-        setCompleted(c)
+        setCompleted(c);
+        localStorage.setItem("Completed_Task", JSON.stringify(c));
     }
 
     let comp_task = (id) => {
@@ -103,7 +129,9 @@ function To_Do() {
         (a.length > 0) ? setPendings(a) : setPendings([])
 
         let b = pendings.find((v) => pendings.indexOf(v) == id);
-        setCompleted([b, ...completed])
+        setCompleted([b, ...completed]);
+        localStorage.setItem("Completed_Task", JSON.stringify(completed));
+        localStorage.setItem("Pending_Task", JSON.stringify(a));
 
     }
 
