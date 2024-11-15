@@ -1,6 +1,6 @@
 import React from 'react'
 import './Playlist.css'
-import playing_icon from '../Test/playing.gif'
+import playing_icon from '../Images/playing.gif'
 
 function Playlist({ v, onClick, onRemove, playingAudio }) {
 
