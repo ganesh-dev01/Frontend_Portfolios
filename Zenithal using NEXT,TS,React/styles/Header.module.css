@@ -1,16 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .container-light {
-    width: 100%;
-    height: 100px;
-    background-color: aqua;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container-dark {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.brand {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .list {
-    text-align: right;
-    border: 2px solid red
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .list li {
-    list-style: none;
-    display: inline-block;
-    padding: 12px 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.list li:hover {
+    color: #03a9f4;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profileButton {
+    color: inherit;
+    font-size: 14px;
+    text-transform: none;
+}
+
+/* Mobile-specific styles */
+.mobileMenuButton {
+    display: none;
+    /* Hidden on large screens */
+}
+
+.drawer {
+    width: 250px;
+    padding: 10px;
+    background-color: inherit;
+}
+
+@media (max-width: 768px) {
+    .list {
+        display: none;
+        /* Hide list on smaller screens */
+    }
+
+    .mobileMenuButton {
+        display: block;
+        /* Show menu button on smaller screens */
+    }
 }
