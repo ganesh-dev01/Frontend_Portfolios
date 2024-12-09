@@ -3,3 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.wrapper{
+  position: relative;
+  min-height: 100vh;
+  max-height: auto;
+}
+
+.footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
