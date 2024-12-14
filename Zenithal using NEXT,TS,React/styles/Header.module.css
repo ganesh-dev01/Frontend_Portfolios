@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Playwrite+NL+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap');
+
+.navIcon {
+    margin-right: 8px;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
 .container-light {
     background-color: #ffffff;
     color: #000000;
@@ -9,7 +17,7 @@
     color: #ffffff;
 }
 
-/* Toolbar and Brand */
+
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -17,22 +25,111 @@
     padding: 0 16px;
 }
 
+/*brang logo------*/
+
 .brand {
     font-weight: bold;
     cursor: pointer;
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    margin-left: 2%;
 }
+
+.container-light .brand {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.7rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+}
+
+.container-light .brand:hover {
+    background: linear-gradient(90deg, #4204ed, #dc0909);
+    -webkit-background-clip: text;
+    transform: scale(1.1);
+}
+
+
+.container-dark .brand {
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.7rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.container-dark .brand:hover {
+    background: linear-gradient(90deg, #f7971e, #ffd200);
+    -webkit-background-clip: text;
+    transform: scale(1.1);
+    text-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2);
+}
+
 
 /* Desktop Navigation */
 .list {
     display: flex;
-    gap: 16px;
+    gap: 30px;
 }
+
+.list Button {
+    padding: 10px 25px;
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+
+.container-light .list Button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background: red;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.container-light .list Button:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.container-dark .list Button:hover {
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+
+
+
 
 .buttons {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
+
+
+
 
 .desktopOnly {
     display: flex;
@@ -45,10 +142,10 @@
 
 .mobileDrawer-light {
     position: absolute;
-    top: 55px; 
+    top: 55px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 64px); 
+    height: calc(100vh - 64px);
     background-color: inherit;
     z-index: 1000;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -64,14 +161,14 @@
     font-style: normal;
 }
 
-.mobileDrawer-dark{
+.mobileDrawer-dark {
     background-color: #333333;
     color: white;
     position: absolute;
-    top: 55px; 
+    top: 55px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 64px); 
+    height: calc(100vh - 64px);
     z-index: 1000;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -107,10 +204,12 @@
 /* Mobile-Specific Styles */
 @media (max-width: 768px) {
     .list {
-        display: none; /* Hide desktop navigation */
+        display: none;
+        /* Hide desktop navigation */
     }
 
     .mobileMenuButton {
-        display: block; /* Show hamburger menu button */
+        display: block;
+        /* Show hamburger menu button */
     }
 }

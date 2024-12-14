@@ -11,11 +11,11 @@ const Wrapper: React.FC<NodeProps> = ({ children }) => {
     return (
         <div className="wrapper">
             <Header />
-            
+
             {children}
 
             <div className="footer">
-                <Footer />
+                {/* <Footer /> */}
             </div>
 
         </div>

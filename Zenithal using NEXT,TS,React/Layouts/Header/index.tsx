@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ThemeContext from "@/ThemeContext/ThemeContext";
 import { AppBar, Toolbar, IconButton, Typography, Button, Box } from "@mui/material";
-import { FaSun, FaMoon, FaUserCircle, FaBars } from "react-icons/fa";
+import { FaSun, FaMoon, FaUserCircle, FaBars, FaHome, FaInfoCircle, FaPhone, FaBox } from "react-icons/fa";
 import styles from "@/styles/Header.module.css";
 
 const Header: React.FC = () => {
@@ -24,15 +24,23 @@ const Header: React.FC = () => {
                 <Toolbar className={styles.toolbar}>
                     {/* Brand Name */}
                     <Typography variant="h6" className={styles.brand}>
-                        MyBrand
+                        Zenithal
                     </Typography>
 
                     {/* Desktop Navigation */}
                     <Box className={`${styles.list} ${styles.desktopOnly}`}>
-                        <Button color="inherit">Home</Button>
-                        <Button color="inherit">About</Button>
-                        <Button color="inherit">Contact</Button>
-                        <Button color="inherit">Products</Button>
+                        <Button color="inherit">
+                            <FaHome className={styles.navIcon} /> Home
+                        </Button>
+                        <Button color="inherit">
+                            <FaInfoCircle className={styles.navIcon} /> About
+                        </Button>
+                        <Button color="inherit">
+                            <FaPhone className={styles.navIcon} /> Contact
+                        </Button>
+                        <Button color="inherit">
+                            <FaBox className={styles.navIcon} /> Products
+                        </Button>
                     </Box>
 
                     {/* Action Buttons */}
@@ -54,10 +62,18 @@ const Header: React.FC = () => {
             {mobileDrawerOpen && (
                 <Box className={styles[`mobileDrawer-${theme_data.theme}`]}>
                     <ul className={styles.drawerList}>
-                        <li onClick={toggleDrawer}>Home</li>
-                        <li onClick={toggleDrawer}>About</li>
-                        <li onClick={toggleDrawer}>Contact</li>
-                        <li onClick={toggleDrawer}>Products</li>
+                        <li onClick={toggleDrawer}>
+                            <FaHome className={styles.navIcon} /> Home
+                        </li>
+                        <li onClick={toggleDrawer}>
+                            <FaInfoCircle className={styles.navIcon} /> About
+                        </li>
+                        <li onClick={toggleDrawer}>
+                            <FaPhone className={styles.navIcon} /> Contact
+                        </li>
+                        <li onClick={toggleDrawer}>
+                            <FaBox className={styles.navIcon} /> Products
+                        </li>
                     </ul>
                 </Box>
             )}
