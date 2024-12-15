@@ -10,12 +10,18 @@ interface NodeProps {
 const Wrapper: React.FC<NodeProps> = ({ children }) => {
     return (
         <div className="wrapper">
-            <Header />
 
-            {children}
+            <div className="header">
+                <Header />
+            </div>
+
+            <div className="main">
+                {children}
+            </div>
+
 
             <div className="footer">
-                {/* <Footer /> */}
+                <Footer />
             </div>
 
         </div>

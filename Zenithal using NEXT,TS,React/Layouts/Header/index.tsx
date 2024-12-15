@@ -3,6 +3,7 @@ import ThemeContext from "@/ThemeContext/ThemeContext";
 import { AppBar, Toolbar, IconButton, Typography, Button, Box } from "@mui/material";
 import { FaSun, FaMoon, FaUserCircle, FaBars, FaHome, FaInfoCircle, FaPhone, FaBox } from "react-icons/fa";
 import styles from "@/styles/Header.module.css";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
     const theme_data = useContext<any>(ThemeContext);
@@ -17,7 +18,8 @@ const Header: React.FC = () => {
     const toggleDrawer = () => {
         setMobileDrawerOpen(!mobileDrawerOpen);
     };
-
+    
+    const router=useRouter();
     return (
         <>
             <AppBar position="static" className={`${styles[`container-${theme_data.theme}`]}`}>
@@ -29,7 +31,7 @@ const Header: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <Box className={`${styles.list} ${styles.desktopOnly}`}>
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={() => router.push('/cms/Home')}>
                             <FaHome className={styles.navIcon} /> Home
                         </Button>
                         <Button color="inherit">
