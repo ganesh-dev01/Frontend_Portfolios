@@ -13,10 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
-    /* Adapts to content */
     background-color: #f5f5f5;
-    /* Optional fallback background */
 }
 
 .CarouselImage {
@@ -26,3 +23,36 @@
 
 /*Blog_home css-----------------------------------*/
 
+.blogContainer_light {
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 2px solid red;
+}
+
+.postContainer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid blue;
+
+}
+
+.post {
+    padding: 15px;
+}
+
+.imageContainer {
+    flex-shrink: 0;
+    width: 400px;
+    height: inherit;
+    border: 2px solid green;
+}
+
+.blogContainer_dark .postContainer {
+    background-color: black;
+    color: white;
+}
