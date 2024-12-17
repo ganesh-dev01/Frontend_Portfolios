@@ -9,17 +9,17 @@ const Header: React.FC = () => {
     const theme_data = useContext<any>(ThemeContext);
     const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
-    // Toggle theme function
+
     const toggleTheme = () => {
         theme_data.setTheme(theme_data.theme === "light" ? "dark" : "light");
     };
 
-    // Toggle mobile drawer
+
     const toggleDrawer = () => {
         setMobileDrawerOpen(!mobileDrawerOpen);
     };
-    
-    const router=useRouter();
+
+    const router = useRouter();
     return (
         <>
             <AppBar position="static" className={`${styles[`container-${theme_data.theme}`]}`}>
@@ -34,13 +34,13 @@ const Header: React.FC = () => {
                         <Button color="inherit" onClick={() => router.push('/cms/Home')}>
                             <FaHome className={styles.navIcon} /> Home
                         </Button>
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={() => router.push('/cms/About')}>
                             <FaInfoCircle className={styles.navIcon} /> About
                         </Button>
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={() => router.push('/cms/Contact')}>
                             <FaPhone className={styles.navIcon} /> Contact
                         </Button>
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={() => router.push('/cms/Products')}>
                             <FaBox className={styles.navIcon} /> Products
                         </Button>
                     </Box>
@@ -64,16 +64,16 @@ const Header: React.FC = () => {
             {mobileDrawerOpen && (
                 <Box className={styles[`mobileDrawer-${theme_data.theme}`]}>
                     <ul className={styles.drawerList}>
-                        <li onClick={toggleDrawer}>
+                        <li onClick={() => router.push('/cms/Home').then(toggleDrawer)}>
                             <FaHome className={styles.navIcon} /> Home
                         </li>
-                        <li onClick={toggleDrawer}>
+                        <li onClick={() => router.push('/cms/About').then(toggleDrawer)}>
                             <FaInfoCircle className={styles.navIcon} /> About
                         </li>
-                        <li onClick={toggleDrawer}>
+                        <li onClick={() => router.push('/cms/Contact').then(toggleDrawer)}>
                             <FaPhone className={styles.navIcon} /> Contact
                         </li>
-                        <li onClick={toggleDrawer}>
+                        <li onClick={() => router.push('/cms/Products').then(toggleDrawer)}>
                             <FaBox className={styles.navIcon} /> Products
                         </li>
                     </ul>

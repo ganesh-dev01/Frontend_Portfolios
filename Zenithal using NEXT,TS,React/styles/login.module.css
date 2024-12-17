@@ -1,0 +1,322 @@
+.main_conatiner_light,
+.main_conatiner_dark {
+
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+
+    background-color: #FFCEAE;
+}
+
+.main_conatiner_dark {
+    background-color: #0B192C;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .main_conatiner_light,
+    .main_conatiner_dark {
+        height: 75vh;
+    }
+}
+
+.container {
+    width: 60vw;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_conatiner_light .container {
+    background-color: white;
+}
+
+.main_conatiner_dark .container {
+    background-color: #000000;
+}
+
+.loginContainer {
+    width: 50%;
+    height: 80%;
+    border-radius: 3%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.main_conatiner_dark .loginContainer {
+    background-color: #0B192C;
+    color: white;
+}
+
+.emailHd,
+.email,
+.passwordHd,
+.password {
+    display: block;
+}
+
+.main_conatiner_dark .emailHd,
+.main_conatiner_dark .passwordHd {
+    color: white;
+}
+
+.brandName {
+    padding: 30px;
+    font-weight: bold;
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 1.8rem;
+
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.wlcmMsg {
+    font-weight: bold;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #333333;
+}
+
+.main_conatiner_dark .wlcmMsg {
+    color: white;
+}
+
+.signinHd {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    font-weight: 600;
+    font-family: Poppins;
+    color: #333333;
+}
+
+.main_conatiner_dark .signinHd {
+    color: white;
+}
+
+.emailHd,
+.passwordHd {
+    margin-left: 5%;
+    margin-bottom: 1%;
+    font-weight: 600;
+    font-family: Poppins;
+    color: #333333;
+}
+
+.email,
+.password {
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.loginBtn {
+    outline: none;
+    border: none;
+    width: 30%;
+    height: 40px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: #0056b3;
+}
+
+.accountMsg {
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #333333;
+}
+
+.main_conatiner_dark .accountMsg {
+    color: white;
+}
+
+.signupLink {
+    cursor: pointer;
+    text-decoration: none;
+    color: #dd2476;
+
+}
+
+.loginImg {
+    position: absolute;
+    width: 700px;
+    left: 50%;
+    top: 5%;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .loginImg {
+        position: absolute;
+        width: 500px;
+        left: 50%;
+        top: 15%;
+    }
+
+    .main_conatiner_light,
+    .main_conatiner_dark {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main_conatiner_dark {
+        background-color: #0B192C;
+    }
+
+    .container {
+        width: 60vw;
+        height: 80vh;
+        padding: 30px;
+    }
+
+    .loginContainer {
+        width: 70%;
+        height: auto;
+        padding: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .signinHd,
+    .brandName {
+        font-size: 1.6rem;
+    }
+
+    .email,
+    .password {
+        font-size: 15px;
+    }
+
+    .loginBtn {
+        width: 40%;
+        font-size: 15px;
+    }
+
+    .accountMsg {
+        font-size: 13px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .loginImg {
+        display: none;
+    }
+
+    .main_conatiner_light,
+    .main_conatiner_dark {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .main_conatiner_dark {
+        background-color: #000000;
+    }
+
+    .container {
+        width: 80vw;
+
+    }
+
+    .loginContainer {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .signinHd,
+    .brandName {
+        font-size: 1.5rem;
+    }
+
+    .email,
+    .password {
+        font-size: 14px;
+    }
+
+    .loginBtn {
+        width: 50%;
+        font-size: 14px;
+    }
+
+    .accountMsg {
+        font-size: 12px;
+    }
+}
+
+/* For mobile screens */
+@media screen and (max-width: 430px) {
+
+    .main_conatiner_light,
+    .main_conatiner_dark {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .loginContainer {
+        padding: 15px;
+    }
+
+    .signinHd,
+    .brandName {
+        font-size: 1.2rem;
+    }
+
+    .email,
+    .password {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .loginBtn {
+        width: 70%;
+        font-size: 12px;
+    }
+
+    .accountMsg {
+        font-size: 11px;
+    }
+}

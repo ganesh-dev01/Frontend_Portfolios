@@ -6,20 +6,19 @@
 
 .wrapper {
   display: flex;
-  flex-direction: column; 
-  min-height: 100vh; 
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header {
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .main {
-  flex-grow: 1; 
-  padding: 10px; 
+  flex-grow: 1;
 }
 
 .footer {
   flex-shrink: 0;
-  width: 100%; 
+  width: 100%;
 }

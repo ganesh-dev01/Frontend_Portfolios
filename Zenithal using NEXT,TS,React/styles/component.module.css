@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Ephesis&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Playwrite+NL+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&display=swap');
+
 .BannerContainer {
     width: 100%;
     margin: auto;
@@ -17,42 +19,227 @@
 }
 
 .CarouselImage {
-    border-radius: 8px;
+
     object-fit: cover;
 }
 
 /*Blog_home css-----------------------------------*/
 
-.blogContainer_light {
+
+.blogContainer_light,
+.blogContainer_dark {
     width: 100%;
-    height: 500px;
-    padding: 10px;
-    margin: 20px 0;
-    border: 2px solid red;
+    height: auto;
+    margin: 20px auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
 }
 
 .postContainer {
     width: 100%;
-    height: 200px;
+    height: auto;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 2px solid blue;
-
+    box-sizing: border-box;
 }
+
+@media screen and (min-width:1024px) {
+    .postContainer:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+}
+
 
 .post {
     padding: 15px;
+    flex: 1;
+    font-size: 1.4rem;
+    line-height: 1.5;
+
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+
+}
+
+.postTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blogContainer_dark .postTitle {
+    color: rgba(255, 68, 0, 0.752);
 }
 
 .imageContainer {
     flex-shrink: 0;
-    width: 400px;
-    height: inherit;
-    border: 2px solid green;
+    width: 500px;
+    height: 350px;
+}
+
+.blogImage {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .imageContainer {
+        width: 300px;
+        height: 200px;
+    }
+
+    .post {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 575px) {
+    .postContainer {
+        flex-direction: column;
+    }
+
+    .imageContainer {
+        width: 100%;
+        height: 200px;
+    }
+
+    .post {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
 }
 
 .blogContainer_dark .postContainer {
-    background-color: black;
+    background-color: #1A1A1D;
     color: white;
+}
+
+
+/* Service sevtion -------------------------------------------*/
+
+.servicesSection_light,
+.servicesSection_dark {
+    padding: 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.servicesSection_dark {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+.servicesTitle {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.servicesSection_dark .servicesTitle {
+    color: #f4f4f4;
+}
+
+.servicesContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.serviceCard {
+    background-color: #fff;
+    padding: 30px;
+    margin: 15px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.serviceCard h5 {
+    font-size: 1.4rem;
+    margin-top: 15px;
+    color: #333;
+}
+
+.serviceCard p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.servicesSection_dark .serviceCard {
+    background-color: #444;
+    color: #f4f4f4;
+}
+
+.servicesSection_dark .serviceCard p {
+    color: #f4f4f4;
+}
+
+.serviceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.servicesSection_dark .serviceCard h5 {
+    color: #f4f4f4;
+}
+
+.serviceIcon {
+    font-size: 2.5rem;
+    color: #dd2476;
+    transition: color 0.3s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+
+@media (min-width: 768px) {
+    .serviceCard {
+        width: 350px;
+        padding: 40px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

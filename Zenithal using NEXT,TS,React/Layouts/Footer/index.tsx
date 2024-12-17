@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <Box className={`${styles[`footer-container-${theme_data.theme}`]}`}>
             {/* Footer Content */}
             <Typography variant="body1" className={styles.brand}>
-                MyBrand © {new Date().getFullYear()}
+                Zenithal © {new Date().getFullYear()}
             </Typography>
 
             {/* Social Media Links */}

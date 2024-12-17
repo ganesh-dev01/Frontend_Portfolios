@@ -1,13 +1,14 @@
 import ThemeContext from "@/ThemeContext/ThemeContext";
 import { useContext } from "react";
+import Home from "../pages/cms/Home";
 
-const Home: React.FC = () => {
+const DefalutHome: React.FC = () => {
   const data_theme = useContext<any>(ThemeContext);
   return (
     <>
-      <h4>Home</h4>
+      <Home />
     </>
   )
 }
 
-export default Home
+export default DefalutHome
