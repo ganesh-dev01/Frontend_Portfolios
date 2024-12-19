@@ -2,16 +2,18 @@ import ThemeContext from "@/ThemeContext/ThemeContext";
 import React, { useContext, useState } from "react";
 import { AiOutlineProduct } from "react-icons/ai";
 import { IoIosCloseCircle } from "react-icons/io";
-import styles from "@/styles/products.module.css"
+import styles from "@/styles/products.module.css";
+
+import test_img from "@/assets/Images/logo.png";
 
 
-const CreateForm: React.FC = () => {
+const CreateForm: React.FC<{ handleCreatebtn: () => void }> = ({ handleCreatebtn }) => {
     const theme_data = useContext<any>(ThemeContext);
     return (
         <div className={styles[`create_form_container_${theme_data.theme}`]}>
 
             <div className={styles.close_btn_container}>
-                <IoIosCloseCircle className={styles.close_btn} />
+                <IoIosCloseCircle className={styles.close_btn} onClick={handleCreatebtn} />
             </div>
 
             <div className={styles.form_container}>
@@ -38,10 +40,12 @@ const CreateForm: React.FC = () => {
                     </form>
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
+
+
+
 
 
 const Products: React.FC = () => {
@@ -63,7 +67,52 @@ const Products: React.FC = () => {
                 </button>
             </div>
 
-            {openCreateForm && <CreateForm />}
+            {openCreateForm && <CreateForm handleCreatebtn={handleCreatebtn} />}
+
+            <div className={styles.product_container}>
+
+                <div className={styles.product_card}>
+
+                    <div className={styles.product_image_box}>
+                        <img src={test_img.src} alt="Product" className={styles.product_image} />
+                    </div>
+
+                    <p className={styles.product_titleHD}>Title:</p>
+                    <p className={styles.product_title}>Product Title</p>
+                    <p className={styles.product_descriptionHD}>Description:</p>
+                    <p className={styles.product_description}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+                    </p>
+                </div>
+
+                <div className={styles.product_card}>
+
+                    <div className={styles.product_image_box}>
+                        <img src={test_img.src} alt="Product" className={styles.product_image} />
+                    </div>
+
+                    <p className={styles.product_titleHD}>Title:</p>
+                    <p className={styles.product_title}>Product Title</p>
+                    <p className={styles.product_descriptionHD}>Description:</p>
+                    <p className={styles.product_description}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+                    </p>
+                </div>
+
+                <div className={styles.product_card}>
+
+                    <div className={styles.product_image_box}>
+                        <img src={test_img.src} alt="Product" className={styles.product_image} />
+                    </div>
+
+                    <p className={styles.product_titleHD}>Title:</p>
+                    <p className={styles.product_title}>Product Title</p>
+                    <p className={styles.product_descriptionHD}>Description:</p>
+                    <p className={styles.product_description}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+                    </p>
+                </div>
+            </div>
 
         </div>
     )

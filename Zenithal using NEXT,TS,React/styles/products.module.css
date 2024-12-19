@@ -1,15 +1,14 @@
 .main_container_light,
-.main_container_dark{
+.main_container_dark {
     width: 100%;
     min-height: 100vh;
-    border:  2px solid red;
 }
 
-.main_container_dark{
+.main_container_dark {
     background-color: #001F3F;
 }
 
-.createBox{
+.createBox {
     width: 100%;
     height: 10vh;
     display: flex;
@@ -24,7 +23,7 @@
     font-size: 12px;
     border: none;
     border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     display: inline-flex;
@@ -35,17 +34,17 @@
 
 .createButton:hover {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
 }
 
 
 
 .createIcon {
-    margin: 0 8px 0 0; 
-    font-size: 16px; 
+    margin: 0 8px 0 0;
+    font-size: 16px;
 }
 
-.main_container_dark .createButton{
+.main_container_dark .createButton {
     background-color: #6A9AB0;
     color: #fff;
 }
@@ -60,17 +59,18 @@
     position: fixed;
     top: 10vh;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease-in-out; 
-    backdrop-filter: blur(5px); 
+    animation: fadeIn 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
 }
 
 
 @media screen and (min-width: 1440px) {
+
     .create_form_container_light,
     .create_form_container_dark {
         top: 8vh;
@@ -78,6 +78,7 @@
 }
 
 @media screen and (min-width: 2560px) {
+
     .create_form_container_light,
     .create_form_container_dark {
         top: 5vh;
@@ -104,7 +105,7 @@
 
 .close_btn:hover {
     transform: scale(1.2);
-    color: #ff4d4d; 
+    color: #ff4d4d;
 }
 
 
@@ -113,6 +114,7 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -125,19 +127,19 @@
     width: 90%;
     max-width: 500px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     display: flex;
     flex-direction: column;
-    animation: slideIn 0.3s ease-in-out; 
-    overflow: hidden; 
+    animation: slideIn 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 
 .form_header {
     text-align: center;
     margin-bottom: 20px;
-    color: #333; 
+    color: #333;
 }
 
 .form_header h2 {
@@ -153,7 +155,7 @@
 
 .form_body {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 
@@ -161,13 +163,13 @@
     display: flex;
     flex-direction: column;
     margin: 10px 0;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .form_group label {
     font-size: 14px;
     font-weight: bold;
-    color: #555; 
+    color: #555;
 }
 
 
@@ -185,13 +187,13 @@
 
 .form_group input:focus,
 .form_group textarea:focus {
-    border-color: #0078d7; 
-    box-shadow: 0 0 4px rgba(0, 120, 215, 0.5); 
+    border-color: #0078d7;
+    box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
 }
 
 
 .form_group textarea {
-    resize: none; 
+    resize: none;
     height: 100px;
 }
 
@@ -201,6 +203,7 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -219,14 +222,14 @@
     }
 }
 
-.createProductbtn{
+.createProductbtn {
     width: 100%;
     padding: 12px 20px;
     margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background: linear-gradient( 90deg,#ff512f, #dd2476); 
+    background: linear-gradient(90deg, #ff512f, #dd2476);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -236,7 +239,7 @@
 
 
 .createProductbtn:hover {
-    background-color: #005bb5; 
+    background-color: #005bb5;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
@@ -252,15 +255,15 @@
 /*--------- create From dark mode ---------*/
 
 .create_form_container_dark {
-    background-color: rgba(0, 0, 0, 0.95); 
+    background-color: rgba(0, 0, 0, 0.95);
     color: white;
 }
 
 .create_form_container_dark .form_container {
-    background-color: #1e1e1e; 
-    color: white; 
-    border: 1px solid #333; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); 
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .create_form_container_dark .form_header h2 {
@@ -274,42 +277,164 @@
 }
 
 .create_form_container_dark .form_group label {
-    color: #aaa; 
+    color: #aaa;
 }
 
-.create_form_container_dark
-.form_group input,
+.create_form_container_dark .form_group input,
 .form_group textarea {
-    background-color: #2b2b2b; 
-    color: white; 
-    border: 1px solid #444; 
+    background-color: #2b2b2b;
+    color: white;
+    border: 1px solid #444;
 }
 
-.create_form_container_light .form_group textarea{
+.create_form_container_light .form_group textarea {
     background-color: white;
     border: 1px solid #ccc;
 }
 
-.create_form_container_dark
-.form_group input:focus,
+.create_form_container_dark .form_group input:focus,
 .form_group textarea:focus {
-    border-color: #3a7bd5; 
-    box-shadow: 0 0 4px #3a7bd5; 
+    border-color: #3a7bd5;
+    box-shadow: 0 0 4px #3a7bd5;
 }
 
-.create_form_container_dark
-.createProductbtn {
+.create_form_container_dark .createProductbtn {
     background: linear-gradient(90deg, #00d2ff, #3a7bd5);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.create_form_container_dark
-.createProductbtn:hover {
-    background-color: #3a7bd5; 
+.create_form_container_dark .createProductbtn:hover {
+    background-color: #3a7bd5;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
 
+/*-------------------------------- Product container --------------------------------*/
+.product_container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 45px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    border: 2px solid transparent;
+}
+
+.product_card {
+    height: 400px;
+    width: 300px;
+    background: linear-gradient(135deg, #f9f9f9, #e3e3e3);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    cursor: pointer;
+}
 
 
+
+.product_card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product_image_box {
+    width: 100%;
+    height: 220px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.product_image_box:hover .product_image {
+    transform: scale(1.1);
+}
+
+.product_titleHD {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.product_title {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.product_descriptionHD {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.main_container_light .product_descriptionHD {
+    color: #333;
+}
+
+.product_description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.main_container_light .product_description {
+    color: #666;
+}
+
+@media screen and (max-width: 768px) {
+    .product_container {
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .product_card {
+        width: 90%;
+        height: 70vh;
+    }
+
+    .product_image_box {
+        height: 200px;
+    }
+
+    .product_titleHD,
+    .product_descriptionHD {
+        font-size: 1rem;
+    }
+
+    .product_title,
+    .product_description {
+        font-size: 0.9rem;
+    }
+}
+
+
+.main_container_dark .product_card {
+    background: linear-gradient(135deg, #333, #222);
+}
+
+.main_container_dark .product_titleHD,
+.product_descriptionHD {
+    color: wheat;
+}
+
+.main_container_dark .product_title,
+.product_description {
+    color: #ccc;
+}
