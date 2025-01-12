@@ -1,7 +1,9 @@
 import Header from "./Components/Header"
 import styles from '@/styles/Components_styles/Header.module.css'
+import Home from "./Home"
+import Abouts from "./Abouts"
 
-const Home: React.FC = () => {
+const Portfolio: React.FC = () => {
   return (
     <div className='main'>
       <Header />
@@ -9,9 +11,9 @@ const Home: React.FC = () => {
       <div className="main_content">
 
 
-        <h4>hello world</h4>
+        <Home />
 
-
+        <Abouts />
 
       </div>
 
@@ -19,4 +21,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default Portfolio
