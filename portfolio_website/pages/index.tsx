@@ -1,8 +1,21 @@
+import Header from "./Components/Header"
+import styles from '@/styles/Components_styles/Header.module.css'
+
 const Home: React.FC = () => {
   return (
-    <>
-      <h4>Hello world</h4>
-    </>
+    <div className='main'>
+      <Header />
+
+      <div className="main_content">
+
+
+        <h4>hello world</h4>
+
+
+
+      </div>
+
+    </div>
   )
 }
 
