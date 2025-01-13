@@ -2,7 +2,7 @@
     height: auto;
 }
 
-.aboutshaedline {
+.abouts_haedline {
     margin-top: 80px;
     font-size: 25px;
     margin-bottom: 30px;
@@ -12,6 +12,7 @@
 
 .about_main_box {
     margin-top: 10px;
+    border: 2px solid yellow;
 }
 
 .Experience_hd,
