@@ -6,9 +6,23 @@ let initialState: EducationProps = {
     edu: [
         {
             institute_name: 'test1',
-            duration: 'test2',
+            start_date: 'test1',
+            end_date: 'test2',
+            marks: 'test3'
+        },
+        {
+            institute_name: 'test1',
+            start_date: 'test1',
+            end_date: 'test2',
+            marks: 'test3'
+        },
+        {
+            institute_name: 'test1',
+            start_date: 'test1',
+            end_date: 'test2',
             marks: 'test3'
         }
+
     ]
 }
 

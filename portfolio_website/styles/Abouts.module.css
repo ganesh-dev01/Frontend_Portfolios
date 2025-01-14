@@ -92,12 +92,6 @@
     line-height: 1;
 }
 
-.inst_nm,
-.cmplt_time,
-.marks {
-    color: #212529;
-    font-family: 'Arial', sans-serif;
-}
 
 
 
@@ -114,8 +108,7 @@
     color: white;
 }
 
-#inst_nm {
-    color: #ECDFCC;
+.inst_nm {
     font-family: 'Arial', sans-serif;
     font-weight: bold;
 }
@@ -128,6 +121,7 @@
     margin: 10px;
     padding-left: 15px;
     padding-top: 25px;
+    padding-bottom: 10px;
     border-radius: 15px;
     background-color: #3C3D37;
     margin-bottom: 30px;
@@ -147,7 +141,7 @@
     color: white;
 }
 
-#company_nm {
+.company_nm {
     color: #ECDFCC;
     font-family: 'Arial', sans-serif;
 }
@@ -172,7 +166,7 @@
     align-items: center;
 }
 
-#round_icon {
+.round_icon {
     width: 20px;
 }
 
@@ -292,4 +286,208 @@
 
 .br {
     width: 100%;
+}
+
+/*----------------------------- Responsive css -----------------------------*/
+
+
+@media (max-width: 1024px) {
+    .Experience .arrow {
+        right: -2.5%;
+        rotate: 45deg;
+    }
+
+    .Education .arrow {
+        left: -2.5%;
+    }
+
+    .pr-line {
+        width: 25px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .Experience_hd {
+        border-bottom: 2px solid #ccc;
+    }
+
+    .Education_hd {
+        display: none;
+    }
+
+    .mb_education_hd {
+        width: 100%;
+    }
+
+    .Education_hd2 {
+        display: block;
+        width: 100%;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .Experience .arrow {
+        right: -2.5%;
+        rotate: 45deg;
+    }
+
+    .Experience .details {
+        padding: 2px;
+    }
+
+    .Education .arrow {
+        left: -2.5%;
+    }
+
+    .pr {
+        width: 110px;
+        height: 110px;
+    }
+
+    .pr_line {
+        width: 19px;
+    }
+
+    .pr_text {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .pr_icon {
+        width: 40px;
+        margin-bottom: 5px;
+    }
+
+    .skill_box {
+        width: 40%;
+        padding: 3px;
+    }
+
+    .skill_icon {
+        width: 35px;
+    }
+
+    .skill_text {
+        font-size: 15px;
+    }
+
+    .main_msgbox {
+        width: 90%;
+    }
+
+    #name,
+    #email {
+        width: 100%;
+        height: 50px;
+        margin: 20px 3%;
+    }
+
+    #msg {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+
+}
+
+@media (max-width: 576px) {
+    .Experience .content {
+        height: 260px;
+        padding-right: 30px;
+        padding-left: 5px;
+    }
+
+    .Education .content {
+        height: 205px;
+        padding-right: 20px;
+        padding-left: 5px;
+    }
+
+    .Experience .content_2 {
+        height: 290px;
+        padding-right: 50px;
+    }
+
+    .Experience .road-box {
+        padding-top: 113px;
+        padding-left: 5px;
+    }
+
+    .Experience .road_box .line_1 {
+        height: 290px;
+    }
+
+    .Education .road_box {
+        padding-top: 70px;
+    }
+
+    .Education .road_box .line_1 {
+        height: 225px;
+    }
+
+    .Education .road_box .line_2 {
+        height: 225px;
+    }
+
+    .pr {
+        width: 65px;
+        height: 65px;
+    }
+
+    .pr_line {
+        width: 18px;
+    }
+
+    .pr_text {
+        font-size: 8px;
+        font-weight: unset;
+    }
+
+    .pr_icon {
+        width: 20px;
+        margin-bottom: 2px;
+        margin-top: 10px;
+    }
+
+    .dev_prs_hd {
+        font-weight: 500;
+        font-size: 13px;
+        font-style: italic;
+    }
+
+    .skill_box {
+        width: 25%;
+        height: 100px;
+        padding: 3px;
+    }
+
+    .skill_icon {
+        width: 25px;
+        margin-top: 5px;
+        margin-bottom: 8px;
+    }
+
+    .skill_text {
+        font-size: 10px;
+    }
+
+    .social_icon {
+        width: 60px;
+    }
+
+    #send_btn {
+        margin: auto;
+        width: 40%;
+        height: 50px;
+        margin-top: 10px;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .pr {
+        width: 50px;
+        height: 50px;
+    }
+
 }

@@ -1,6 +1,7 @@
 interface Experience {
     company_name: string;
-    time_period: string;
+    start_date: string,
+    end_date: string,
     company_location: string;
     description: string;
 }
@@ -12,7 +13,8 @@ export interface ExperienceProps {
 
 interface Education {
     institute_name: string,
-    duration: string,
+    start_date: string,
+    end_date: string,
     marks: string
 }
 

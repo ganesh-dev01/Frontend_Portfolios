@@ -8,13 +8,15 @@ const initialState: ExperienceProps = {
     exp: [
         {
             company_name: "Test Company 1",
-            time_period: "Jan 2020 - Dec 2022",
+            start_date: "Jan 2020",
+            end_date: "Dec 2022",
             company_location: "City A",
             description: "Worked on developing scalable web applications.",
         },
         {
             company_name: "Test Company 2",
-            time_period: "Jan 2018 - Dec 2019",
+            start_date: "Jan 2020",
+            end_date: "Dec 2022",
             company_location: "City B",
             description: "Focused on frontend development using React and TypeScript.",
         },
