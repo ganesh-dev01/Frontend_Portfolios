@@ -2,6 +2,8 @@ import Header from "./Components/Header"
 import styles from '@/styles/Components_styles/Header.module.css'
 import Home from "./Home"
 import Abouts from "./Abouts"
+import Projects from "./Projects"
+import Contact from "./Contact"
 
 const Portfolio: React.FC = () => {
   return (
@@ -14,6 +16,10 @@ const Portfolio: React.FC = () => {
         <Home />
 
         <Abouts />
+
+        <Projects />
+
+        <Contact />
 
       </div>
 

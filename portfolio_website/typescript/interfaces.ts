@@ -34,3 +34,16 @@ interface Skill {
 export interface SkillProps {
     skill: Skill[]
 }
+
+interface Project {
+    title: string,
+    img: string,
+    tech: string,
+    desc: string,
+    live: string,
+    code: string
+}
+
+export interface ProjectProps {
+    project: Project[]
+}
