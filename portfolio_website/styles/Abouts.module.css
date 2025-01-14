@@ -12,7 +12,7 @@
 
 .about_main_box {
     margin-top: 10px;
-    border: 2px solid yellow;
+    margin-bottom: 10px;
 }
 
 .Experience_hd,
@@ -113,10 +113,13 @@
     font-weight: bold;
 }
 
+.wrk_detail {
+    line-height: 1.2;
+}
 
 .Experience .content {
     position: relative;
-    height: 200px;
+    height: 210px;
     width: 100%;
     margin: 10px;
     padding-left: 15px;
@@ -156,7 +159,7 @@
 }
 
 .Experience .road_box .line_1 {
-    height: 220px;
+    height: 230px;
 }
 
 .road_box .round {
@@ -292,6 +295,11 @@
 
 
 @media (max-width: 1024px) {
+    .Experience .content {
+        height: 240px;
+        padding-right: 30px;
+    }
+
     .Experience .arrow {
         right: -2.5%;
         rotate: 45deg;
@@ -303,6 +311,10 @@
 
     .pr-line {
         width: 25px;
+    }
+
+    .Experience .road_box .line_1 {
+        height: 270px;
     }
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '@/styles/Home.module.css';
-import dp from '../../assets/images/dp_img.jpg';
-import download_icon from '../../assets/Icons/dw_icon.png';
-import resume from '../../assets/docs/GaneshSaha_Resume.pdf';
+import dp from '../../public/assets/images/dp_img.jpg';
+import download_icon from '../../public/assets/Icons/dw_icon.png';
+import resume from '../../public/assets/docs/GaneshSaha_Resume.pdf';
+
 const Home: React.FC = () => {
     return (
         <div className='page'>

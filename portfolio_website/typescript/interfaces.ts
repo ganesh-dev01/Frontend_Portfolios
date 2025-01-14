@@ -1,3 +1,5 @@
+import { Interface } from "readline/promises";
+
 interface Experience {
     company_name: string;
     start_date: string,
@@ -22,3 +24,13 @@ export interface EducationProps {
     edu: Education[]
 }
 
+
+interface Skill {
+    id: number,
+    icon: unknown,
+    skill_name: string
+}
+
+export interface SkillProps {
+    skill: Skill[]
+}

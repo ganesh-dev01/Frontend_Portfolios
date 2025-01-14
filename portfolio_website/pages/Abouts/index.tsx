@@ -1,15 +1,22 @@
 import React from "react";
 import styles from '@/styles/Abouts.module.css';
 import { useSelector } from "react-redux";
-import icon1 from '@/assets/Icons/inter_icon.png';
-import icon2 from '@/assets/Icons/trainee_icon.png';
-import icon3 from '@/assets/Icons/college_icon.png';
-import icon4 from '@/assets/Icons/school_icon.png';
+import icon1 from '../../public/assets/Icons/inter_icon.png';
+import icon2 from '../../public/assets/Icons/trainee_icon.png';
+import icon3 from '../../public/assets/Icons/college_icon.png';
+import icon4 from '../../public/assets/Icons/school_icon.png';
+
+import icon5 from '../../public/assets/Icons/concept_icon.png';
+import icon6 from '../../public/assets/Icons/design_icon.png';
+import icon7 from '../../public/assets/Icons/coding_icon.png';
+import icon8 from '../../public/assets/Icons/server_icon.png';
 
 const Abouts: React.FC = () => {
     let Exp_data = useSelector<any>((state: any) => state.Exp.exp);
 
     let Edu_data = useSelector<any>((state: any) => state.Edu.edu);
+
+    let Skill_data = useSelector<any>((state: any) => state.Skill.skill);
 
     return (
         <div className="page">
@@ -114,6 +121,58 @@ const Abouts: React.FC = () => {
                         </div>
 
 
+                    </div>
+
+                    <div className="row">
+                        <div className="col-12 text-center">
+                            <p className={styles.dev_prs_hd}>My development process</p>
+                        </div>
+                    </div>
+
+
+                    <div className="row">
+                        <div className="col-12">
+                            <div className={styles.dev_prs_main}>
+                                <div className={`${styles.pr} ${styles.pr1}`}>
+                                    <img src={icon5.src} className={styles.pr_icon} />
+                                    <p className={styles.pr_text}>Concept</p>
+                                </div>
+                                <div className={styles.pr_line}></div>
+                                <div className={`${styles.pr} ${styles.pr2}`}>
+                                    <img src={icon6.src} className={styles.pr_icon} />
+                                    <p className={styles.pr_text}>Design</p>
+                                </div>
+                                <div className={styles.pr_line}></div>
+                                <div className={`${styles.pr} ${styles.pr3}`}>
+                                    <img src={icon7.src} className={styles.pr_icon} />
+                                    <p className={styles.pr_text}>Coding</p>
+                                </div>
+                                <div className={styles.pr_line}></div>
+                                <div className={`${styles.pr} ${styles.pr4}`}>
+                                    <img src={icon8.src} className={styles.pr_icon} />
+                                    <p className={styles.pr_text}>Deployment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-12 text-center">
+                            <p className={styles.skill_hd}>My skills and proficiencies</p>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-12">
+                            <div className={styles.skill_main}>
+                                {Skill_data?.map((item: any, index: number) => (
+                                    <div key={item.id} className={styles.skill_box}>
+                                        <img src={item.icon} className={styles.skill_icon} />
+                                        <p className={styles.skill_text}>{item.skill_name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
 

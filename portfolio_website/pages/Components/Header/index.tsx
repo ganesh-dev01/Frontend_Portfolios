@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '@/styles/Components_styles/Header.module.css';
-import close_icon from '@/assets/Icons/close_icon.png';
+import close_icon from '../../../public/assets/Icons/close_icon.png';
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
