@@ -19,13 +19,13 @@ const Abouts: React.FC = () => {
     let Skill_data = useSelector<any>((state: any) => state.Skill.skill);
 
     return (
-        <div className="page">
+        <div className="page" id='abouts_pg'>
 
-            <div className="container-fluid abouts_bdy_container" id="abouts_pg">
+            <div className={`container-fluid ${styles.abouts_bdy_container}`} id="abouts_pg">
 
                 <div className="row">
                     <div className="col-12 text-center">
-                        <p className={styles.abouts_haedline}>Abouts</p>
+                        <p className={styles.abouts_haedline}>The Road I’ve Taken</p>
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@ const Abouts: React.FC = () => {
 
                     <div className="row">
                         <div className="col-12 text-center">
-                            <p className={styles.dev_prs_hd}>My development process</p>
+                            <p className={styles.dev_prs_hd}>My Workflow 👨‍💻</p>
                         </div>
                     </div>
 
@@ -158,7 +158,7 @@ const Abouts: React.FC = () => {
 
                     <div className="row">
                         <div className="col-12 text-center">
-                            <p className={styles.skill_hd}>My skills and proficiencies</p>
+                            <p className={styles.skill_hd}>Areas of expertise</p>
                         </div>
                     </div>
 

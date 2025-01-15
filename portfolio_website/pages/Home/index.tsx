@@ -24,7 +24,7 @@ const Home: React.FC = () => {
                             <h3 className={`${styles.text} ${styles.name}`}>
                                 Hi, I'm Ganesh Saha
                             </h3>
-                            <h4 className={`${styles.text} ${styles.role}`}>Frontend Developer</h4>
+                            <h4 className={`${styles.text} ${styles.role}`}>Frontend Engineer</h4>
                             <h5 className={`${styles.text} ${styles.location}`}>based in India</h5>
                         </div>
                         <a href={resume} download>

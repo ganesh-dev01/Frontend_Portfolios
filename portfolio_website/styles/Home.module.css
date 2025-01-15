@@ -224,26 +224,39 @@
 
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 
     .home_bdy_container {
         height: auto;
         padding-top: 50px;
     }
 
+
     .image_box {
-        height: 350px;
-        width: auto;
+        height: 550px;
+        width: 90%;
         margin: 5vh auto;
+        border: unset;
+        border-radius: 10%;
+        box-shadow: unset;
+        box-shadow: -5px 5px 20px #ECDFCC;
+    }
+
+    .dp_img {
+        height: auto;
+        width: 100%;
+        border: unset;
+        border-radius: unset;
     }
 
     .intro {
-        margin-top: 15vh;
+        margin-top: 10vh;
         margin-left: none;
     }
 
+
     .intro .name {
-        font-size: 25px;
+        font-size: 35px;
     }
 
     .intro .role {
@@ -264,7 +277,7 @@
 
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width:550px) {
 
     .home_bdy_container {
 
@@ -277,12 +290,14 @@
         width: 90%;
         margin: 5vh auto;
         border: unset;
-        border-radius: 50%;
+        border-radius: 20%;
         box-shadow: unset;
         box-shadow: -5px 5px 20px #ECDFCC;
     }
 
     .dp_img {
+        height: auto;
+        width: 100%;
         border: unset;
         border-radius: unset;
     }
@@ -318,4 +333,19 @@
     .dp_img {
         height: 100%;
     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+    .intro .name {
+        font-size: 25px;
+    }
+
+    .intro .role {
+        font-size: 23px;
+    }
+
+    .intro .location {
+        font-size: 22px;
+    }
+
 }

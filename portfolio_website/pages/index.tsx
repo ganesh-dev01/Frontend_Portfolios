@@ -1,30 +1,33 @@
-import Header from "./Components/Header"
-import styles from '@/styles/Components_styles/Header.module.css'
-import Home from "./Home"
-import Abouts from "./Abouts"
-import Projects from "./Projects"
-import Contact from "./Contact"
+import React from "react";
+import Home from "./Home";
+import Abouts from "./Abouts";
+import Projects from "./Projects";
+import Contact from "./Contact";
 
 const Portfolio: React.FC = () => {
   return (
-    <div className='main'>
-      <Header />
+    <div className="main">
 
       <div className="main_content">
 
+        <section id="home">
+          <Home />
+        </section>
 
-        <Home />
+        <section id="abouts">
+          <Abouts />
+        </section>
 
-        <Abouts />
+        <section id="projects">
+          <Projects />
+        </section>
 
-        <Projects />
-
-        <Contact />
-
+        <section id="contact">
+          <Contact />
+        </section>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;

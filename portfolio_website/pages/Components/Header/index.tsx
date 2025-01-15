@@ -1,60 +1,64 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import styles from '@/styles/Components_styles/Header.module.css';
-import close_icon from '../../../public/assets/Icons/close_icon.png';
+import { Link as Scroll } from 'react-scroll';
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+
     return (
         <header>
             <div className={styles.P_navbar}>
-                <div className={styles.P_brand}>
-                    Ganesh Saha
-                </div>
-                <div className={`${styles.P_nav_items} ${isMenuOpen && styles.open}`}>
-
+                <div className={styles.P_brand}>Ganesh Saha</div>
+                <div className={`${styles.P_nav_items} ${isMenuOpen ? styles.open : ''}`}>
                     <ul>
-                        <li className={styles.menu_item}>
-                            Home
-                        </li>
-                        <li className={styles.menu_item}>
-                            Abouts
-                        </li>
-                        <li className={styles.menu_item}>
-                            Projects
-                        </li>
-                        <li className={styles.menu_item}>
-                            Contact
-                        </li>
+
+                        <Scroll to="home" smooth={true} duration={500}>
+                            <li className={styles.menu_item}>
+                                Home
+                            </li>
+                        </Scroll>
+
+
+                        <Scroll to="abouts" smooth={true} duration={500}>
+                            <li className={styles.menu_item}>
+                                Abouts
+                            </li>
+                        </Scroll>
+
+
+                        <Scroll to="projects" smooth={true} duration={500}>
+                            <li className={styles.menu_item}>
+                                Projects
+                            </li>
+                        </Scroll>
+
+
+                        <Scroll to="contact" smooth={true} duration={500}>
+                            <li className={styles.menu_item}>
+                                Contact
+                            </li>
+                        </Scroll>
+
                     </ul>
                 </div>
                 <div className={styles.bar} onClick={toggleMenu}>
-                    {
-                        (() => {
-                            const lines = [];
-                            for (let i = 0; i < 4; i++) {
-                                lines.push(
-                                    <div key={i} className={`${styles.line} ${isMenuOpen && styles.line_close}`}></div>
-                                );
-                            }
-                            return lines;
-                        })()
-                    }
-
-
-
-                    <img
-                        src={close_icon.src}
-                        className={`${styles.close_icon} ${isMenuOpen && styles.close_icon_open}`}
-                        alt="Close Icon"
-                    />
+                    {Array.from({ length: 4 }).map((_, i) => (
+                        <div
+                            key={i}
+                            className={`${styles.line}`}
+                        ></div>
+                    ))}
                 </div>
             </div>
-        </header >
+        </header>
     );
 };
 

@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
 
                 <div className="row">
                     <div className="col-12 text-center">
-                        <p className={styles.contact_hadline}>Contact</p>
+                        <p className={styles.contact_hadline}>✉️ Connect with me </p>
                     </div>
                 </div>
 
@@ -31,16 +31,16 @@ const Contact: React.FC = () => {
                             <div className={styles.social_box}>
                                 <div className={`${styles.social} ${styles.linkedin}`}>
                                     <a href="https://www.linkedin.com/in/ganesh-saha-0698b72a5/" target="_blank">
-                                        <img src={icon1.src} className="social_icon" style={{ width: '100px' }} />
+                                        <img src={icon1.src} className="social_icon" style={{ width: '100%', height: '100%' }} />
                                     </a>
                                 </div>
                                 <div className={`${styles.social} ${styles.insta}`}>
                                     <a href="https://www.instagram.com/vinayak_the.universe?igsh=MWVmcmV0ZmxwODkxZw==" target="_blank">
-                                        <img src={icon2.src} className="social_icon" style={{ width: '100px' }} /></a>
+                                        <img src={icon2.src} className="social_icon" style={{ width: '100%', height: '100%' }} /></a>
                                 </div>
                                 <div className={`${styles.social} ${styles.facebook}`}>
                                     <a href="https://www.facebook.com/profile.php?className=100071861187044&mibextclassName=ZbWKwL" target="_blank">
-                                        <img src={icon3.src} className="social_icon" style={{ width: '100px' }} /></a>
+                                        <img src={icon3.src} className="social_icon" style={{ width: '100%', height: '100%' }} /></a>
                                 </div>
 
                             </div>

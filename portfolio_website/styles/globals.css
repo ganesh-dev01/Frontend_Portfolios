@@ -10,21 +10,25 @@
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
+  background-color: black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: white;
+
+  background-color: #697565;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #697565;
 
-}
 
 body {
   scrollbar-width: thin;
-  background-color: #1E201E;
+  /* background-color: #1E201E; */
+  background: url('../public/assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .main {
@@ -37,8 +41,4 @@ body {
 .main_content {
   margin-top: 7vh;
   width: 100%;
-}
-
-.page {
-  border: 1px solid white;
 }

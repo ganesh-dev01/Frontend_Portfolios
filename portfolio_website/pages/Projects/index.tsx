@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
 
                 <div className="row">
                     <div className="col-12 text-center">
-                        <h2 className={styles.projet_headline}>Projects</h2>
+                        <h2 className={styles.projet_headline}>What I’ve Built</h2>
                     </div>
                 </div>
 
@@ -36,15 +36,13 @@ const Projects: React.FC = () => {
                                                 <p className={styles.title_text}>{item.title}</p>
                                             </div>
                                             <div className="col-4">
-                                                <p className={styles.tech_hd}>Technology used:</p>
+                                                <p className={styles.tech_hd}>Tech stack:</p>
                                             </div>
                                             <div className="col-8">
                                                 <p className={styles.tech_text}>{item.tech}</p>
                                             </div>
-                                            <div className="col-4">
-                                                <p className={styles.desc_hd}>Description:</p>
-                                            </div>
-                                            <div className="col-8">
+
+                                            <div className="col-12">
                                                 <p className={styles.desc_text}>{item.desc}</p>
                                             </div>
                                         </div>

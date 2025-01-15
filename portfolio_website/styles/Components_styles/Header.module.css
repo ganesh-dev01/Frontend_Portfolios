@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     z-index: 5;
     background-color: #697565;
+    background-color: #1E201E;
 }
 
 .P_brand {
@@ -40,14 +41,16 @@
     text-align: end;
 }
 
-.P_nav_items ul li {
+.menu_item {
     display: inline-block;
     height: 100%;
     padding: 1.4vh 30px;
     cursor: pointer;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
+    font-weight: 700;
+    font-family: "Dancing Script", cursive;
 }
 
 
@@ -81,12 +84,12 @@
 }
 
 
-.P_nav_items ul li {
+.menu_item {
     position: relative;
     overflow: hidden;
 }
 
-.P_nav_items ul li::after {
+.menu_item::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -99,7 +102,7 @@
     transition: transform 0.4s ease;
 }
 
-.P_nav_items ul li:hover::after {
+.menu_item:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
@@ -129,13 +132,7 @@
 
 @media screen and (max-width:768px) {
 
-    .close_icon {
-        display: none;
-        position: absolute;
-        width: 50%;
-        left: 25%;
-        top: 8px;
-    }
+
 
     .bar {
         width: 8%;
@@ -161,7 +158,7 @@
         text-align: left;
     }
 
-    .P_nav_items ul li {
+    .menu_item {
         display: block;
     }
 
@@ -195,7 +192,7 @@
         width: 60%;
     }
 
-    .P_nav_items ul li:hover::after {
+    .menu_item:hover::after {
         transform: none;
         transform-origin: none;
     }
@@ -211,6 +208,16 @@
     display: none;
 }
 
-.close_icon_open {
-    display: block;
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+    .P_brand {
+        width: 25%;
+    }
+
+}
+
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+    .P_brand {
+        width: 25%;
+    }
+
 }

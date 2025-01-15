@@ -6,10 +6,10 @@
 
 .projet_headline {
     margin-top: 60px;
-    font-size: 25px;
+    font-size: 45px;
     margin-bottom: 30px;
     font-weight: bold;
-    text-transform: uppercase;
+    font-family: "Dancing Script", cursive;
 }
 
 .projects_row {
