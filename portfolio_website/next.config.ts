@@ -1,8 +1,12 @@
 const path = require('path');
 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+};
+
 module.exports = {
   webpack(config: any, { isServer }: { isServer: boolean }) {
-    
     config.module.rules.push({
       test: /\.pdf$/,
       use: [
@@ -19,5 +23,5 @@ module.exports = {
 
     return config;
   },
-
+  ...nextConfig,
 };

@@ -12,11 +12,11 @@ import icon7 from '../../public/assets/Icons/coding_icon.png';
 import icon8 from '../../public/assets/Icons/server_icon.png';
 
 const Abouts: React.FC = () => {
-    let Exp_data = useSelector<any>((state: any) => state.Exp.exp);
+    let Exp_data = useSelector<any>((state: any) => state.Exp.exp) as any;
 
-    let Edu_data = useSelector<any>((state: any) => state.Edu.edu);
+    let Edu_data = useSelector<any>((state: any) => state.Edu.edu) as any;
 
-    let Skill_data = useSelector<any>((state: any) => state.Skill.skill);
+    let Skill_data = useSelector<any>((state: any) => state.Skill.skill) as any;
 
     return (
         <div className="page" id='abouts_pg'>

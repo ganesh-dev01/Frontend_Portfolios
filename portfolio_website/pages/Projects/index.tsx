@@ -4,7 +4,7 @@ import addicon from '../../public/assets/Icons/add_icon.png';
 
 const Projects: React.FC = () => {
 
-    let project_data = useSelector((state: any) => state.Project.project);
+    let project_data = useSelector((state: any) => state.Project.project) as any;
 
     return (
         <div className='page'>

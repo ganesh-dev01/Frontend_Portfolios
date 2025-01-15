@@ -14,7 +14,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-
   background-color: #697565;
   border-radius: 10px;
 }
@@ -23,8 +22,8 @@
 
 body {
   scrollbar-width: thin;
-  /* background-color: #1E201E; */
   background: url('../public/assets/images/background.jpg');
+  background-color: #1E201E;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
