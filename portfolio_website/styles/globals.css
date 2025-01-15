@@ -22,8 +22,8 @@
 
 body {
   scrollbar-width: thin;
-  background: url('../public/assets/images/background.jpg');
-  background-color: #1E201E;
+  background: url('/background.jpg');
+  background-color: #1e201e;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

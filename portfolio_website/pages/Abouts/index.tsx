@@ -25,7 +25,7 @@ const Abouts: React.FC = () => {
 
                 <div className="row">
                     <div className="col-12 text-center">
-                        <p className={styles.abouts_haedline}>The Road I’ve Taken</p>
+                        <p className={styles.abouts_haedline}>The road I’ve taken</p>
                     </div>
                 </div>
 
