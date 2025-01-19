@@ -1,0 +1,288 @@
+.main_light,
+.main_dark {
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+}
+
+.main_dark {
+    background-color: black;
+    color: white;
+}
+
+.userNav_light,
+.userNav_dark {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #8774F9;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.welcomeBox {
+    width: 84%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 1.5rem;
+    color: white;
+    text-align: left;
+    /* Ensure alignment remains consistent */
+}
+
+.ThemeBox {
+    width: 8%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.userBox {
+    width: 8%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.toggle_btn {
+    height: 70%;
+    width: 35%;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(240, 248, 255, 0);
+    outline: 2px dashed white;
+}
+
+.user_avatar {
+    cursor: pointer;
+    width: 40%;
+    height: 80%;
+    font-weight: bold;
+    color: #F4385A;
+    background-color: whitesmoke;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+    .welcomeBox {
+        width: 76%;
+        font-size: 1.2rem;
+    }
+
+    .ThemeBox {
+        width: 12%;
+        font-size: 1.2rem;
+    }
+
+    .userBox {
+        width: 12%;
+        font-size: 1.2rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .welcomeBox {
+        width: 70%;
+        font-size: 1.2rem;
+    }
+
+    .ThemeBox {
+        width: 15%;
+        font-size: 1.2rem;
+    }
+
+    .userBox {
+        width: 15%;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcomeBox {
+        width: 60%;
+    }
+
+    .ThemeBox {
+        width: 18%;
+    }
+
+    .userBox {
+        width: 22%;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .welcomeBox {
+        width: 46%;
+    }
+
+    .ThemeBox {
+        width: 24%;
+    }
+
+    .userBox {
+        width: 30%;
+    }
+}
+
+
+/*--------------------- Artist section ---------------------*/
+.artistBox_light,
+.artistBox_dark {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.artistHd {
+    margin: 10px 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.artistContainer {
+    width: 70%;
+    height: auto;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prevBtn,
+.nextBtn {
+    height: 55px;
+    min-width: 60px;
+    font-size: 1rem;
+    background-color: #1976d200;
+    color: #8774F9;
+    border-radius: 50%;
+}
+
+
+
+.artistBox_dark .prevBtn,
+.artistBox_dark .nextBtn {
+    background-color: #8874f900;
+    color: white;
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+    color: #F4385A;
+}
+
+.artistCardsWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.artistCard {
+    width: 200px;
+    height: 230px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.artistCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.artistImage {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.artistName {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artistName:hover {
+    color: #ff5722;
+    text-shadow: 0 2px 4px rgba(255, 87, 34, 0.6);
+}
+
+
+@media (max-width: 768px) {
+    .artistContainer {
+        width: 100%;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .artistCardsWrapper {
+        justify-content: unset;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    .artistCard {
+        width: 140px;
+        height: 180px;
+        font-size: 1rem;
+        margin: 0 5px;
+        flex-shrink: 0;
+    }
+
+    .prevBtn,
+    .nextBtn {
+        height: 40px;
+        min-width: 50px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .artistHd {
+        font-size: 1.2rem;
+    }
+
+    .artistCardsWrapper {
+        gap: 5px;
+    }
+
+    .artistCard {
+        width: 80px;
+        height: 100px;
+        font-size: 0.9rem;
+    }
+
+    .prevBtn,
+    .nextBtn {
+        height: 35px;
+        min-width: 45px;
+        font-size: 0.8rem;
+    }
+}

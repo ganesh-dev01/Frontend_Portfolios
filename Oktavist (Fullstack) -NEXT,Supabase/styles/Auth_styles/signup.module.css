@@ -112,3 +112,8 @@
     color: #8874f9d9;
     font-weight: bold;
 }
+
+.span_text_dark:hover,
+.span_text_light:hover {
+    cursor: pointer;
+}
