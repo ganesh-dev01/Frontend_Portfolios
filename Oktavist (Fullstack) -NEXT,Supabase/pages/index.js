@@ -1,9 +1,12 @@
-import React from 'react'
+import { ThemeContext } from '@/Theme/Themestate'
+import React, { useContext } from 'react'
+import Welcome from './Welcome'
 
 function Home() {
+  const data = useContext(ThemeContext)
   return (
     <div>
-      <h4>Music app</h4>
+      <Welcome />
     </div>
   )
 }

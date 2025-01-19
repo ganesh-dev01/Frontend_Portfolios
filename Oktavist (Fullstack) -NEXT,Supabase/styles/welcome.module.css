@@ -1,0 +1,58 @@
+.main_dark {
+    background-color: #333;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.main_light {
+    background-color: #fff;
+    color: #000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.top_bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.5rem;
+}
+
+.content {
+    text-align: center;
+}
+
+.welcome_message {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.sub_message {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.start_btn {
+    margin-top: 20px;
+}
+
+.main_dark .start_btn {
+    background-color: #fff;
+    color: #333;
+}
