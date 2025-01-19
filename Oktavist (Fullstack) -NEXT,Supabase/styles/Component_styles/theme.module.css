@@ -1,0 +1,13 @@
+.top_bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.5rem;
+}
