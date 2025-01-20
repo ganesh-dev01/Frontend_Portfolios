@@ -3,3 +3,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.body_light {
+  background-color: white;
+}
+
+.body_dark {
+  background-color: black;
+}
+
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8774F9 #ffffff00;
+}
