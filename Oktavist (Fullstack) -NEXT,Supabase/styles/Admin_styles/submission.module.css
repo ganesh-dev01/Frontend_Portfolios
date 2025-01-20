@@ -1,0 +1,199 @@
+/* General Styles */
+.main_light {
+    background-color: #f9f9f9;
+    color: #333;
+    height: 100%;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.main_dark {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    height: 100%;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+
+.musicContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+.musicCard_light,
+.musicCard_dark {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.musicCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.musicCard_dark {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+.cardContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+
+.musicDetails {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.musicIcon {
+    font-size: 50px;
+    color: #9e9e9e;
+}
+
+.musicCard_dark .musicIcon {
+    color: #757575;
+}
+
+
+.musicTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.musicCard_dark .musicTitle {
+    color: #e1e1e1;
+}
+
+.musicArtist {
+    font-size: 14px;
+    color: #666;
+}
+
+.musicCard_dark .musicArtist {
+    color: #aaaaaa;
+}
+
+
+.menuIcon {
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.menuIcon:hover {
+    color: #333;
+}
+
+.musicCard_dark .menuIcon {
+    color: #aaaaaa;
+}
+
+.musicCard_dark .menuIcon:hover {
+    color: #f1f1f1;
+}
+
+.MuiTab-root {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.Mui-selected {
+    color: #1976d2 !important;
+}
+
+.MuiTabs-indicator {
+    background-color: #1976d2;
+}
+
+
+.artistContainer {
+    display: flex;
+    align-items: center;
+    height: 50vh;
+    color: #777;
+}
+
+.artistContainer.dark {
+    color: #aaa;
+}
+
+
+@media screen and (max-width: 768px) {
+    .musicCard {
+        width: 100%;
+    }
+
+    .cardContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .menuIcon {
+        align-self: flex-end;
+    }
+
+    .main_dark,
+    .main_light {
+        height: auto;
+    }
+}
+
+.artistContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.artistCard_light,
+.artistCard_dark {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.artistDetails {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.artistImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+.artistName {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.artistCard_dark {
+    background-color: #2a2a2a;
+    color: #e1e1e1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.tap{
+    color:#ff5678;
+}
