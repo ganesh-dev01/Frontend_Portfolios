@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Avatar } from '@mui/material';
 import { ThemeContext } from '@/Theme/Themestate';
 import styles from '@/styles/Admin_styles/uppernav.module.css';
 import { MdOutlineDarkMode, MdOutlineWbSunny } from 'react-icons/md';
+import { useSelector } from 'react-redux';
+import supabase from '@/lib/supabase';
 
 const Admin_uppernav = () => {
     const theme_data = useContext(ThemeContext);
@@ -11,6 +13,30 @@ const Admin_uppernav = () => {
     let changeTheme = () => {
         theme_data.setTheme(theme_data.theme === 'light' ? 'dark' : 'light');
     }
+
+    let email_data = useSelector((state) => state.admin.data);
+
+    let [sigupTable, setSignupTable] = useState(null);
+
+    const signup_data = async () => {
+        const { data, error } = await supabase.from('signup').select('*');
+
+        if (error) {
+            alert('Error fetching data:', error.message);
+        } else {
+            console.log('Fetched Data:', data);
+            setSignupTable(data);
+        }
+    }
+
+    useEffect(() => {
+        signup_data();
+    }, []);
+
+
+    let loginUser = sigupTable?.find((item) => item.email === email_data?.email);
+
+
 
     return (
         <div className={`${styles[`main_${theme_data.theme}`]} ${styles.navbar}`}>
@@ -37,7 +63,7 @@ const Admin_uppernav = () => {
                     src={theme_data.userProfilePic || ''}
                     className={styles.avatar}
                 />
-                <span className={styles.profileName}>Jack Brown</span>
+                <span className={styles.profileName}>{loginUser?.name || "Admin"}</span>
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ const AdminSignin = () => {
                 dispatch(AdminData(adminDetails));
 
                 alert('Login Successful');
-                router.push('/Test');
+                router.push('/Admin');
             }
         } catch (err) {
             console.error('Unexpected Error:', err);
