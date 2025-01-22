@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import supabase from '@/lib/supabase';
 import { useDispatch } from 'react-redux';
 import { loginuserData } from '@/Redux/UserSlice';
+import { Cookies } from 'react-cookie';
 
 
 const Signin = () => {
@@ -18,11 +19,13 @@ const Signin = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const cookies = new Cookies();
+
     const onSubmit = async (data) => {
         const { email, password } = data;
 
         try {
-            
+
             const { data: signInData, error } = await supabase.auth.signInWithPassword({ email, password });
 
             if (error?.message.includes('Email not confirmed')) {
@@ -55,6 +58,8 @@ const Signin = () => {
             };
 
             localStorage.setItem('token', JSON.stringify(tokenData));
+
+            cookies.set('userauthToken', JSON.stringify(tokenData), { path: '/' });
 
             const userDetails = {
                 email: user?.email,

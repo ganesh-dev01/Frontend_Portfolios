@@ -9,11 +9,14 @@ import google_icon from '@/public/assets/icon/google_icon.png';
 import supabase from '@/lib/supabase';
 import { useDispatch } from 'react-redux';
 import { AdminData } from '@/Redux/AdminSlice';
+import { Cookies } from 'react-cookie';
 
 const AdminSignin = () => {
     const theme_data = useContext(ThemeContext);
     const router = useRouter();
     const dispatch = useDispatch();
+
+    const cookies = new Cookies();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -34,6 +37,8 @@ const AdminSignin = () => {
                 };
 
                 dispatch(AdminData(adminDetails));
+
+                cookies.set('authToken', "admin_data1225452054", { path: '/' });
 
                 alert('Login Successful');
                 router.push('/Admin');
