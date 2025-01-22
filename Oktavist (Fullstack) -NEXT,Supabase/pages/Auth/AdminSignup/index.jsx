@@ -1,5 +1,5 @@
 import Theme_button from '@/Components/Theme_button';
-import styles from '@/styles/Auth_styles/signup.module.css';
+import styles from '@/styles/signup.module.css';
 import { ThemeContext } from '@/Theme/Themestate';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
@@ -63,7 +63,7 @@ const AdminSignup = () => {
 
             <div className={styles[`container_${theme_data.theme}`]}>
 
-              
+
                 <Typography variant="h4" className={styles.heading}>
                     Admin Sign Up
                 </Typography>

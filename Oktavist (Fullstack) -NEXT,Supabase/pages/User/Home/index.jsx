@@ -1,6 +1,6 @@
 import { ThemeContext } from "@/Theme/Themestate"
 import { useContext, useEffect, useState } from "react"
-import styles from "@/styles/User_styles/Home.module.css"
+import styles from "@/styles/Home.module.css"
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { Avatar, Button } from "@mui/material";
 import { GiNextButton, GiPreviousButton } from "react-icons/gi";

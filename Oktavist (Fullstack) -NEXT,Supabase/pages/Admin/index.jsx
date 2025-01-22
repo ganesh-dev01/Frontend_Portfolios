@@ -1,7 +1,7 @@
 import Admin_uppernav from "@/Components/Admin_upperNav";
 import { ThemeContext } from "@/Theme/Themestate";
 import { useContext } from "react";
-import styles from '@/styles/Admin_styles/admin.module.css';
+import styles from '@/styles/admin.module.css';
 import Admin_sideNav from "@/Components/Admin_sideNav";
 import SubmitMusic from "./SubmitMusic";
 import SubmitArtist from "./SubmitArt";
@@ -16,7 +16,7 @@ const Admin = () => {
     const renderContent = () => {
         switch (nav_value) {
             case 1:
-                return null; 
+                return null;
             case 2:
                 return <Submissions />;
             case 3:
@@ -24,15 +24,15 @@ const Admin = () => {
             case 4:
                 return <SubmitArtist />;
             case 5:
-                return null; 
+                return null;
             case 6:
-                return null; 
+                return null;
             case 7:
-                return null; 
+                return null;
             case 8:
                 return null;
             default:
-                return null; 
+                return null;
         }
     };
 

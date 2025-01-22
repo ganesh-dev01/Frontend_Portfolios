@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Avatar } from '@mui/material';
 import { ThemeContext } from '@/Theme/Themestate';
-import styles from '@/styles/Admin_styles/uppernav.module.css';
+import styles from '@/styles/uppernav.module.css';
 import { MdOutlineDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import supabase from '@/lib/supabase';

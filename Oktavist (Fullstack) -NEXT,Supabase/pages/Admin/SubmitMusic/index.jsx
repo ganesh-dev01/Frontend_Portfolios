@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import styles from "@/styles/Admin_styles/submit.module.css";
+import styles from "@/styles/submit.module.css";
 import { FaCloudUploadAlt, FaCheckCircle } from "react-icons/fa";
 import { CircularProgress, TextField, Button } from "@mui/material";
 import { ThemeContext } from "@/Theme/Themestate";

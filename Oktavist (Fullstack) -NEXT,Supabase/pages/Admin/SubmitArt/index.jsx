@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import styles from "@/styles/Admin_styles/submit_artist.module.css";
+import styles from "@/styles/submit_artist.module.css";
 import { FaCloudUploadAlt, FaCheckCircle } from "react-icons/fa";
 import { CircularProgress, TextField, Button } from "@mui/material";
 import { ThemeContext } from "@/Theme/Themestate";

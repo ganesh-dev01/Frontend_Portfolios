@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import styles from '@/styles/Admin_styles/submission.module.css';
+import styles from '@/styles/submission.module.css';
 import { ThemeContext } from '@/Theme/Themestate';
 import {
     Box,

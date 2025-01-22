@@ -1,4 +1,4 @@
-import styles from '@/styles/Admin_styles/sidenav.module.css';
+import styles from '@/styles/sidenav.module.css';
 import { ThemeContext } from '@/Theme/Themestate';
 import { useContext, useState } from 'react';
 import { FaHome, FaMusic, FaPaintBrush, FaUsers, FaPhone, FaUser, FaFileAlt } from 'react-icons/fa';
