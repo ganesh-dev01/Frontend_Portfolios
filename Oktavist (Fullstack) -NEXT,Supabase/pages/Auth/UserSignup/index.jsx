@@ -4,17 +4,17 @@ import { ThemeContext } from '@/Theme/Themestate';
 import { useContext } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import google_icon from '@/public/assets/icon/google_icon.png';
+import { useRouter } from 'next/router';
 
 const Signup = () => {
     const theme_data = useContext(ThemeContext);
-
+    const router = useRouter();
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
             <Theme_button />
 
             <div className={styles[`container_${theme_data.theme}`]}>
 
-                {/* Signup Form */}
                 <Typography variant="h4" className={styles.heading}>
                     Sign Up
                 </Typography>
@@ -59,7 +59,8 @@ const Signup = () => {
                 </Box>
 
                 <Typography variant="body2" className={styles.helper_text}>
-                    Already have an account? <span className={styles[`span_text_${theme_data.theme}`]}>Sign in</span>
+                    Already have an account? <span className={styles[`span_text_${theme_data.theme}`]}
+                        onClick={() => router.push('/Auth/UserSignin')}>Sign in</span>
                 </Typography>
             </div>
         </div>

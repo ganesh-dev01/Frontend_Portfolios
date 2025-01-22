@@ -4,9 +4,12 @@ import { ThemeContext } from '@/Theme/Themestate';
 import { useContext } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import google_icon from '@/public/assets/icon/google_icon.png';
+import { useRouter } from 'next/router';
 
 const Signin = () => {
     const theme_data = useContext(ThemeContext);
+
+    const router = useRouter();
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
@@ -54,7 +57,8 @@ const Signin = () => {
                 </Box>
 
                 <Typography variant="body2" className={styles.helper_text}>
-                    Don't have an account? <span className={styles[`span_text_${theme_data.theme}`]}>Sign up</span>
+                    Don't have an account? <span className={styles[`span_text_${theme_data.theme}`]}
+                        onClick={() => router.push('/Auth/UserSignup')}>Sign up</span>
                 </Typography>
             </div>
         </div>

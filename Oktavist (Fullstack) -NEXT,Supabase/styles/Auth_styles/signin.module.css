@@ -128,9 +128,11 @@
 .span_text_light {
     color: #8774F9;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .span_text_dark {
     color: #8874f9d9;
     font-weight: bold;
+    cursor: pointer;
 }
