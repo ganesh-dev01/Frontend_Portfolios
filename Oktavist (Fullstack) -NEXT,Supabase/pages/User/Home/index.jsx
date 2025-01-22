@@ -1,5 +1,5 @@
 import { ThemeContext } from "@/Theme/Themestate"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import styles from "@/styles/User_styles/Home.module.css"
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { Avatar, Button } from "@mui/material";
@@ -7,19 +7,49 @@ import { GiNextButton, GiPreviousButton } from "react-icons/gi";
 import test_img from '@/public/assets/test.jpg';
 import { IconButton, Switch, Typography } from "@mui/material";
 import { PlayArrow, Pause, FavoriteBorder, Favorite } from "@mui/icons-material";
+import supabase from "@/lib/supabase";
 
 
 const ArtistProfiles = () => {
     const theme_data = useContext(ThemeContext);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [artistData, setArtistData] = useState([]);
+
+
+    const fetchArtistData = async () => {
+        const { data, error } = await supabase.from("submitArt").select("*");
+        if (error) {
+            console.error("Error fetching artist data:", error);
+            alert("Error fetching artist data. Please try again.");
+        } else {
+            setArtistData(data);
+        }
+    };
+
+    useEffect(() => {
+        fetchArtistData();
+    }, []);
+
+
+    const artistsPerSlide = 3;
+
+
+    const visibleArtists = artistData.slice(
+        currentIndex * artistsPerSlide,
+        currentIndex * artistsPerSlide + artistsPerSlide
+    );
+
+
+    const maxIndex = Math.ceil(artistData.length / artistsPerSlide) - 1;
 
     const handlePrev = () => {
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
     };
 
     const handleNext = () => {
-        setCurrentIndex((prev) => prev + 1);
+        setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
     };
+
     return (
         <div className={styles[`artistBox_${theme_data.theme}`]}>
             <p className={styles.artistHd}>Artists</p>
@@ -28,47 +58,43 @@ const ArtistProfiles = () => {
                 <Button
                     className={styles.prevBtn}
                     onClick={handlePrev}
+                    disabled={currentIndex === 0}
                 >
                     <GiPreviousButton />
                 </Button>
 
                 <div className={styles.artistCardsWrapper}>
-
-                    <div className={styles.artistCard}>
-                        <img src={test_img.src} alt="Artist" className={styles.artistImage} />
-                        <p className={styles.artistName}>Artist Name</p>
-                    </div>
-
-                    <div className={styles.artistCard}>
-                        <img src={test_img.src} alt="Artist" className={styles.artistImage} />
-                        <p className={styles.artistName}>Artist Name</p>
-                    </div>
-
+                    {visibleArtists.map((artist) => (
+                        <div key={artist.id} className={styles.artistCard}>
+                            <img
+                                src={artist.artistImageURL}
+                                alt={artist.artist_name}
+                                className={styles.artistImage}
+                            />
+                            <p className={styles.artistName}>{artist.artist_name}</p>
+                        </div>
+                    ))}
                 </div>
 
                 <Button
                     className={styles.nextBtn}
                     onClick={handleNext}
+                    disabled={currentIndex === maxIndex}
                 >
                     <GiNextButton />
                 </Button>
             </div>
         </div>
-    )
-}
+    );
+};
+
 
 
 const MusicPlaylist = () => {
     const theme_data = useContext(ThemeContext);
     const [playing, setPlaying] = useState(null);
     const [favorites, setFavorites] = useState([]);
-
-    const musicList = [
-        { id: 1, name: "Song A", singer: "Singer A" },
-        { id: 2, name: "Song B", singer: "Singer B" },
-        { id: 3, name: "Song C", singer: "Singer C" },
-        { id: 4, name: "Song D", singer: "Singer D" },
-    ];
+    const [audio, setAudio] = useState(null);
 
     const toggleFavorite = (id) => {
         setFavorites((prev) =>
@@ -76,28 +102,71 @@ const MusicPlaylist = () => {
         );
     };
 
-    const togglePlay = (id) => {
-        setPlaying((prev) => (prev === id ? null : id));
+    const togglePlay = (id, url) => {
+        if (playing === id) {
+            audio.pause();
+            setPlaying(null);
+        } else {
+            if (audio) audio.pause(); 
+            const newAudio = new Audio(url);
+            newAudio.play();
+            setAudio(newAudio);
+            setPlaying(id);
+
+
+            newAudio.onended = () => {
+                setPlaying(null);
+                setAudio(null);
+            };
+        }
     };
+
+    const [musicdata, setMusicData] = useState([]);
+
+    const fetch_musicdata = async () => {
+        const { data, error } = await supabase.from('submitMusic').select('*');
+
+        if (error) {
+            alert('Error fetching music data:', error);
+        } else {
+            setMusicData(data);
+        }
+    };
+
+    useEffect(() => {
+        fetch_musicdata();
+    }, []);
 
     return (
         <div className={`${styles[`musicBox_${theme_data.theme}`]} ${styles.musicContainer}`}>
-
-            <Typography variant="h6" className={styles.musicplaylisHd}>Music Playlist</Typography>
+            <Typography variant="h6" className={styles.musicplaylisHd}>
+                Music Playlist
+            </Typography>
 
             {/* Music List */}
             <div className={styles.rowView}>
-                {musicList.map((music) => (
+                {musicdata.map((music) => (
                     <div key={music.id} className={styles.musicRow}>
                         <div className={styles.rowContent}>
-                            <Typography className={styles.musicName}>{music.name} _by {music.singer}</Typography>
+                            <Typography className={styles.musicName}>
+                                {music.song_title} _by {music.artist_name}
+                            </Typography>
                             <div className={styles.rowActions}>
-                                <IconButton onClick={() => togglePlay(music.id)} className={styles.playButton}>
+                                <IconButton
+                                    onClick={() => togglePlay(music.id, music.music_url)}
+                                    className={styles.playButton}
+                                >
                                     {playing === music.id ? <Pause /> : <PlayArrow />}
                                 </IconButton>
-                                <IconButton onClick={() => toggleFavorite(music.id)} className={styles.favoriteButton}>
-                                    {favorites.includes(music.id) ? <Favorite className={styles.clickedFav} /> :
-                                        <FavoriteBorder className={styles.NonclickedFav} />}
+                                <IconButton
+                                    onClick={() => toggleFavorite(music.id)}
+                                    className={styles.favoriteButton}
+                                >
+                                    {favorites.includes(music.id) ? (
+                                        <Favorite className={styles.clickedFav} />
+                                    ) : (
+                                        <FavoriteBorder className={styles.NonclickedFav} />
+                                    )}
                                 </IconButton>
                             </div>
                         </div>
