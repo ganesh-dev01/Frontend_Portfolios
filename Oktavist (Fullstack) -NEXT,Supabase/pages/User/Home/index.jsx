@@ -8,6 +8,7 @@ import test_img from '@/public/assets/test.jpg';
 import { IconButton, Switch, Typography } from "@mui/material";
 import { PlayArrow, Pause, FavoriteBorder, Favorite } from "@mui/icons-material";
 import supabase from "@/lib/supabase";
+import { useSelector } from "react-redux";
 
 
 const ArtistProfiles = () => {
@@ -107,7 +108,7 @@ const MusicPlaylist = () => {
             audio.pause();
             setPlaying(null);
         } else {
-            if (audio) audio.pause(); 
+            if (audio) audio.pause();
             const newAudio = new Audio(url);
             newAudio.play();
             setAudio(newAudio);
@@ -186,6 +187,28 @@ const Home = () => {
         theme_data.setTheme(theme_data.theme === 'dark' ? 'light' : 'dark');
     }
 
+    let email_data = useSelector((state) => state.user.data);
+
+    let [sigupTable, setSignupTable] = useState(null);
+
+    const signup_data = async () => {
+        const { data, error } = await supabase.from('signup').select('*');
+
+        if (error) {
+            alert('Error fetching data:', error.message);
+        } else {
+            console.log('Fetched Data:', data);
+            setSignupTable(data);
+        }
+    }
+
+    useEffect(() => {
+        signup_data();
+    }, []);
+
+
+    let loginUser = sigupTable?.find((item) => item.email === email_data?.email);
+  
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
@@ -193,7 +216,8 @@ const Home = () => {
             <div className={styles[`userNav_${theme_data.theme}`]}>
 
                 <div className={styles.welcomeBox}>
-                    <h4>Welcome user</h4>
+                    <h4>Welcome {loginUser?.name || 'user'}</h4>
+
                 </div>
 
                 <div className={styles.ThemeBox}>

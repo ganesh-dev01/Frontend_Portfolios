@@ -101,12 +101,12 @@ const AdminSignin = () => {
 
                     <Box className={styles.signin_btn_container}>
 
-                        {/* Google Button */}
-                        <Button className={styles.google_btn}>
-                            <img src={google_icon.src} alt="Google Icon" />
-                        </Button>
 
-                        {/* Submit Button */}
+                        {/* <Button className={styles.google_btn}>
+                            <img src={google_icon.src} alt="Google Icon" />
+                        </Button> */}
+
+
                         <Button
                             type="submit"
                             variant="contained"
@@ -119,7 +119,8 @@ const AdminSignin = () => {
                 </Box>
 
                 <Typography variant="body2" className={styles.helper_text}>
-                    Don't have an account? <span className={styles[`span_text_${theme_data.theme}`]}>Sign up</span>
+                    Don't have an account? <span className={styles[`span_text_${theme_data.theme}`]}
+                        onClick={() => router.push('/Auth/AdminSignup')}>Sign up</span>
                 </Typography>
             </div>
         </div>

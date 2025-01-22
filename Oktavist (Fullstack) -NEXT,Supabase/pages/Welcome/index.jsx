@@ -7,24 +7,23 @@ import { useRouter } from 'next/router';
 
 const Welcome = () => {
     const theme_data = useContext(ThemeContext);
-
     const router = useRouter();
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
-
             <Theme_button />
 
             <div className={styles.content}>
-                <h1 className={styles.welcome_message}>Welcome to Oktavist!</h1>
+                <h1 className={styles.welcome_message}>Welcome to <span>Oktavist</span>!</h1>
                 <p className={styles.sub_message}>
                     Discover the world of music, curated just for you.
                 </p>
                 <Button
                     variant="contained"
                     className={styles.start_btn}
-                    onClick={() => router.push('./Auth/UserSignin')}>
-                    Let's Start
+                    onClick={() => router.push('./Typecheck')}
+                >
+                    Let's play the music
                 </Button>
             </div>
         </div>

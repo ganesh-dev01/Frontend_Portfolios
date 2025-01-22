@@ -6,11 +6,13 @@ import { useForm } from 'react-hook-form';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import supabase from '@/lib/supabase';
 import bcrypt from 'bcryptjs';
+import { useRouter } from 'next/router';
 
 const AdminSignup = () => {
     const theme_data = useContext(ThemeContext);
+    const router = useRouter();
 
-    // Initialize useForm
+
     const {
         register,
         handleSubmit,
@@ -61,7 +63,7 @@ const AdminSignup = () => {
 
             <div className={styles[`container_${theme_data.theme}`]}>
 
-                {/* Signup Form */}
+              
                 <Typography variant="h4" className={styles.heading}>
                     Admin Sign Up
                 </Typography>
@@ -69,14 +71,14 @@ const AdminSignup = () => {
                 <Box
                     component="form"
                     className={styles.form}
-                    onSubmit={handleSubmit(onSubmit)} 
+                    onSubmit={handleSubmit(onSubmit)}
                 >
                     <TextField
                         label="Name"
                         fullWidth
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
-                        {...register('name', { required: 'Name is required' })} 
+                        {...register('name', { required: 'Name is required' })}
                         error={!!errors.name}
                         helperText={errors.name?.message}
                     />
@@ -135,7 +137,8 @@ const AdminSignup = () => {
                 </Box>
 
                 <Typography variant="body2" className={styles.helper_text}>
-                    Already have an account? <span className={styles[`span_text_${theme_data.theme}`]}>Sign in</span>
+                    Already have an account? <span className={styles[`span_text_${theme_data.theme}`]}
+                        onClick={() => router.push('/Auth/AdminSignin')}>Sign in</span>
                 </Typography>
             </div>
         </div>

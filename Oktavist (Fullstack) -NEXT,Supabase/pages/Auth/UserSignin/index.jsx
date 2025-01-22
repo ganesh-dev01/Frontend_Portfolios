@@ -7,10 +7,14 @@ import google_icon from '@/public/assets/icon/google_icon.png';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import supabase from '@/lib/supabase';
+import { useDispatch } from 'react-redux';
+import { loginuserData } from '@/Redux/UserSlice';
+
 
 const Signin = () => {
     const theme_data = useContext(ThemeContext);
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -18,7 +22,8 @@ const Signin = () => {
         const { email, password } = data;
 
         try {
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            
+            const { data: signInData, error } = await supabase.auth.signInWithPassword({ email, password });
 
             if (error?.message.includes('Email not confirmed')) {
                 alert('Your email is not verified. Please check your inbox.');
@@ -30,11 +35,48 @@ const Signin = () => {
                 return;
             }
 
-            router.push('/User/Home');
+            // Get user data
+            const { data: userData } = await supabase.auth.getUser();
+            const { user } = userData;
+
+            if (!user) {
+                alert('User data is not available. Please try again.');
+                return;
+            }
+
+            const tokenData = {
+                access_token: signInData.session.access_token,
+                refresh_token: signInData.session.refresh_token,
+                expires_at: Math.floor(Date.now() / 1000) + signInData.session.expires_in,
+                user: {
+                    id: user.id,
+                    email: user.email,
+                },
+            };
+
+            localStorage.setItem('token', JSON.stringify(tokenData));
+
+            const userDetails = {
+                email: user?.email,
+            };
+
+
+            dispatch(loginuserData(userDetails));
+
+
+            if (localStorage.getItem('token')) {
+                alert('Login successful!');
+                router.push('/User/Home');
+            } else {
+                alert('Failed to store authentication token.');
+            }
         } catch (err) {
+            console.error('Error during sign-in:', err);
             alert('An unexpected error occurred. Please try again.');
         }
     };
+
+
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
@@ -87,9 +129,9 @@ const Signin = () => {
                     </Typography>
 
                     <Box className={styles.signin_btn_container}>
-                        <Button className={styles.google_btn}>
+                        {/* <Button className={styles.google_btn}>
                             <img src={google_icon.src} alt="Google Icon" />
-                        </Button>
+                        </Button> */}
 
                         <Button
                             type="submit"

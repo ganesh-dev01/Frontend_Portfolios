@@ -37,7 +37,6 @@ const Admin_uppernav = () => {
     let loginUser = sigupTable?.find((item) => item.email === email_data?.email);
 
 
-
     return (
         <div className={`${styles[`main_${theme_data.theme}`]} ${styles.navbar}`}>
 
