@@ -9,7 +9,7 @@ import { IconButton, Switch, Typography } from "@mui/material";
 import { PlayArrow, Pause, FavoriteBorder, Favorite } from "@mui/icons-material";
 import supabase from "@/lib/supabase";
 import { useSelector } from "react-redux";
-
+import { Cookies } from 'react-cookie';
 
 const ArtistProfiles = () => {
     const theme_data = useContext(ThemeContext);
@@ -208,7 +208,16 @@ const Home = () => {
 
 
     let loginUser = sigupTable?.find((item) => item.email === email_data?.email);
-  
+
+    const cookies = new Cookies();
+
+    const handleSignOut = () => {
+        cookies.remove('userauthToken');
+        window.location.reload();
+        alert('You have been signed out successfully!');
+    };
+
+
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
@@ -236,7 +245,16 @@ const Home = () => {
                         src="/path/to/your/avatar-image.jpg"
                         className={styles.user_avatar}
                     />
+                    <div className={styles.dropdownMenu}>
+                        <button
+                            className={styles.signOutButton}
+                            onClick={handleSignOut}
+                        >
+                            Sign Out
+                        </button>
+                    </div>
                 </div>
+
             </div>
 
             <ArtistProfiles />

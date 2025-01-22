@@ -373,3 +373,41 @@
 .NonclickedFav:hover {
     color: white;
 }
+
+.userBox {
+    position: relative;
+}
+
+.dropdownMenu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    z-index: 1000;
+    text-align: center;
+}
+
+.dropdownMenu .signOutButton {
+    background-color: #8774F9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.dropdownMenu .signOutButton:hover {
+    background-color: #F4385A;
+    transform: scale(1.05);
+}
+
+.userBox:hover .dropdownMenu {
+    display: block;
+}

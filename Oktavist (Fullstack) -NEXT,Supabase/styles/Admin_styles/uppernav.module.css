@@ -60,6 +60,30 @@
     color: white;
 }
 
+.signOutButton {
+    background-color: white;
+    color: #8774F9;
+    border: 2px solid #8774F9;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.signOutButton:hover {
+    background-color: #ff5678;
+    color: white;
+    transform: scale(1.05);
+}
+
+.signOutButton:active {
+    transform: scale(0.95);
+}
+
+
 /* Dark Mode Styles */
 .main_dark {
     --navbar-bg: #2b2b2b;

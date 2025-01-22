@@ -5,18 +5,21 @@ import styles from '@/styles/Admin_styles/uppernav.module.css';
 import { MdOutlineDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import supabase from '@/lib/supabase';
+import { Cookies } from 'react-cookie';
 
 const Admin_uppernav = () => {
     const theme_data = useContext(ThemeContext);
     const isDarkMode = theme_data.theme === 'dark';
 
-    let changeTheme = () => {
+    const changeTheme = () => {
         theme_data.setTheme(theme_data.theme === 'light' ? 'dark' : 'light');
-    }
+    };
 
-    let email_data = useSelector((state) => state.admin.data);
+    const email_data = useSelector((state) => state.admin.data);
 
-    let [sigupTable, setSignupTable] = useState(null);
+    const [signupTable, setSignupTable] = useState(null);
+
+    const cookies = new Cookies();
 
     const signup_data = async () => {
         const { data, error } = await supabase.from('signup').select('*');
@@ -27,19 +30,22 @@ const Admin_uppernav = () => {
             console.log('Fetched Data:', data);
             setSignupTable(data);
         }
-    }
+    };
 
     useEffect(() => {
         signup_data();
     }, []);
 
+    const loginUser = signupTable?.find((item) => item.email === email_data?.email);
 
-    let loginUser = sigupTable?.find((item) => item.email === email_data?.email);
-
+    const handleSignOut = () => {
+        cookies.remove('authToken');
+        alert('You have been signed out successfully!');
+        window.location.reload();
+    };
 
     return (
         <div className={`${styles[`main_${theme_data.theme}`]} ${styles.navbar}`}>
-
             <div className={styles.greetingSection}>
                 <h1 className={styles.helloText}>Hello, User!</h1>
                 <p className={styles.welcomeText}>Welcome back to Oktavist</p>
@@ -62,7 +68,12 @@ const Admin_uppernav = () => {
                     src={theme_data.userProfilePic || ''}
                     className={styles.avatar}
                 />
-                <span className={styles.profileName}>{loginUser?.name || "Admin"}</span>
+                <span className={styles.profileName}>
+                    {loginUser?.name || 'Admin'}
+                </span>
+                <button className={styles.signOutButton} onClick={handleSignOut}>
+                    Sign Out
+                </button>
             </div>
         </div>
     );
