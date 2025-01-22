@@ -1,15 +1,18 @@
 import { useContext, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import styles from "@/styles/Admin_styles/submit_artist.module.css";
 import { FaCloudUploadAlt, FaCheckCircle } from "react-icons/fa";
 import { CircularProgress, TextField, Button } from "@mui/material";
 import { ThemeContext } from "@/Theme/Themestate";
-
+import supabase from "@/lib/supabase";
 
 const SubmitArtist = () => {
     const fileInputRef = useRef(null);
     const [uploading, setUploading] = useState(false);
     const [uploaded, setUploaded] = useState(false);
     const [file, setFile] = useState(null);
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const handleFileClick = () => {
         fileInputRef.current.click();
@@ -21,7 +24,6 @@ const SubmitArtist = () => {
             setUploading(true);
             setUploaded(false);
 
-
             setTimeout(() => {
                 setFile(selectedFile);
                 setUploading(false);
@@ -30,11 +32,59 @@ const SubmitArtist = () => {
         }
     };
 
-    const handleUploadToBackend = () => {
-        if (file) {
-            console.log("Uploading file to backend:", file.name);
-        } else {
-            alert("Please select a file first!");
+    const onSubmit = async (formdata) => {
+        if (!file) {
+            alert("Please upload an image file.");
+            return;
+        }
+
+        setUploading(true);
+
+        try {
+            const fileExt = file.name.split(".").pop();
+            const fileName = `${Date.now()}-${Math.random()}.${fileExt}`;
+            const filePath = fileName;
+
+            const { data, error: uploadError } = await supabase.storage
+                .from("musicBuck")
+                .upload(filePath, file);
+
+            if (uploadError) {
+                throw new Error(`File upload failed: ${uploadError.message}`);
+            }
+            const { publicUrl } = supabase
+                .storage
+                .from("musicBuck")
+                .getPublicUrl(filePath).data;
+
+            if (!publicUrl) {
+                throw new Error("Failed to retrieve file public URL.");
+            }
+
+            const { error: insertError } = await supabase
+                .from("submitArt")
+                .insert([
+                    {
+                        artist_name: formdata.artistName,
+                        credit_url: formdata.creditURL,
+                        artist_type: formdata.artistType,
+                        artistImageURL: publicUrl,
+                    },
+                ]);
+
+
+            if (insertError) {
+                throw new Error(`Database insertion failed: ${insertError.message}`);
+            }
+
+            alert("Artist data submitted successfully!");
+            reset();
+            setFile(null);
+            setUploaded(true);
+        } catch (error) {
+            alert(`Failed to submit data: ${error.message}`);
+        } finally {
+            setUploading(false);
         }
     };
 
@@ -42,14 +92,12 @@ const SubmitArtist = () => {
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
-
             <h1 className={styles.title}>Submit Artist</h1>
             <p className={styles.description}>
-                upload profile pic, click on the box
+                Upload profile pic, click on the box
             </p>
 
             <div className={styles.uploadContainer}>
-
                 <div
                     className={styles.uploadBox}
                     onClick={handleFileClick}
@@ -88,7 +136,7 @@ const SubmitArtist = () => {
                 </div>
             )}
 
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.inputGroup}>
                     <TextField
                         label="Artist Name"
@@ -96,6 +144,9 @@ const SubmitArtist = () => {
                         className={styles.input}
                         id={styles.input_id}
                         required
+                        {...register("artistName", { required: "Artist name is required" })}
+                        error={!!errors.artistName}
+                        helperText={errors.artistName?.message}
                         InputProps={{
                             style: {
                                 color: theme_data.theme === "dark" ? "#fff" : "#000",
@@ -116,6 +167,9 @@ const SubmitArtist = () => {
                         variant="outlined"
                         className={styles.input}
                         id={styles.input_id}
+                        {...register("creditURL")}
+                        error={!!errors.creditURL}
+                        helperText={errors.creditURL?.message}
                         InputProps={{
                             style: {
                                 color: theme_data.theme === "dark" ? "#fff" : "#000",
@@ -135,11 +189,14 @@ const SubmitArtist = () => {
 
                 <div className={styles.inputGroup}>
                     <TextField
-                        label="Artist type"
+                        label="Artist Type"
                         variant="outlined"
                         className={styles.input}
                         id={styles.input_id}
                         required
+                        {...register("artistType", { required: "Artist type is required" })}
+                        error={!!errors.artistType}
+                        helperText={errors.artistType?.message}
                         InputProps={{
                             style: {
                                 color: theme_data.theme === "dark" ? "#fff" : "#000",
@@ -160,15 +217,13 @@ const SubmitArtist = () => {
                 <div className={styles.upload}>
                     <Button
                         variant="contained"
-                        onClick={handleUploadToBackend}
+                        type="submit"
                         className={styles.uploadButton}
                     >
-                        Upload
+                        Submit
                     </Button>
                 </div>
             </form>
-
-
         </div>
     );
 };

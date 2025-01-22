@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import styles from '@/styles/Admin_styles/submission.module.css';
 import { ThemeContext } from '@/Theme/Themestate';
 import {
@@ -15,6 +15,7 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { FaUserTie } from "react-icons/fa";
+import supabase from '@/lib/supabase';
 
 const Submissions = () => {
     const theme_data = useContext(ThemeContext);
@@ -36,15 +37,40 @@ const Submissions = () => {
         setSelectedMusic(null);
     };
 
-    const dummyMusic = [
-        { id: 1, title: 'Breath me', artist: 'Sia' },
-        { id: 2, title: 'Cinnamon girl', artist: 'Lana Del Rey' },
-        { id: 3, title: 'Majesty', artist: 'Eminem' },
-        { id: 4, title: 'Country song', artist: 'Seether' },
-        { id: 5, title: 'Bad guy', artist: 'Billie' },
-    ];
+    let [musicdata, setMusicData] = useState([]);
+
+    const fetch_musicdata = async () => {
+        const { data, error } = await supabase.from('submitMusic').select('*');
+
+        if (error) {
+            alert('Error fetching music data:', error);
+        } else {
+            setMusicData(data);
+        }
+    }
+
+    let [artistdata, setArtistData] = useState([]);
+
+    const fetch_artistdata = async () => {
+        const { data, error } = await supabase.from('submitArt').select('*');
+        if (error) {
+            alert('Error fetching artist data:', error);
+        } else {
+            setArtistData(data);
+        }
+    }
+
+
+    useEffect(() => {
+        fetch_musicdata();
+        fetch_artistdata();
+    }, []);
+
+    const myMusic = musicdata;
+    const myArtist = artistdata;
 
     return (
+
         <div className={styles[`main_${theme_data.theme}`]}>
             <Typography variant="h4" gutterBottom>
                 My Submissions
@@ -57,21 +83,21 @@ const Submissions = () => {
 
             {tabValue === 'music' && (
                 <Box className={styles.musicContainer}>
-                    {dummyMusic.map((music) => (
+                    {myMusic.map((music) => (
                         <Card key={music.id} className={styles[`musicCard_${theme_data.theme}`]}>
                             <CardContent className={styles.cardContent}>
                                 <Box className={styles.musicDetails}>
                                     <MusicNoteIcon className={styles.musicIcon} />
                                     <Box>
                                         <Typography variant="body1" className={styles.musicTitle}>
-                                            {music.title}
+                                            {music.song_title}
                                         </Typography>
                                         <Typography
                                             variant="body2"
                                             color="textSecondary"
                                             className={styles.musicArtist}
                                         >
-                                            {music.artist}
+                                            {music.artist_name}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -97,18 +123,17 @@ const Submissions = () => {
 
             {tabValue === 'artist' && (
                 <Box className={styles.artistContainer}>
-                    {dummyMusic.map((artist, index) => (
+                    {myArtist.map((artist, index) => (
                         <Card key={index} className={styles[`artistCard_${theme_data.theme}`]}>
                             <CardContent className={styles.cardContent}>
                                 <Box className={styles.artistDetails}>
                                     <img
-                                        src={artist.profilePic || '/default-avatar.png'}
-                                        alt={`${artist.artist}`}
+                                        src={artist.artistImageURL || '/default-avatar.png'}
                                         className={styles.artistImage}
                                     />
                                     <Box>
                                         <Typography variant="body1" className={styles.artistName}>
-                                            {artist.artist}
+                                            {artist.artist_name}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -123,8 +148,7 @@ const Submissions = () => {
                                     open={Boolean(anchorEl) && selectedMusic === artist.id}
                                     onClose={handleMenuClose}
                                 >
-                                    <MenuItem onClick={handleMenuClose}>View Profile</MenuItem>
-                                    <MenuItem onClick={handleMenuClose}>Follow</MenuItem>
+                                    <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
                                 </Menu>
                             </CardContent>
                         </Card>

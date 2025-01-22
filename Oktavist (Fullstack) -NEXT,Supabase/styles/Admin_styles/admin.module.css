@@ -29,7 +29,6 @@
 
 .content_area {
     grid-area: content;
-    border: 2px solid green;
     padding: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
