@@ -40,7 +40,8 @@ const Signup = () => {
                 .from('signup')
                 .insert([
                     {
-                        user_id: user.id, // Link to the auth.users table
+                        user_id: user.id,
+                        role: 'user',
                         name,
                         email,
                         password: hashedPassword,
@@ -50,7 +51,7 @@ const Signup = () => {
             if (profileError) {
                 alert(profileError.message);
             } else {
-                alert('Signup successful! Redirecting to login...');
+                alert('Signup successful! please check your email for verification.');
                 router.push('/Auth/UserSignin');
             }
         } catch (err) {
