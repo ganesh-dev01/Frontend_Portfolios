@@ -37,13 +37,13 @@ const Signup = () => {
 
             const { user } = authData;
             const { error: profileError } = await supabase
-                .from('SignupUser')
+                .from('signup')
                 .insert([
                     {
                         user_id: user.id, // Link to the auth.users table
                         name,
                         email,
-                        password: hashedPassword, 
+                        password: hashedPassword,
                     },
                 ]);
 
