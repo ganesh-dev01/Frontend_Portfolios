@@ -76,7 +76,7 @@ const Admin_sideNav = () => {
 
             {/* Main side navigation */}
             <div className={styles[`main_sidenav_${theme_data.theme}`]}>
-                <div className={`${styles.logo}`}>Logo</div>
+                <div className={`${styles.logo}`}>OV</div>
                 {[
                     { name: 'Home', icon: FaHome, value: 1 },
                     { name: 'Submissions', icon: FaFileAlt, value: 2 },
