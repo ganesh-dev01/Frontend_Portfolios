@@ -1,0 +1,114 @@
+.main_dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #121212;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+
+.artist_card {
+    width: 20%;
+    height: 350px;
+    background-color: #1c1c1c;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist_card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+}
+
+.artist_cover_pic {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.artist_cover_pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.artist_info {
+    width: 100%;
+    padding: 15px;
+    color: white;
+}
+
+.artist_name {
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+
+
+.artist_card .tapmsg {
+    font-size: 16px;
+    color: #b3b3b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.artist_card .tapmsg:hover {
+    color: #1db954;
+}
+
+@media (max-width: 1440px) {
+    .artist_card {
+        width: 27%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .artist_card {
+        width: 40%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main_dashboard {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .artist_card {
+        width: 40%;
+    }
+
+    .artist_name {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 510px) {
+    .artist_card {
+        width: 70%;
+    }
+
+
+}

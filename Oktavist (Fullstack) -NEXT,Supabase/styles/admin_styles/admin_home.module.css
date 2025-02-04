@@ -1,0 +1,65 @@
+.main_dashboard {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    color: #fff;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.main_dashboard .section {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.section .heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.section .text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #bdbdbd;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.section .icons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.icon {
+    font-size: 30px;
+    color: #bdbdbd;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: #1da1f2;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #4c9aff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
