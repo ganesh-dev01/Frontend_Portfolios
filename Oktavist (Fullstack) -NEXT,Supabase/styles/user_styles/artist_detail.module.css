@@ -241,3 +241,37 @@
         height: 85%;
     }
 }
+
+.music_box .slider_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.music_box .slider_container .slider {
+    width: 80%;
+    height: 8px;
+    background: #1db954;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.music_box .wave_container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+}

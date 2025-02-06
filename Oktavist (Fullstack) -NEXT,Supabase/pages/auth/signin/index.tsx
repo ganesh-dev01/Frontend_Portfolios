@@ -1,26 +1,43 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import google_icon from '@/public/assets/icon/google_icon.png';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { Themecontext } from '@/Theme/Themestate';
-import styles from '@/styles/auth_styles/signin.module.css'
-
+import styles from '@/styles/auth_styles/signin.module.css';
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
     const theme_data = useContext(Themecontext);
+
+    theme_data.setTheme('dark'); //by default dark theme
+
     const router = useRouter();
+    const supabase = useSupabaseClient();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const onSubmit = async (data: any) => {
+        const { email, password } = data;
 
-    const { register, handleSubmit, formState: { errors }} = useForm();
+        const { user, error }: any = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
 
+        if (error) {
+            toast.error(error.message);
+            return;
+        }
+
+        toast.success("Login successful! Redirecting...");
+        setTimeout(() => router.push('/cms/user/dashboard'), 2000);
+    };
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
-
-
             <div className={styles[`container_${theme_data.theme}`]}>
-               
                 <Typography variant="h4" className={styles.heading}>
                     Sign In
                 </Typography>
@@ -28,6 +45,7 @@ const Signin = () => {
                 <Box
                     component="form"
                     className={styles.form}
+                    onSubmit={handleSubmit(onSubmit)}
                 >
                     <TextField
                         label="Email"
@@ -41,7 +59,7 @@ const Signin = () => {
                                 message: 'Enter a valid email address.',
                             },
                         })}
-                        error={!!errors.email}                   
+                        error={!!errors.email}
                     />
 
                     <TextField
@@ -60,15 +78,7 @@ const Signin = () => {
                         error={!!errors.password}
                     />
 
-                    <Typography className={styles.forgot_password}>
-                        Forgot your password?
-                    </Typography>
-
                     <Box className={styles.signin_btn_container}>
-                        {/* <Button className={styles.google_btn}>
-                            <img src={google_icon.src} alt="Google Icon" />
-                        </Button> */}
-
                         <Button
                             type="submit"
                             variant="contained"
@@ -90,6 +100,9 @@ const Signin = () => {
                     </span>
                 </Typography>
             </div>
+
+
+            <ToastContainer position="top-center" autoClose={3000} />
         </div>
     );
 };

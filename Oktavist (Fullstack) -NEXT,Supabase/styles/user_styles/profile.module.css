@@ -194,6 +194,34 @@
     transform: scale(0.95);
 }
 
+.btn_container .login_btn {
+    height: 20%;
+    width: 15%;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #8774f9;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn_container .login_btn:hover {
+    background-color: #365fff;
+    transform: scale(1.05);
+}
+
+.btn_container .login_btn:active {
+    transform: scale(0.95);
+}
+
+
+
+
 
 
 

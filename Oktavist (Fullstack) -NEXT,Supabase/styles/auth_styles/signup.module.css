@@ -24,7 +24,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 .main_dark .heading {
@@ -131,4 +131,25 @@
 .span_text_dark:hover,
 .span_text_light:hover {
     cursor: pointer;
+}
+
+
+.profilePicContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profilePicContainer .avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.profilePicContainer .fileInput {
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    text-align: center;
 }

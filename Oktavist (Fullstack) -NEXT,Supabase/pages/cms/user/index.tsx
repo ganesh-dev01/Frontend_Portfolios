@@ -11,16 +11,17 @@ const Welcome: React.FC = () => {
     const changeTheme = () => {
         (theme_data.theme === "light") ? theme_data.setTheme("dark") : theme_data.setTheme("light")
     }
+    theme_data.setTheme("dark");
 
     const router = useRouter();
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
 
-            <div className={styles.themebtn_area}>
+            {/* <div className={styles.themebtn_area}>
                 <button className={styles.toggle_btn} onClick={changeTheme}>
                     {theme_data.theme === 'dark' ? <MdLightMode /> : <MdDarkMode />}
                 </button>
-            </div>
+            </div> */}
 
             <div className={styles.content}>
                 <h1 className={styles.welcome_message}>Welcome to <span>Oktavist</span>!</h1>
