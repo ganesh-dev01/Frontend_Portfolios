@@ -1,11 +1,11 @@
 import { Themecontext } from '@/Theme/Themestate';
 import { useContext, useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
-import styles from '@/styles/admin_styles/submissions.module.css';
 import { FaPlay, FaEllipsisV, FaDownload, FaTrash, FaPause } from 'react-icons/fa';
 import music_icon from '@/public/assets/music_icon.png';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from '@/styles/admin_styles/submissions.module.css';
 
 
 interface Song {
@@ -21,10 +21,16 @@ const ConfirmBox: React.FC<{ song: Song | null; onConfirm: () => void; onCancel:
     return (
         <div className={styles.confirm_container}>
             <div className={styles.confirm_box}>
-                <h2>Confirm Delete</h2>
-                <p>Are you sure you want to delete <strong>{song.music_title}</strong>?</p>
-                <button onClick={onConfirm}>Yes</button>
-                <button onClick={onCancel}>No</button>
+                <div className={styles.confirm_box_header}>Confirm Delete</div>
+                <div className={styles.confirm_box_body}>
+                    <p>
+                        Are you sure you want to delete <strong>{song.music_title}</strong>?
+                    </p>
+                </div>
+                <div className={styles.confirm_box_footer}>
+                    <button onClick={onCancel}>No</button>
+                    <button onClick={onConfirm}>Yes</button>
+                </div>
             </div>
         </div>
     );
@@ -110,7 +116,7 @@ const MusicCard: React.FC<{ song: Song; onDeleteRequest: (song: Song) => void; o
                     <FaEllipsisV className={styles.menu_icon} onClick={() => setMenuOpen(!menuOpen)} />
                     {menuOpen && (
                         <div className={styles.dropdown_menu}>
-                            <a href={song.music_link} download>
+                            <a href={song.music_link} target="_blank" download >
                                 <button><FaDownload /> Download</button>
                             </a>
                             <button onClick={() => onDeleteRequest(song)}><FaTrash /> Delete</button>

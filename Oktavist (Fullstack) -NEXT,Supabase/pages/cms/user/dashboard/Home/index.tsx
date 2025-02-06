@@ -68,7 +68,7 @@ const Home: React.FC = () => {
         let filteredData = musicList;
 
         if (newCategory) {
-            filteredData = filteredData.filter(music => music.music_type === newCategory);
+            filteredData = filteredData.filter(music => music.music_type.toLowerCase() === newCategory.toLowerCase());
         }
 
         if (searchQuery) {
@@ -76,6 +76,10 @@ const Home: React.FC = () => {
                 music.music_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 music.artist_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
+        }
+
+        if("All" === newCategory) {
+            filteredData = musicList;
         }
 
         setFilteredMusic(filteredData);
@@ -116,6 +120,9 @@ const Home: React.FC = () => {
 
             {/* Category Section (Dynamic) */}
             <div className={styles.category_box}>
+                <div className={styles.category_item} onClick={() => handleCategorySelect('All')}>
+                    <p>All</p>
+                </div>
                 {categories.length > 0 ? (
                     categories.map((category) => (
                         <div
@@ -124,6 +131,7 @@ const Home: React.FC = () => {
                             onClick={() => handleCategorySelect(category)}
                         >
                             <p>{category}</p>
+
                         </div>
                     ))
                 ) : (

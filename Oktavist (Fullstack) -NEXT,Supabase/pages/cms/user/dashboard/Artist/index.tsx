@@ -25,8 +25,9 @@ const Artists: React.FC = () => {
             if (error) {
                 console.error('Error fetching artists:', error.message);
             } else {
-                // Remove duplicate artists based on artist_name
-                const uniqueArtists = Array.from(new Map(data.map(item => [item.artist_name, item])).values());
+                const uniqueArtists = data?.filter((item, index) => {
+                    return data.findIndex(v => v?.artist_name.trim().toLowerCase() === item.artist_name.trim().toLowerCase()) === index;
+                });
                 setArtists(uniqueArtists);
             }
             setLoading(false);
@@ -34,6 +35,7 @@ const Artists: React.FC = () => {
 
         fetchArtists();
     }, []);
+
 
     return (
         <div className={`${styles[`main_dashboard_${data_theme}`]} ${styles.main_dashboard}`}>

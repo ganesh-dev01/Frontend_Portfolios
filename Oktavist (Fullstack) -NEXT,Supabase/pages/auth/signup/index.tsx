@@ -68,7 +68,7 @@ const Signup = () => {
 
             if (fileInputRef.current?.files?.[0]) {
                 const file = fileInputRef.current.files[0];
-                const filePath = `profile_images/${user?.id}_${file.name}`;
+                const filePath = `profile_images/${Math.abs(Math.random())}_${file.name}`;
 
                 const { data, error: storageError }: any = await supabase
                     .storage

@@ -4,6 +4,7 @@ import { Themecontext } from "@/Theme/Themestate";
 import { supabase } from "@/lib/supabase";
 import { FaPlay, FaPause } from "react-icons/fa";
 import styles from "@/styles/user_styles/artist_detail.module.css";
+import person_img from '@/public/assets/guest.jpg';
 
 interface Song {
     music_title: string;
@@ -23,6 +24,7 @@ const Artist_Details: React.FC = () => {
     const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
     const [sliderValue, setSliderValue] = useState(0);
 
+
     // Fetch songs based on artist
     useEffect(() => {
         if (!slug) return;
@@ -30,19 +32,21 @@ const Artist_Details: React.FC = () => {
         const fetchSongs = async () => {
             const { data, error } = await supabase
                 .from("music")
-                .select("music_title, album_name, music_link, artistpic_link")
-                .eq("artist_name", slug);
+                .select('*')
+
+            const filteredData = data?.filter((v: any) => v.artist_name.toLowerCase().trim()
+                === (typeof slug === 'string' ? slug.toLowerCase().trim() : ''));
 
             if (error) {
                 console.error("Error fetching songs:", error.message);
             } else {
-                setSongs(data);
-                if (data.length > 0) {
-                    setArtistImage(data[0].artistpic_link || "/assets/music cover.png");
+                setSongs(filteredData || []);
+
+                if (filteredData && filteredData.length > 0) {
+                    setArtistImage(filteredData[0].artistpic_link);
                 }
             }
         };
-
         fetchSongs();
     }, [slug]);
 
@@ -100,7 +104,7 @@ const Artist_Details: React.FC = () => {
             <div className={styles.artist_container}>
                 <div className={styles.artist_image_container}>
                     <div className={styles.artist_image}>
-                        <img src={artistImage || "/assets/music cover.png"} alt={slug as string} />
+                        <img src={artistImage || person_img.src} alt={slug as string} />
                     </div>
                 </div>
 
