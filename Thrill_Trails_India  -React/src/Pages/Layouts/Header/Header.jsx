@@ -22,7 +22,7 @@ const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Home', path: '/abouts' },
     { name: 'Destination', path: '/destination' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Home', path: '/contact' },
 ];
 
 function Header(props) {
