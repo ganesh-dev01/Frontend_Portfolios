@@ -20,7 +20,7 @@ import Button from '@mui/material/Button';
 const drawerWidth = 240;
 const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/abouts' },
+    { name: 'Home', path: '/abouts' },
     { name: 'Destination', path: '/destination' },
     { name: 'Contact', path: '/contact' },
 ];
