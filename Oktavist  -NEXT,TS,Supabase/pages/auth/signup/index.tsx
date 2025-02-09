@@ -1,6 +1,6 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { useForm } from 'react-hook-form';
-import { TextField, Button, Typography, Box, Avatar } from '@mui/material';
+import { Avatar } from '@mui/material';
 import { useRouter } from 'next/router';
 import { Themecontext } from '@/Theme/Themestate';
 import { supabase } from '@/lib/supabase';
@@ -8,15 +8,24 @@ import styles from '@/styles/auth_styles/signup.module.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Signup = () => {
+interface FormData {
+    name: string;
+    email: string;
+    phone: string;
+    password: string;
+    confirmPassword: string;
+}
+
+const Signup: React.FC = () => {
     const theme_data = useContext(Themecontext);
     theme_data.setTheme('dark');
     const router = useRouter();
 
     const [profilePic, setProfilePic] = useState<string | null>(null);
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const [loading, setLoading] = useState(false);
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             setProfilePic(URL.createObjectURL(file));
@@ -27,10 +36,10 @@ const Signup = () => {
         fileInputRef.current?.click();
     };
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
-
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: FormData) => {
+        setLoading(true);
         const { name, email, phone, password, confirmPassword } = data;
 
         if (password !== confirmPassword) {
@@ -49,12 +58,12 @@ const Signup = () => {
                 return;
             }
 
-            if (existingUsers.length > 0) {
+            if (existingUsers && existingUsers.length > 0) {
                 toast.error('Email already exists. Please use a different email.');
                 return;
             }
 
-            const { user, error: authError }: any = await supabase.auth.signUp({
+            const { error: authError } = await supabase.auth.signUp({
                 email,
                 password,
             });
@@ -70,7 +79,7 @@ const Signup = () => {
                 const file = fileInputRef.current.files[0];
                 const filePath = `profile_images/${Math.abs(Math.random())}_${file.name}`;
 
-                const { data, error: storageError }: any = await supabase
+                const { error: storageError } = await supabase
                     .storage
                     .from('user_profile')
                     .upload(filePath, file);
@@ -80,22 +89,20 @@ const Signup = () => {
                     return;
                 }
 
-                // Get the public URL for the image
-                const { data: imgurl, error: urlError }: any = supabase
+                const { data: imgData } = await supabase
                     .storage
                     .from('user_profile')
                     .getPublicUrl(filePath);
 
-                if (urlError) {
-                    toast.error(urlError.message);
+                if (!imgData) {
+                    toast.error('Failed to get public URL for the image');
                     return;
                 }
 
-                profileImageUrl = imgurl.publicUrl;
+                profileImageUrl = imgData.publicUrl;
             }
 
-            // Insert the user data into the "signup_table"
-            const { data: signupData, error: insertError }: any = await supabase
+            const { error: insertError } = await supabase
                 .from('signup_table')
                 .insert([
                     {
@@ -113,23 +120,26 @@ const Signup = () => {
             }
 
             toast.success("Check your email for verification");
-            setTimeout(() => router.push('/auth/signin'), 2000);
+            setTimeout(() => {
+                setLoading(false);
+                router.push('/auth/signin'), 2000
+            }
+            );
 
-        } catch (error: any) {
-            toast.error('An error occurred: ' + error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                toast.error('An error occurred: ' + error.message);
+            }
         }
     };
-
 
     return (
         <div className={styles[`main_${theme_data.theme}`]}>
             <div className={styles[`container_${theme_data.theme}`]}>
-                <Typography variant="h4" className={styles.heading}>
-                    Sign Up
-                </Typography>
+                <h4 className={styles.heading}>Sign Up</h4>
 
-                <Box component="form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                    <Box className={styles.profilePicContainer}>
+                <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                    <div className={styles.profilePicContainer}>
                         <Avatar
                             src={profilePic || ''}
                             className={styles.avatar}
@@ -143,20 +153,18 @@ const Signup = () => {
                             style={{ display: 'none' }}
                             ref={fileInputRef}
                         />
-                    </Box>
+                    </div>
 
-                    <TextField
-                        label="Name"
-                        fullWidth
+                    <input
+                        placeholder="Name"
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
                         {...register('name', { required: 'Name is required.' })}
-                        error={!!errors.name}
                     />
+                    {errors.name && <span>{errors.name.message}</span>}
 
-                    <TextField
-                        label="Email"
-                        fullWidth
+                    <input
+                        placeholder="Email"
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
                         {...register('email', {
@@ -166,12 +174,11 @@ const Signup = () => {
                                 message: 'Enter a valid email address.',
                             },
                         })}
-                        error={!!errors.email}
                     />
+                    {errors.email && <span>{errors.email.message}</span>}
 
-                    <TextField
-                        label="Phone"
-                        fullWidth
+                    <input
+                        placeholder="Phone"
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
                         {...register('phone', {
@@ -181,14 +188,12 @@ const Signup = () => {
                                 message: 'Enter a valid 10-digit phone number.',
                             },
                         })}
-                        error={!!errors.Phone}
                     />
+                    {errors.phone && <span>{errors.phone.message}</span>}
 
-
-                    <TextField
-                        label="Password"
+                    <input
+                        placeholder="Password"
                         type="password"
-                        fullWidth
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
                         {...register('password', {
@@ -198,42 +203,33 @@ const Signup = () => {
                                 message: 'Password must be at least 6 characters.',
                             },
                         })}
-                        error={!!errors.password}
                     />
+                    {errors.password && <span>{errors.password.message}</span>}
 
-                    <TextField
-                        label="Confirm Password"
+                    <input
+                        placeholder="Confirm Password"
                         type="password"
-                        fullWidth
                         className={styles.input_field}
                         id={styles[`input_field_${theme_data.theme}`]}
                         {...register('confirmPassword', {
                             required: 'Please confirm your password.',
                         })}
-                        error={!!errors.confirmPassword}
                     />
+                    {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
 
-                    <Box className={styles.signup_btn_container}>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            className={styles.signup_btn}
-                        >
-                            Sign Up
-                        </Button>
-                    </Box>
-                </Box>
+                    <div className={styles.signup_btn_container}>
+                        <button type="submit" className={styles.signup_btn}>
+                            {loading ? 'Loading...'
+                                :
+                                'Sign Up'
+                            }
+                        </button>
+                    </div>
 
-                <Typography variant="body2" className={styles.helper_text}>
-                    Already have an account?{' '}
-                    <span
-                        className={styles[`span_text_${theme_data.theme}`]}
-                        onClick={() => router.push('/auth/signin')}
-                    >
-                        Sign in
-                    </span>
-                </Typography>
+                    <div className={styles.account_redirect}>
+                        <p>Already have an account? <a href="/auth/signin">Sign in</a></p>
+                    </div>
+                </form>
             </div>
             <ToastContainer position="top-center" autoClose={3000} />
         </div>

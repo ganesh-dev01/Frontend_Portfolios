@@ -1,6 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
-import google_icon from '@/public/assets/icon/google_icon.png';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { Themecontext } from '@/Theme/Themestate';
@@ -11,28 +10,33 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
     const theme_data = useContext(Themecontext);
-
-    theme_data.setTheme('dark'); //by default dark theme
+    theme_data.setTheme('dark'); // By default dark theme
 
     const router = useRouter();
     const supabase = useSupabaseClient();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [loading, setLoading] = useState(false); 
 
     const onSubmit = async (data: any) => {
+        setLoading(true); 
         const { email, password } = data;
 
-        const { user, error }: any = await supabase.auth.signInWithPassword({
+        const { error }: any = await supabase.auth.signInWithPassword({
             email,
             password,
         });
 
         if (error) {
             toast.error(error.message);
+            setLoading(false); 
             return;
         }
 
         toast.success("Login successful! Redirecting...");
-        setTimeout(() => router.push('/cms/user/dashboard'), 2000);
+        setTimeout(() => {
+            setLoading(false);
+            router.push('/cms/user/dashboard');
+        }, 2000);
     };
 
     return (
@@ -84,8 +88,9 @@ const Signin = () => {
                             variant="contained"
                             color="primary"
                             className={styles.signin_btn}
+                            disabled={loading} 
                         >
-                            Sign In
+                            {loading ? "Loading..." : "Sign In"}
                         </Button>
                     </Box>
                 </Box>
@@ -100,7 +105,6 @@ const Signin = () => {
                     </span>
                 </Typography>
             </div>
-
 
             <ToastContainer position="top-center" autoClose={3000} />
         </div>
