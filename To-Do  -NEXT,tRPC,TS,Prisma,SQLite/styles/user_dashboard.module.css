@@ -1,0 +1,40 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    border:2px solid red
+}
+
+.main .upperNav{
+    width: 100%;
+    height: 40%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.upperNav .taskbox{
+    width: 70%;
+    height: 100%;
+    border: 1px solid blue;
+}
+
+.upperNav .accountbox{
+    width: 30%;
+    height: 100%;
+    border: 1px solid green;
+}
+
+@media screen and (max-width: 768px) {
+    .taskbox{
+        width: 100%;
+        height: 50%;
+    }
+    .accountbox{
+        width: 100%;
+        height: 50%;
+    }
+}
