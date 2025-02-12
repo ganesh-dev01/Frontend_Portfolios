@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { useState, useContext } from "react";
 import ThemeContext from "@/Theme/Themestate";
-import { useContext } from "react";
 import styles from "@/styles/auth_styles/signup.module.css";
 
 interface FormData {
@@ -12,8 +13,9 @@ interface FormData {
 
 const Signup: React.FC = () => {
   const data = useContext(ThemeContext);
-   const { theme } = data || {};
-// const theme='dark'
+  const theme = 'dark';
+  const router = useRouter();
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -21,14 +23,34 @@ const Signup: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log("Signup Data:", data);
+  const onSubmit = async (formData: FormData) => {
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+      }),
+    });
+
+    if (res.ok) {
+      router.push("/auth/signin");
+    } else {
+      setError("Signup failed");
+    }
   };
 
   return (
     <div className={styles[`main_${theme}`]}>
       <div className={styles.container}>
         <h1 className={styles.title}>Sign Up</h1>
+        {error && <p className={styles.error}>{error}</p>}
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.inputGroup}>
             <label htmlFor="fullName" className={styles.label}>Full Name:</label>

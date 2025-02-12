@@ -1,20 +1,22 @@
 /* Import stylish font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Smooth Animation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Main container */
-.main_light, .main_dark {
+
+.main_light,
+.main_dark {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +26,7 @@
   transition: background 0.5s ease;
 }
 
-/* Light & Dark Theme */
+
 .main_light {
   --bg-color: #f8f9fa;
 }
@@ -33,7 +35,7 @@
   --bg-color: #111;
 }
 
-/* Form Container - Glassmorphism */
+
 .container {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -45,13 +47,13 @@
   animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Dark mode adjustments */
+
 .main_dark .container {
   background: rgba(0, 0, 0, 0.6);
   color: white;
 }
 
-/* Title */
+
 .title {
   text-align: center;
   font-size: 2rem;
@@ -65,14 +67,14 @@
   color: white;
 }
 
-/* Input Group */
+
 .inputGroup {
   margin-bottom: 1.2rem;
   display: flex;
   flex-direction: column;
 }
 
-/* Label */
+
 .label {
   font-size: 1rem;
   font-weight: 400;
@@ -84,7 +86,7 @@
   color: white;
 }
 
-/* Input Field */
+
 .input {
   padding: 0.9rem;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -100,21 +102,21 @@
   color: white;
 }
 
-/* Input Focus */
+
 .input:focus {
   border: 2px solid #007bff;
   outline: none;
   transform: scale(1.02);
 }
 
-/* Error Message */
+
 .error {
   color: red;
   font-size: 0.9rem;
   margin-top: 0.3rem;
 }
 
-/* Button */
+
 .button {
   width: 100%;
   padding: 0.9rem;
@@ -133,7 +135,7 @@
   background: linear-gradient(135deg, #0056b3, #003d80);
 }
 
-/* Responsive Design */
+
 @media (max-width: 480px) {
   .container {
     padding: 1.5rem;
@@ -152,4 +154,28 @@
     padding: 0.7rem;
     font-size: 0.9rem;
   }
+}
+
+.signupLabel {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.main_dark .signupLabel {
+  color: white;
+}
+
+.signupLink {
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.signupLink:hover {
+  color: #0056b3;
 }

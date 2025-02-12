@@ -1,12 +1,14 @@
 import ThemeContext from "@/Theme/Themestate"
 import { useContext } from "react"
+import SignIn from "./auth/signin";
+import Dashboard from "./cms/user/dashboard";
 
 const Home: React.FC = () => {
-  const data=useContext(ThemeContext);
+  const data = useContext(ThemeContext);
   return (
     <>
-      <h4>{data?.theme}</h4>
-    
+      <SignIn />
+      {/* <Dashboard /> */}
     </>
   )
 }
