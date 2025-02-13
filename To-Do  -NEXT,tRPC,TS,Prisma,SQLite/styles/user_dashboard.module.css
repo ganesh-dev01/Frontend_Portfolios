@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 .main {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid red;
 }
 
 .upperSection {
@@ -227,7 +224,7 @@
 }
 
 .profilebox .avatarbox {
-    height: 80%;
+    height: 70%;
     width: 50px;
 }
 
@@ -246,6 +243,10 @@
     font-weight: 500;
     color: #0056b3;
     cursor: pointer;
+}
+
+.main_dark .profilebox .userbox .signout {
+    color: #ff6f00d6;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -447,4 +448,3 @@
 .main_dark .donecardbtn {
     color: white;
 }
-

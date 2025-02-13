@@ -1,10 +1,13 @@
 import { useContext, useState, useEffect } from 'react';
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import ThemeContext from '@/Theme/Themestate';
 import Modal from '@/Components/Modal/index';
+import ConfirmBox from '@/Components/ConfirmBox/index';
 import guest_img from '@/public/guest.jpg';
 import styles from '@/styles/user_dashboard.module.css';
+import Signout_ConfirmBox from '@/Components/Signout_ConfirmBox';
 
 interface Task {
     id: string;
@@ -16,31 +19,37 @@ interface Task {
 }
 
 const Dashboard: React.FC = () => {
-    const data = useContext(ThemeContext);
-    const theme = data?.theme;
+    const { data: session, status } = useSession();
+    const router = useRouter();
+    const themeData = useContext(ThemeContext);
+    const theme = themeData?.theme;
 
     const [tasks, setTasks] = useState<Task[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSignoutConfirmOpen, setIsSignoutConfirmOpen] = useState(false);
     const [selectedTitle, setSelectedTitle] = useState("");
     const [selectedDescription, setSelectedDescription] = useState("");
     const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
-    
-    const session = useSession();
-    const userEmail = session?.data?.user?.email;
+    const userEmail = session?.user?.email;
 
+    // ✅ Authentication Check
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            router.push("/auth/signin");
+        }
+    }, [status, router]);
 
+    // ✅ Fetch Tasks
     useEffect(() => {
         if (userEmail) {
             fetchTasks();
         }
     }, [userEmail]);
 
-
     const fetchTasks = async () => {
         const res = await axios.get(`/api/tasks?email=${userEmail}`);
         setTasks(res.data);
     };
-
 
     const handleModalToggle = (id: string | null = null, title: string = "", description: string = "") => {
         setSelectedTaskId(id);
@@ -48,7 +57,6 @@ const Dashboard: React.FC = () => {
         setSelectedDescription(description);
         setIsModalOpen(prev => !prev);
     };
-
 
     const handleSubmit = async (title: string, description: string) => {
         if (selectedTaskId) {
@@ -60,32 +68,44 @@ const Dashboard: React.FC = () => {
         setIsModalOpen(false);
     };
 
-
     const handleMarkAsDone = async (id: string) => {
         await axios.patch(`/api/tasks/${id}`);
         fetchTasks();
     };
-
 
     const handleDelete = async (id: string) => {
         await axios.delete(`/api/tasks/${id}`);
         fetchTasks();
     };
 
+    // ✅ Signout Confirmation
+    const handleSignoutClick = () => {
+        setIsSignoutConfirmOpen(true);
+    };
 
-    const handleSignOut = async () => {
-        await signOut({ callbackUrl: "/" });
+    const confirmSignout = async () => {
+        setIsSignoutConfirmOpen(false);
+        await signOut({ callbackUrl: "/auth/signin" });
     };
 
     return (
         <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
-           
+
+            {/* Task Modal */}
             <Modal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 initialTitle={selectedTitle}
                 initialDescription={selectedDescription}
                 onSubmit={handleSubmit}
+            />
+
+            {/* Signout Confirmation Modal */}
+            <Signout_ConfirmBox
+                isOpen={isSignoutConfirmOpen}
+                message="Are you sure you want to sign out?"
+                onConfirm={confirmSignout}
+                onCancel={() => setIsSignoutConfirmOpen(false)}
             />
 
             <div className={styles.upperSection}>
@@ -101,8 +121,8 @@ const Dashboard: React.FC = () => {
                             <img src={guest_img.src} alt="avatar" />
                         </div>
                         <div className={styles.userbox}>
-                            <p className={styles.profilename}>{session?.data?.user?.name || 'John Doe'}</p>
-                            <p className={styles.signout} onClick={handleSignOut}>Sign out</p>
+                            <p className={styles.profilename}>{session?.user?.name || 'Guest'}</p>
+                            <p className={styles.signout} onClick={handleSignoutClick}>Sign out</p>
                         </div>
                     </div>
                 </div>

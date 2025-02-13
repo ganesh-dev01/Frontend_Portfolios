@@ -13,7 +13,7 @@ interface FormData {
 
 const Signup: React.FC = () => {
   const data = useContext(ThemeContext);
-  const theme = 'dark';
+  const theme = data?.theme;
   const router = useRouter();
   const [error, setError] = useState("");
 
