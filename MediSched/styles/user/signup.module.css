@@ -1,0 +1,245 @@
+.main_dark,
+.main_light {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.main_light {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+
+.container_dark,
+.container_light {
+    background-color: #252525;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_light {
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.container_light .heading {
+    color: black;
+}
+
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+
+.input_field {
+    width: 100%;
+    height: 50px;
+    background-color: #4C4C4D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    padding-left: 20px;
+}
+
+.input_field::placeholder {
+    color: #b0b0b0;
+}
+
+.container_light .form .input_field {
+    background-color: #f0f0f0;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.container_light .form .input_field::placeholder {
+    color: #7a7a7a;
+}
+
+
+.form .signup_btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.container_dark .signup_btn {
+    width: 80%;
+    height: 45px;
+    background: linear-gradient(135deg, #f76c6c, #56ccf2);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: capitalize;
+}
+
+.container_light .signup_btn {
+    width: 80%;
+    height: 45px;
+    background-color: #252525;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: capitalize;
+}
+
+.container_dark .signup_btn:hover {
+    background-color: #252525d5;
+}
+
+
+.helper_text {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.span_text_dark {
+    color: #8874f9d9;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.span_text_dark:hover {
+    text-decoration: underline;
+}
+
+.account_redirect {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.account_redirect a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.account_redirect a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 480px) {
+    .container_dark {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input_field,
+    .signup_btn {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+
+.span_text_light {
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.span_text_light:hover {
+    text-decoration: underline;
+}
+
+.account_redirect a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.account_redirect a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .container_light {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input_field,
+    .signup_btn {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+.main_light .toggle_btn {
+    color: black;
+}
+
+.span_text {
+    margin-left: 5px;
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.themebtn_area {
+    position: absolute;
+    top: 3vh;
+    right: 20px;
+    padding: 10px 10px;
+}
+
+.toggle_btn {
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.main_dark .toggle_btn {
+    color: white;
+}
+
+.toggle_btn:hover {
+    color: #f76c6c;
+}

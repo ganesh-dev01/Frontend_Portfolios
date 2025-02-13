@@ -1,0 +1,272 @@
+.main_dashboard_light,
+.main_dashboard_dark {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 18% auto;
+    grid-template-rows: 100vh;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+    .main_dashboard_light,
+    .main_dashboard_dark {
+        grid-template-columns: 25% 75%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main_dashboard_light,
+    .main_dashboard_dark {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+/*-------------------- Sidebar --------------------*/
+.main_dashboard_dark .sidebar,
+.main_dashboard_light .sidebar {
+    grid-row: 1 / -1;
+    background-color: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    width: 70%;
+    z-index: 10;
+    transition: left 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.main_dashboard_light .sidebar {
+    background-color: #f0f0f0;
+}
+
+/* Sidebar Open */
+.main_dashboard_dark .sidebar.sidebar_open,
+.main_dashboard_light .sidebar.sidebar_open {
+    left: 0;
+    transform: translateX(0);
+}
+
+/*-------------------- Brand Area --------------------*/
+.main_dashboard_dark .sidebar .brand_area,
+.main_dashboard_light .sidebar .brand_area {
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main_dashboard_light .sidebar .brand_area {
+    color: #1a1a1a;
+}
+
+/* Sidebar Close Button */
+.main_dashboard_dark .sidebar .brand_area .close_area,
+.main_dashboard_light .sidebar .brand_area .close_area {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Sidebar Brand Logo */
+.main_dashboard_dark .sidebar .brand_area .brand_logo,
+.main_dashboard_light .sidebar .brand_area .brand_logo {
+    width: 15%;
+    padding-right: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 30px;
+    flex-shrink: 1;
+}
+
+/* Mobile Brand Area Adjustments */
+@media screen and (max-width: 768px) {
+    .main_dashboard_dark .sidebar .brand_area .close_area,
+    .main_dashboard_light .sidebar .brand_area .close_area {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 6vw;
+    }
+
+    .main_dashboard_dark .sidebar .brand_area .brand_logo,
+    .main_dashboard_light .sidebar .brand_area .brand_logo {
+        display: flex;
+        justify-content: center;
+        font-size: 5vw;
+        flex-shrink: 1;
+    }
+
+    .main_dashboard_dark .sidebar .brand_area .brand_name,
+    .main_dashboard_light .sidebar .brand_area .brand_name {
+        display: flex;
+        align-items: center;
+        font-size: 4vw;
+    }
+}
+
+/*-------------------- Menu Area --------------------*/
+.main_dashboard_dark .sidebar .menu_area,
+.main_dashboard_light .sidebar .menu_area {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main_dashboard_dark .sidebar .menu_area .menu_item,
+.main_dashboard_light .sidebar .menu_area .menu_item {
+    font-size: 18px;
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    border-radius: 5px;
+}
+
+.main_dashboard_light .sidebar .menu_area .menu_item {
+    color: #1a1a1a;
+}
+
+/* Sidebar Hover Effect */
+.main_dashboard_dark .sidebar .menu_area .menu_item:hover,
+.main_dashboard_light .sidebar .menu_area .menu_item:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.main_dashboard_light .sidebar .menu_area .menu_item:hover {
+    color: #f0f0f0;
+}
+
+/*-------------------- Main Content --------------------*/
+.main_dashboard_dark .main_content,
+.main_dashboard_light .main_content {
+    grid-column: 2;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.main_dashboard_dark .main_content {
+    background-color: #1a1a1a;
+}
+
+/* Menu Bar Icon */
+.menu_bar_icon {
+    display: none;
+    font-size: 26px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main_dashboard_dark .menu_bar_icon{
+    color: white;
+}
+
+/* Mobile Menu Adjustments */
+@media screen and (max-width: 768px) {
+    .menu_bar_icon {
+        display: block;
+        color: black;
+    }
+
+    .main_dashboard_dark .main_content,
+    .main_dashboard_light .main_content {
+        grid-column: 1 / -1;
+        padding-top: 10vh;
+    }
+
+    .main_dashboard_dark .sidebar,
+    .main_dashboard_light .sidebar {
+        display: none;
+    }
+
+    .main_dashboard_dark .sidebar.sidebar_open,
+    .main_dashboard_light .sidebar.sidebar_open {
+        display: flex;
+        width: 50%;
+        transform: translateX(0);
+    }
+
+    .main_dashboard_dark .sidebar .brand_area .close_area,
+    .main_dashboard_light .sidebar .brand_area .close_area {
+        display: block;
+    }
+}
+
+/* Desktop Sidebar Adjustments */
+@media screen and (min-width: 769px) {
+    .main_dashboard_dark .sidebar,
+    .main_dashboard_light .sidebar {
+        display: flex;
+        position: static;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: #1a1a1a;
+        transform: translateX(0);
+    }
+
+    .main_dashboard_light .sidebar {
+        background-color: #f0f0f0;
+    }
+
+    .main_dashboard_dark .sidebar .brand_area .close_area,
+    .main_dashboard_light .sidebar .brand_area .close_area {
+        display: none;
+    }
+}
+
+/* Theme Toggle */
+.themebtn_area {
+    position: absolute;
+    top: 2vh;
+    right: 15px;
+    padding: 10px 10px;
+}
+
+.toggle_btn {
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.main_dashboard_dark .toggle_btn {
+    color: white;
+}
+
+.toggle_btn:hover {
+    color: #f76c6c;
+}
