@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "@/styles/Component_styles/modal.module.css";
+import ThemeContext from "@/Theme/Themestate";
 
 interface ModalProps {
     isOpen: boolean;
@@ -15,8 +16,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, initialTitle, initialDes
 
     if (!isOpen) return null;
 
+    const data = useContext(ThemeContext);
+    const { theme } = data || {};
+
+
+
     return (
-        <div className={styles.modalOverlay}>
+        <div className={styles[`modalOverlay_${theme}`]}>
             <div className={styles.modalContent}>
                 <button className={styles.closeButton} onClick={onClose}>×</button>
                 <h2 className={styles.modalTitle}>Task</h2>

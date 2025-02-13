@@ -1,0 +1,34 @@
+.themeButton_dark,
+.themeButton_light {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.themeButton:hover {
+    background: #555;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.themeButton_dark {
+    background: #333;
+    color: #fff;
+}
+
+.themeButton_light {
+    background: #fff;
+    color: #333;
+}
