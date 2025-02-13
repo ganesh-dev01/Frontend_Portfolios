@@ -30,16 +30,17 @@ const Dashboard: React.FC = () => {
     const [selectedTitle, setSelectedTitle] = useState("");
     const [selectedDescription, setSelectedDescription] = useState("");
     const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
+    const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
+    const [deleteTaskId, setDeleteTaskId] = useState<string | null>(null);
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
     const userEmail = session?.user?.email;
 
-    // ✅ Authentication Check
     useEffect(() => {
         if (status === "unauthenticated") {
             router.push("/auth/signin");
         }
     }, [status, router]);
 
-    // ✅ Fetch Tasks
     useEffect(() => {
         if (userEmail) {
             fetchTasks();
@@ -73,19 +74,29 @@ const Dashboard: React.FC = () => {
         fetchTasks();
     };
 
-    const handleDelete = async (id: string) => {
-        await axios.delete(`/api/tasks/${id}`);
-        fetchTasks();
+    const handleDeleteClick = (id: string) => {
+        setDeleteTaskId(id);
+        setIsConfirmDeleteOpen(true);
     };
 
-    // ✅ Signout Confirmation
+    const confirmDelete = async () => {
+        if (deleteTaskId) {
+            await axios.delete(`/api/tasks/${deleteTaskId}`);
+            fetchTasks();
+        }
+        setIsConfirmDeleteOpen(false);
+        setDeleteTaskId(null);
+    };
+
     const handleSignoutClick = () => {
+        setIsLoggingOut(true);
         setIsSignoutConfirmOpen(true);
     };
 
     const confirmSignout = async () => {
         setIsSignoutConfirmOpen(false);
         await signOut({ callbackUrl: "/auth/signin" });
+        setIsLoggingOut(false);
     };
 
     return (
@@ -100,12 +111,21 @@ const Dashboard: React.FC = () => {
                 onSubmit={handleSubmit}
             />
 
+            {/* Delete Confirmation Modal */}
+            <ConfirmBox
+                isOpen={isConfirmDeleteOpen}
+                onConfirm={confirmDelete}
+                onClose={() => setIsConfirmDeleteOpen(false)}
+            />
+
             {/* Signout Confirmation Modal */}
             <Signout_ConfirmBox
                 isOpen={isSignoutConfirmOpen}
-                message="Are you sure you want to sign out?"
                 onConfirm={confirmSignout}
-                onCancel={() => setIsSignoutConfirmOpen(false)}
+                onClose={() => {
+                    setIsLoggingOut(false);
+                    setIsSignoutConfirmOpen(false);
+                }}
             />
 
             <div className={styles.upperSection}>
@@ -122,7 +142,9 @@ const Dashboard: React.FC = () => {
                         </div>
                         <div className={styles.userbox}>
                             <p className={styles.profilename}>{session?.user?.name || 'Guest'}</p>
-                            <p className={styles.signout} onClick={handleSignoutClick}>Sign out</p>
+                            <p className={styles.signout} onClick={handleSignoutClick}>
+                                {isLoggingOut ? "Logging out..." : "Sign out"}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +175,7 @@ const Dashboard: React.FC = () => {
                                 </button>
                             </div>
                             <div className={styles.cardbtn_container}>
-                                <button className={styles.deletecardbtn} onClick={() => handleDelete(task.id)}>
+                                <button className={styles.deletecardbtn} onClick={() => handleDeleteClick(task.id)}>
                                     Delete
                                 </button>
                             </div>
@@ -164,5 +186,4 @@ const Dashboard: React.FC = () => {
         </div>
     );
 };
-
 export default Dashboard;

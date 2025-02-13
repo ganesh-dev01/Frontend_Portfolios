@@ -30,7 +30,7 @@ const Admin_SignIn: React.FC = () => {
         if (data.email === adminEmail && data.password === adminPassword) {
             localStorage.setItem("admin_token", "admin_token");
             console.log("Admin Logged In Successfully!");
-            router.push("/cms/admin/dashboard"); // Redirect to admin dashboard
+            router.push("/cms/admin/dashboard"); 
         } else {
             setLoginError("Invalid email or password!");
         }
