@@ -1,0 +1,180 @@
+.main_dark, .main_light {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  .heading {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .tableContainer {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .appointmentTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .appointmentTable thead {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .appointmentTable th, .appointmentTable td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .appointmentTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Action Buttons */
+  .acceptbtn, .declinebtn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  .acceptbtn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  
+  .main_dark .acceptbtn, .main_dark .declinebtn {
+    background-color: #1e1e1e;
+    color: white;
+  }
+  
+  .declinebtn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .declinebtn:hover {
+    background-color: #c82333;
+  }
+  
+  .acceptbtn:hover {
+    background-color: #007bff9d;
+  }
+  
+  /* Modal Styles */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .modal h4 {
+    margin-bottom: 15px;
+  }
+  
+  .modal label {
+    display: block;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .modal input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modalActions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .closeButton {
+    padding: 8px 12px;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .closeButton:hover {
+    background-color: darkgray;
+  }
+  
+  /* Dark Mode */
+  .main_dark {
+    background-color: #1e1e1e;
+    color: #ddd;
+  }
+  
+  .main_dark .appointmentTable {
+    background-color: #2a2a2a;
+    color: white;
+  }
+  
+  .main_dark .appointmentTable thead {
+    background-color: #444;
+  }
+  
+  .main_dark .appointmentTable tbody tr:nth-child(even) {
+    background-color: #333;
+  }
+  
+  .main_dark .modal {
+    background: #2a2a2a;
+    color: white;
+  }
+  
+  .main_dark .modal input {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+  }
+  
+  .modal textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .confirmbtn,.sendbtn{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }

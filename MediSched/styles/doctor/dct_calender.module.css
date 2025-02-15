@@ -1,0 +1,167 @@
+.main_dark,.main_light {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    padding-right: 50px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+  
+  
+  .main_light {
+    background-color: #f4f4f4;
+    color: #222;
+  }
+  
+  
+  .main_dark {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  .fc-view-container,
+  .fc-view,
+  .fc-timeGridWeek-view,
+  .fc-dayGridMonth-view {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .fc-scroller {
+    height: calc(100% - 50px) !important; /* Adjust height based on toolbar */
+    overflow-y: auto !important;
+  }
+  
+  
+  
+  .fc {
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    color: inherit;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  
+  .fc-toolbar {
+    background: transparent;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .fc-button {
+    background-color: #007bff !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 5px !important;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .fc-button:hover {
+    background-color: #0056b3 !important;
+  }
+  
+  
+  .main_dark .fc-button {
+    background-color: #34a853 !important;
+  }
+  
+  .main_dark .fc-button:hover {
+    background-color: #1e7038 !important;
+  }
+  
+  
+  .fc-toolbar-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: inherit;
+  }
+  
+  
+  .fc-daygrid-day {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .main_dark .fc-daygrid-day {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  
+  .fc-event {
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .fc-event:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  .fc-event-title {
+    color: white !important;
+  }
+  
+  .fc-event-general {
+    background-color: #34a853 !important; /* Green */
+  }
+  
+  .fc-event-dental {
+    background-color: #f4b400 !important; /* Yellow */
+  }
+  
+  .fc-event-eye {
+    background-color: #4285f4 !important; /* Blue */
+  }
+  
+  /* 🌙 Dark Mode for Events */
+  .main_dark .fc-event-general {
+    background-color: #27a746 !important;
+  }
+  
+  .main_dark .fc-event-dental {
+    background-color: #e2a400 !important;
+  }
+  
+  .main_dark .fc-event-eye {
+    background-color: #2b6cc4 !important;
+  }
+  
+  /* 🔹 Today Highlight */
+  .fc-day-today {
+    background: rgba(0, 123, 255, 0.1) !important;
+  }
+  
+  .main_dark .fc-day-today {
+    background: rgba(52, 168, 83, 0.2) !important;
+  }
+  
+  /* 🔄 Event Resizing & Dragging */
+  .fc-event-resizable {
+    cursor: ew-resize;
+  }
+  
+  .fc-event-dragging {
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  
