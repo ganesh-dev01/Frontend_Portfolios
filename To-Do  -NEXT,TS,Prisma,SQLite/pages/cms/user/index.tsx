@@ -9,7 +9,7 @@ import User_Profile from './profile';
 const User: React.FC = () => {
     const data = useContext(ThemeContext);
     let { theme } = data;
-    theme = 'dark';
+    // theme='dark';
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
     const toggleMobileNav = (v:number) => {

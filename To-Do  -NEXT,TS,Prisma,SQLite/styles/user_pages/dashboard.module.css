@@ -1,0 +1,296 @@
+.main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.addtaskbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #ddd;
+    color: #222;
+    transition: 0.3s;
+}
+
+.addtaskbtn:hover {
+    background-color: #eee;
+}
+
+.main_dark .addtaskbtn {
+    background-color: #222;
+    color: #fff;
+}
+
+.main_dark .addtaskbtn:hover {
+    background-color: #333;
+}
+
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #555;
+}
+
+.navbtn.active {
+    font-weight: bold;
+    color: #222;
+    border-bottom: 2px solid #222;
+}
+
+.main_dark .navbtn {
+    color: #aaa;
+}
+
+.main_dark .navbtn.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+
+.body {
+    width: 100%;
+    height: 78%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.table_container {
+    width: 95%;
+    overflow-x: auto;
+}
+
+.task_table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+}
+
+.task_table th,
+.task_table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.task_table th {
+    background-color: #ddd;
+}
+
+.task_table td label {
+    display: block;
+}
+
+.edit_btn,
+.delete_btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin: 2px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.edit_btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit_btn:hover {
+    background-color: #45a049;
+}
+
+.delete_btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete_btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Dark Mode */
+.main_dark .task_table {
+    background-color: #333;
+    color: #fff;
+}
+
+.main_dark .task_table th {
+    background-color: #444;
+}
+
+.main_dark .task_table td {
+    border: 1px solid #666;
+}
+
+.main_dark .edit_btn {
+    background-color: #66bb6a;
+}
+
+.main_dark .delete_btn {
+    background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbtn {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .table_container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .task_table th,
+    .task_table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .edit_btn,
+    .delete_btn {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+}
+
+
+
+.kanbanBoard {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.kanbanColumn {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 300px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kanbanColumn h3 {
+    font-size: 1rem;
+    text-align: center;
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.kanbanCard {
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out;
+    cursor: grab;
+}
+
+.kanbanCard:hover {
+    transform: scale(1.03);
+}
+
+.kanbanCard h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.kanbanCard p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.kanbanCard small {
+    display: block;
+    color: #999;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .kanbanBoard {
+        flex-direction: column;
+    }
+
+    .kanbanColumn {
+        width: 100%;
+    }
+
+}
+
+.main_dark .kanbanColumn {
+    background-color: #333;
+    color: #fff;
+}
+
+.main_dark .kanbanCard {
+    background-color: #444;
+    color: #fff;
+}
+
+.main_dark .kanbanCard h4 {
+    color: #fff;
+}
+
+.main_dark .kanbanCard p {
+    color: #ccc;
+}
+
+.main_dark .kanbanCard small {
+    color: #aaa;
+}
