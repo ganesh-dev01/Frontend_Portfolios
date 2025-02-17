@@ -3,7 +3,6 @@ import { useContext, useState } from 'react'
 import { Menu, User } from 'lucide-react';
 import UserTasks from './UserTasks';
 import SubAdminEditTask from './Edit_task';
-import SubAdminPermission from './Permission';
 import SubAdminProfile from './Profile';
 import styles from '@/styles/subadmin.module.css';
 
@@ -23,10 +22,8 @@ const SubAdmin: React.FC = () => {
             case 1:
                 return <UserTasks />
             case 2:
-                return <SubAdminPermission />
-            case 3:
                 return <SubAdminEditTask />
-            case 4:
+            case 3:
                 return <SubAdminProfile />
             default:
                 return <UserTasks />
@@ -45,9 +42,8 @@ const SubAdmin: React.FC = () => {
                 </div>
                 <ul className={styles.menu_list}>
                     <li onClick={()=>setActive(1)}>User Tasks</li>
-                    <li onClick={()=>setActive(2)}>Permission</li>
-                    <li onClick={()=>setActive(3)}>Edit Task</li>
-                    <li onClick={()=>setActive(4)}>Profile</li>
+                    <li onClick={()=>setActive(2)}>Edit Task</li>
+                    <li onClick={()=>setActive(3)}>Profile</li>
                 </ul>
             </div>
 
@@ -59,9 +55,8 @@ const SubAdmin: React.FC = () => {
             <div className={`${styles.mobile_sidenav} ${mobileNavOpen ? styles.open : ''}`}>
                 <ul className={styles.mobile_menu_list}>
                     <li onClick={()=>toggleMobileNav(1)}>User Tasks</li>
-                    <li onClick={()=>toggleMobileNav(2)}>Permission</li>
-                    <li onClick={()=>toggleMobileNav(3)}>Edit Task</li>
-                    <li onClick={()=>toggleMobileNav(4)}>Profile</li>
+                    <li onClick={()=>toggleMobileNav(2)}>Edit Task</li>
+                    <li onClick={()=>toggleMobileNav(3)}>Profile</li>
                 </ul>
             </div>
 
