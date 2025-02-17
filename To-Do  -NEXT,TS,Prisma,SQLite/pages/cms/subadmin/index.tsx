@@ -1,16 +1,16 @@
 import { ThemeContext } from '@/Theme/Themestate'
 import { useContext, useState } from 'react'
 import { Menu, User } from 'lucide-react';
-import styles from '@/styles/subadmin.module.css';
 import UserTasks from './UserTasks';
 import SubAdminEditTask from './Edit_task';
 import SubAdminPermission from './Permission';
 import SubAdminProfile from './Profile';
+import styles from '@/styles/subadmin.module.css';
 
 const SubAdmin: React.FC = () => {
     const data = useContext(ThemeContext);
     let { theme } = data;
-    theme='dark';
+
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
     const toggleMobileNav = (v:number) => {
