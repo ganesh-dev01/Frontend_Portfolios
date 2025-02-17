@@ -1,0 +1,214 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  .main_light {
+    background-color: #f9f9f9;
+    color: #222;
+  }
+  
+
+  .main_dark {
+    background-color: #1e1e1e;
+    color: #f9f9f9;
+  }
+  
+  .main h4{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #2a2a2a;
+  }
+
+  .main_dark h4{
+    color: #f9f9f9;
+  }
+
+  .section {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .main_light .section {
+    background-color: #ffffff;
+  }
+  
+  .status_hd {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    overflow-x: auto;
+  }
+  
+
+  .table th {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+
+  .table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+
+  .table tbody tr:hover {
+    cursor: pointer;
+    background-color: rgba(76, 175, 80, 0.2);
+  }
+  
+
+  .main_dark .table tbody tr:hover {
+    cursor: pointer;
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+
+  .actionBtn {
+    padding: 8px 14px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .actionBtn:hover {
+    background-color: #cc0000;
+  }
+  
+
+  @media (max-width: 768px) {
+    .table thead {
+      display: none;
+    }
+  
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+      display: block;
+      width: 100%;
+    }
+  
+    .table tr {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #fff;
+    }
+  
+    .main_dark .table tr {
+      background-color: #2a2a2a;
+    }
+  
+    .table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      text-transform: capitalize;
+      color: #333;
+    }
+  
+    .main_dark .table td::before {
+      color: #ccc;
+    }
+  }
+  
+  /*----------------------------- Modal ----------------------------------*/
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .modalActions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .confirmBtn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .cancelBtn {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .confirmBtn:hover {
+    background: darkred;
+  }
+  
+  .cancelBtn:hover {
+    background: darkgray;
+  }
+  
