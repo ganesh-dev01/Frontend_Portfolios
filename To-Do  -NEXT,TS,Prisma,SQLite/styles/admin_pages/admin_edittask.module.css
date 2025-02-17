@@ -1,0 +1,125 @@
+.main {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.main_light {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.main_dark {
+    background-color: #1e1e1e;
+    color: #ddd;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.userSection {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.main_dark .userSection {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.userHeader {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.taskContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.taskCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 10px);
+    min-width: 250px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.taskCard:hover {
+    transform: translateY(-5px);
+}
+
+.main_dark .taskCard {
+    background-color: #2a2a2a;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.taskTitle {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.taskDescription {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.taskMeta {
+    width: 50%;
+    font-size: 12px;
+    color: #555;
+}
+
+.main_dark .taskMeta {
+    color: #bbb;
+}
+
+/* Buttons */
+.taskActions {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    margin-top: 10px;
+}
+
+.editButton, .deleteButton {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.editButton {
+    background-color: #4caf50;
+    color: white;
+}
+
+.editButton:hover {
+    background-color: #388e3c;
+}
+
+.deleteButton {
+    background-color: #f44336;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f;
+}

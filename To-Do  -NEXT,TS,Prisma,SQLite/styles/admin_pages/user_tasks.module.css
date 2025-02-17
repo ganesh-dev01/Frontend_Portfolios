@@ -4,7 +4,6 @@
     padding: 20px;
 }
 
-
 .main_light {
     background-color: #f9f9f9;
     color: #333;
@@ -44,8 +43,11 @@
     gap: 15px;
 }
 
-
 .taskCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
     background-color: white;
     padding: 15px;
     border-radius: 8px;
@@ -65,18 +67,21 @@
 }
 
 .taskTitle {
+    width: 100%;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .taskDescription {
+    width: 100%;
+    height: auto;
     font-size: 14px;
     margin-bottom: 10px;
 }
 
-
 .taskMeta {
+    width: 50%;
     font-size: 12px;
     color: #555;
 }
@@ -84,3 +89,6 @@
 .main_dark .taskMeta {
     color: #bbb;
 }
+
+
+
