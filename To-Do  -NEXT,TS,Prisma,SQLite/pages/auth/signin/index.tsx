@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState, useContext } from "react";
 import { ThemeContext } from '@/Theme/Themestate';
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 import styles from '@/styles/signin.module.css'
 
 interface FormData {
@@ -13,11 +14,22 @@ const SignIn: React.FC = () => {
     const router = useRouter();
     const data = useContext(ThemeContext);
     let { theme } = data;
+    const [error, setError] = useState("");
 
     const {register,handleSubmit,formState: { errors },} = useForm<FormData>();
 
-    const onSubmit = (formData: FormData) => {
-        console.log(formData);
+    const onSubmit = async (formData: FormData) => {
+        const result = await signIn("credentials", {
+            redirect: false,
+            email: formData.email,
+            password: formData.password,
+        });
+
+        if (!result?.error) {
+            router.push("/cms/user/dashboard");
+        } else {
+            setError("Invalid credentials");
+        }
     };
 
     return (

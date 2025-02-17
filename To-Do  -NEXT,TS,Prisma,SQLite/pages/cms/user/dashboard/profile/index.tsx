@@ -1,21 +1,39 @@
 import { ThemeContext } from '@/Theme/Themestate';
 import Image from 'next/image';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { RiLogoutBoxRLine, RiMailLine, RiPhoneLine, RiUser3Line } from 'react-icons/ri';
-import styles from '@/styles/user_pages/profile.module.css'
 import guest_img from '@/public/guest.jpg';
 import cover_img from '@/public/cover_img.jpg';
+import { signOut, useSession } from "next-auth/react";
+import styles from '@/styles/admin_pages/admin_profile.module.css'
+import { useRouter } from 'next/router';
 
-const User_Profile=()=>{
-    const {theme_data} = useContext(ThemeContext);
-    let[showModal,setShowModal]=useState(false);
+const User_Profile = () => {
+  const data = useContext(ThemeContext);
+  let { theme } = data;
 
-    const handleSignOut=()=>{
-        setShowModal(true);
+  let[showModal,setShowModal]=useState(false);
+
+  const { data: session, status } = useSession();
+
+
+  const handleSignOut=async()=>{
+      setShowModal(true);
+      await signOut({ callbackUrl: "/auth/signin" });
+  }
+
+  const router=useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+        router.push("/auth/signin");
     }
+}, [status, router]);
 
-    return(
-        <div className={`${styles.main_dashboard} ${styles[`main_${theme_data?.theme}`]}`}>
+  console.log("theme",theme);
+
+  return (
+    <div className={`${styles[`main_${theme}`]} ${styles.main_dashboard}`}>
 
     
       <div className={styles.profile_header}>
@@ -68,10 +86,14 @@ const User_Profile=()=>{
         </div>
       )}
     </div>
-    )
-}
+  );
+};
 
-export default User_Profile;
+export default User_Profile; 
+
+
+
+
 
 
 

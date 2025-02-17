@@ -22,9 +22,30 @@ const Signup: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const onSubmit = async (formData: FormData) => {
-        console.log(formData)
-    };
+        if (formData.password !== formData.confirmPassword) {
+          setError("Passwords do not match");
+          return;
+        }
 
+        console.log('formData', formData);
+    
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+    
+        if (res.ok) {
+          router.push("/auth/signin");
+        } else {
+          setError("Signup failed");
+        }
+      };
+    
     return (
         <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
             <div className={styles.container}>
