@@ -18,7 +18,7 @@ interface User {
 
 const AdminEditTask = () => {
     let { theme } = useContext(ThemeContext);
-
+  
     // Sample data for users and their tasks
     const users: User[] = [
         {
@@ -26,7 +26,7 @@ const AdminEditTask = () => {
             name: "John Doe",
             email: "john@example.com",
             tasks: [
-                { title: "Task 1", description: "Complete the report ggggggg gggggg gggg gggggggggggggggggg gg gggggggggg ggggggggggggggg gggggggggggggg ggggg ggggggggggggggg gggggggg ggggggg gggggggggg", createdAt: "2024-02-17", deadline: "2024-02-20" },
+                { title: "Task 1", description: "Complete the report", createdAt: "2024-02-17", deadline: "2024-02-20" },
                 { title: "Task 2", description: "Fix UI bugs", createdAt: "2024-02-15", deadline: "2024-02-22" }
             ]
         },
