@@ -5,42 +5,50 @@ import { RiLogoutBoxRLine, RiMailLine, RiPhoneLine, RiUser3Line } from 'react-ic
 import guest_img from '@/public/guest.jpg';
 import cover_img from '@/public/cover_img.jpg';
 import { signOut, useSession } from "next-auth/react";
-import styles from '@/styles/admin_pages/admin_profile.module.css'
-import { useRouter } from 'next/router';
+import styles from '@/styles/user_pages/profile.module.css';
+import { FaUser } from 'react-icons/fa';
 
 const User_Profile = () => {
   const data = useContext(ThemeContext);
   let { theme } = data;
 
-  let[showModal,setShowModal]=useState(false);
-
+  let [showModal, setShowModal] = useState(false);
   const { data: session, status } = useSession();
+  let [loginUser, setLoginUser] = useState<any>(null);
 
-
-  const handleSignOut=async()=>{
-      setShowModal(true);
-      await signOut({ callbackUrl: "/auth/signin" });
-  }
-
-  const router=useRouter();
+  const handleSignOut = async () => {
+    setShowModal(true);
+    await signOut({ callbackUrl: "/auth/signin" });
+  };
 
   useEffect(() => {
-    if (status === "unauthenticated") {
-        router.push("/auth/signin");
-    }
-}, [status, router]);
+    const fetchUserData = async () => {
+      if (session?.user?.email) {
+        try {
+          const response = await fetch(`/api/user?email=${session.user.email}`);
+          const data = await response.json();
+          if (response.ok) {
+            setLoginUser(data);
+          } else {
+            console.error("Error:", data.error);
+          }
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      }
+    };
 
-  console.log("theme",theme);
+    fetchUserData();
+  }, [session]);
+
+  console.log("test", loginUser);
 
   return (
     <div className={`${styles[`main_${theme}`]} ${styles.main_dashboard}`}>
-
-    
       <div className={styles.profile_header}>
         <Image src={cover_img} alt="Cover" layout="fill" objectFit="cover" />
       </div>
 
-    
       <div className={styles.profile_pic}>
         <img src={guest_img.src} alt="Profile Picture" className={styles.profile_pic_img} />
       </div>
@@ -49,19 +57,18 @@ const User_Profile = () => {
         <div className={styles.profile_info_container}>
           <div className={styles.profile_item}>
             <RiUser3Line className={styles.icon} />
-            <p className={styles.profile_name}>{"Guest User"}</p>
+            <p className={styles.profile_name}>{loginUser?.fullName || session?.user?.name || 'Guest'}</p>
           </div>
           <div className={styles.profile_item}>
             <RiMailLine className={styles.icon} />
-            <p>{ "No email available"}</p>
+            <p>{session?.user?.email || 'Guest'}</p>
           </div>
           <div className={styles.profile_item}>
-            <RiPhoneLine className={styles.icon} />
-            <p>{ "No phone available"}</p>
+            <FaUser className={styles.icon} />
+            <p>role: {loginUser?.role || 'Guest'}</p>
           </div>
         </div>
 
-     
         <div className={styles.btn_container}>
           <button className={styles.signout_btn} onClick={() => setShowModal(true)}>
             <RiLogoutBoxRLine className={styles.logout_icon} /> Sign Out
@@ -88,12 +95,4 @@ const User_Profile = () => {
     </div>
   );
 };
-
-export default User_Profile; 
-
-
-
-
-
-
-
+export default User_Profile;
