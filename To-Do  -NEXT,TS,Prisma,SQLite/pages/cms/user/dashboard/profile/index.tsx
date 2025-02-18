@@ -41,7 +41,7 @@ const User_Profile = () => {
     fetchUserData();
   }, [session]);
 
-  console.log("test", loginUser);
+  console.log("test2", session);
 
   return (
     <div className={`${styles[`main_${theme}`]} ${styles.main_dashboard}`}>

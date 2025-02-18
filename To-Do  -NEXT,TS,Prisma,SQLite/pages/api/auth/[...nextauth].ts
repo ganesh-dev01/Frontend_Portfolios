@@ -1,10 +1,24 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/prisma";
 
-const prisma = new PrismaClient();
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      name: string;
+      email: string;
+      role: string;
+    };
+  }
 
-export default NextAuth({
+  interface JWT {
+    id: string;
+    role: string;
+  }
+}
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -23,7 +37,7 @@ export default NextAuth({
 
         if (!user) throw new Error("User not found");
 
-        // Directly compare the plain text password
+        // ✅ Plain text password check
         if (credentials.password !== user.password) {
           throw new Error("Incorrect password");
         }
@@ -32,8 +46,25 @@ export default NextAuth({
       },
     }),
   ],
-  session: {
-    strategy: "jwt",
+  session: { strategy: "jwt" },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.role = (user as { role?: string }).role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user = {
+        ...session.user,
+        id: token.id as string,
+        role: token.role as string,
+      };
+      return session;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
+
+export default NextAuth(authOptions);
