@@ -32,7 +32,7 @@ const Admin: React.FC = () => {
     const Content = (v: number) => {
         switch (v) {
             case 1:
-                return <AdminPermission />;
+                return <UserTasks />;
             case 2:
                 return <AdminPermission />;
             case 3:
