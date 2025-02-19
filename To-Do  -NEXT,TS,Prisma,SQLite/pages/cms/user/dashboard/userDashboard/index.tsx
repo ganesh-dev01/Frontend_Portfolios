@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { IoMdAddCircle, IoMdClose } from 'react-icons/io';
 import { FaTable, FaThLarge } from 'react-icons/fa';
 import { signOut, useSession } from "next-auth/react";
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import styles from '@/styles/user_pages/dashboard.module.css';
 import { useRouter } from 'next/router';
 
@@ -135,6 +136,17 @@ const UserDashboard: React.FC = () => {
         }
     };
 
+    const onDragEnd = (result: DropResult) => {
+        const { source, destination, draggableId } = result;
+        if (!destination) return;
+        if (source.droppableId === destination.droppableId && source.index === destination.index) return;
+
+        const task = tasks.find(t => t.id === draggableId);
+        if (task) {
+            handleStatusChange(task, destination.droppableId as 'PENDING' | 'IN_PROGRESS' | 'COMPLETED');
+        }
+    };
+
     return (
         <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
             {showModal && (
@@ -243,7 +255,31 @@ const UserDashboard: React.FC = () => {
                         </table>
                     </div>
                 ) : (
-                    <h4>No card view implemented yet</h4>
+                    <DragDropContext onDragEnd={onDragEnd}>
+                        <div className={styles.kanbanBoard}>
+                            {['PENDING', 'IN_PROGRESS', 'COMPLETED'].map(status => (
+                                <Droppable key={status} droppableId={status}>
+                                    {(provided) => (
+                                        <div className={styles.kanbanColumn} ref={provided.innerRef} {...provided.droppableProps}>
+                                            <h3>{status.replace('_', ' ')}</h3>
+                                            {tasks.filter(task => task.status === status).map((task, index) => (
+                                                <Draggable key={task.id} draggableId={task.id} index={index}>
+                                                    {(provided) => (
+                                                        <div className={styles.kanbanCard} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                            <h4>{task.title}</h4>
+                                                            <p>{task.description}</p>
+                                                            <small>Due: {new Date(task.deadline).toLocaleDateString()}</small>
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                            ))}
+                                            {provided.placeholder}
+                                        </div>
+                                    )}
+                                </Droppable>
+                            ))}
+                        </div>
+                    </DragDropContext>
                 )}
             </div>
         </div>
