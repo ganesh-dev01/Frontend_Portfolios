@@ -16,30 +16,12 @@ const User_Profile = () => {
   const { data: session, status } = useSession();
   let [loginUser, setLoginUser] = useState<any>(null);
 
+
   const handleSignOut = async () => {
     setShowModal(true);
     await signOut({ callbackUrl: "/auth/signin" });
   };
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (session?.user?.email) {
-        try {
-          const response = await fetch(`/api/user?email=${session.user.email}`);
-          const data = await response.json();
-          if (response.ok) {
-            setLoginUser(data);
-          } else {
-            console.error("Error:", data.error);
-          }
-        } catch (error) {
-          console.error("Fetch error:", error);
-        }
-      }
-    };
-
-    fetchUserData();
-  }, [session]);
 
   console.log("test2", session);
 
@@ -65,7 +47,7 @@ const User_Profile = () => {
           </div>
           <div className={styles.profile_item}>
             <FaUser className={styles.icon} />
-            <p>role: {loginUser?.role || 'Guest'}</p>
+            <p>role: {session?.user?.role || 'Guest'}</p>
           </div>
         </div>
 

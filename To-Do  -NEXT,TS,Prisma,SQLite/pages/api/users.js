@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   const adminEmail = "admin@example.com";
-  const { email } = req.query; // Get the email from query parameters
+  const { email } = req.query; 
 
   if (!email || email !== adminEmail) {
     return res.status(401).json({ message: 'Unauthorized' });
