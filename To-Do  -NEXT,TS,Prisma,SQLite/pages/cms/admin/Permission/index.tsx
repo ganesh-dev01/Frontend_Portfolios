@@ -34,10 +34,8 @@ const AdminPermission: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('/api/user?email=admin@example.com');
+      const response = await fetch('/api/adminPermissions?email=admin@example.com');
       const data = await response.json();
-      
-      console.log('res-data', data);
 
       if (response.ok) {
         const usersWithPermissions = data.map((user: any) => ({
@@ -58,13 +56,15 @@ const AdminPermission: React.FC = () => {
   };
 
   const handlePermissionChange = (userId: string, permissionType: keyof Permissions) => {
-    setUsers(prevUsers =>
-      prevUsers.map(user =>
+    setUsers(prevUsers => {
+      const updatedUsers = prevUsers.map(user =>
         user.id === userId
           ? { ...user, permissions: { ...user.permissions, [permissionType]: !user.permissions[permissionType] } }
           : user
-      )
-    );
+      );
+      console.log('Updated users', updatedUsers);
+      return updatedUsers;
+    });
   };
 
   const handleUpdateClick = async (userId: string) => {
@@ -72,7 +72,7 @@ const AdminPermission: React.FC = () => {
     if (user) {
       const accessRights = Object.keys(user.permissions).filter(key => user.permissions[key as keyof Permissions]);
       try {
-        const response = await fetch(`/api/users/${userId}`, {
+        const response = await fetch(`/api/permissions/${userId}?email=admin@example.com`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ accessRights })
@@ -139,7 +139,7 @@ const AdminPermission: React.FC = () => {
                 </label>
               </td>
               <td className={styles.tableData}>
-                <button className={styles.updateBtn} onClick={() => handleUpdateClick(user.id)}>Make Sub-Admin</button>
+                <button className={styles.updateBtn} onClick={() => handleUpdateClick(user.id)}>Update Permissions</button>
               </td>
             </tr>
           ))}

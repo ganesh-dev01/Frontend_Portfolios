@@ -30,6 +30,7 @@ const SubAdminEditTask = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [permissions, setPermissions] = useState<Permissions>({ view: false, edit: false, delete: false });
     const [isAuthorized, setIsAuthorized] = useState(false);
+    const [editingTask, setEditingTask] = useState<Task | null>(null);
 
     useEffect(() => {
         if (session?.user?.email) {
@@ -41,13 +42,8 @@ const SubAdminEditTask = () => {
     const fetchPermissions = async (email: string) => {
         try {
             const response = await fetch(`/api/user?email=${email}`);
-
-            console.log('email-test-', email);
-
             const data = await response.json();
 
-            console.log('data-test-', data);
-            
             if (response.ok) {
                 const user = data.find((user: User) => user.email === email);
                 if (user) {
@@ -82,24 +78,68 @@ const SubAdminEditTask = () => {
         }
     };
 
-    const handleEditClick = (taskId: string) => {
-        // Implement edit task functionality here
+    const handleEditClick = (task: Task) => {
+        setEditingTask({
+            ...task,
+            deadline: task.deadline ? new Date(task.deadline).toISOString().split('T')[0] : ''
+        });
+    };
+
+
+    const handleSaveClick = async () => {
+        if (editingTask && session?.user?.email) {
+            try {
+                const response = await fetch(`/api/users/${editingTask.id}?email=${session.user.email}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: session.user.email,
+                        title: editingTask.title,
+                        description: editingTask.description,
+                        deadline: new Date(editingTask.deadline).toISOString()
+                    })
+                });
+                if (response.ok) {
+                    const updatedTask = await response.json();
+                    setUsers(users.map(user => ({
+                        ...user,
+                        tasks: user.tasks.map(task => task.id === updatedTask.id ? updatedTask : task)
+                    })));
+                    setEditingTask(null);
+                } else {
+                    console.error('Failed to update task');
+                }
+            } catch (error) {
+                console.error('Error updating task:', error);
+            }
+        }
     };
 
     const handleDeleteClick = async (taskId: string) => {
         try {
-            const response = await fetch(`/api/tasks/${taskId}`, { method: 'DELETE' });
-            if (response.ok) {
-                setUsers(users.map(user => ({
-                    ...user,
-                    tasks: user.tasks.filter(task => task.id !== taskId)
-                })));
-            } else {
-                console.error('Failed to delete task');
-            }
+          const response = await fetch(`/api/users/${taskId}?email=admin@example.com`, { method: 'DELETE' });
+          if (response.ok) {
+            setUsers(users.map(user => ({
+              ...user,
+              tasks: user.tasks.filter(task => task.id !== taskId)
+            })));
+          } else {
+            console.error('Failed to delete task');
+          }
         } catch (error) {
-            console.error('Error deleting task:', error);
+          console.error('Error deleting task:', error);
         }
+      };
+
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        if (editingTask) {
+            setEditingTask({ ...editingTask, [e.target.name]: e.target.value });
+        }
+    };
+
+    const closeModal = () => {
+        setEditingTask(null);
     };
 
     if (!isAuthorized) {
@@ -120,11 +160,15 @@ const SubAdminEditTask = () => {
                                 <p className={styles.taskMeta}>Created At: {new Date(task.createdAt).toLocaleDateString()}</p>
                                 <p className={styles.taskMeta}>Deadline: {new Date(task.deadline).toLocaleDateString()}</p>
                                 <div className={styles.taskActions}>
-                                    {permissions.edit && (
-                                        <button className={styles.editButton} onClick={() => handleEditClick(task.id)}>Edit</button>
+                                    {permissions.edit ? (
+                                        <button className={styles.editButton} onClick={() => handleEditClick(task)}>Edit</button>
+                                    ) : (
+                                        <span>No Edit Access</span>
                                     )}
-                                    {permissions.delete && (
+                                    {permissions.delete ? (
                                         <button className={styles.deleteButton} onClick={() => handleDeleteClick(task.id)}>Delete</button>
+                                    ) : (
+                                        <span>No Delete Access</span>
                                     )}
                                 </div>
                             </div>
@@ -132,6 +176,40 @@ const SubAdminEditTask = () => {
                     </div>
                 </div>
             ))}
+
+            {editingTask && (
+                <div className={styles.modal}>
+                    <div className={styles.modalContent}>
+                        <div className={styles.modalHeader}>
+                            <h5 className={styles.modalTitle}>Edit Task</h5>
+                            <button className={styles.closeButton} onClick={closeModal}>&times;</button>
+                        </div>
+                        <div className={styles.modalBody}>
+                            <input
+                                className={styles.inputField}
+                                type="text"
+                                name="title"
+                                value={editingTask.title}
+                                onChange={handleInputChange}
+                            />
+                            <textarea
+                                className={styles.inputField}
+                                name="description"
+                                value={editingTask.description}
+                                onChange={handleInputChange}
+                            />
+                            <input
+                                className={styles.inputField}
+                                type="date"
+                                name="deadline"
+                                value={editingTask.deadline}
+                                onChange={handleInputChange}
+                            />
+                            <button className={styles.saveButton} onClick={handleSaveClick}>Save</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
