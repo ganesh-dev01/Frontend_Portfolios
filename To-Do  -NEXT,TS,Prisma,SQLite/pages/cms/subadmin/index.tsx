@@ -12,25 +12,23 @@ const SubAdmin: React.FC = () => {
 
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-    const toggleMobileNav = (v:number) => {
+    const toggleMobileNav = (v: number) => {
         setMobileNavOpen(!mobileNavOpen);
         setActive(v);
     };
 
-    const Content=(v:number)=>{
-        switch(v){
+    const Content = (v: number) => {
+        switch (v) {
             case 1:
-                return <UserTasks />
-            case 2:
                 return <SubAdminEditTask />
-            case 3:
+            case 2:
                 return <SubAdminProfile />
             default:
                 return <UserTasks />
         }
 
     }
-    let[active,setActive]=useState(1);
+    let [active, setActive] = useState(1);
 
     return (
         <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
@@ -38,25 +36,23 @@ const SubAdmin: React.FC = () => {
             {/* Desktop SideNav */}
             <div className={styles.desktop_sidenav}>
                 <div className={styles.desktop_sidenav_header}>
-                    <p>My To-Dos</p>
+                    <p>Sub-Admin</p>
                 </div>
                 <ul className={styles.menu_list}>
-                    <li onClick={()=>setActive(1)}>User Tasks</li>
-                    <li onClick={()=>setActive(2)}>Edit Task</li>
-                    <li onClick={()=>setActive(3)}>Profile</li>
+                    <li onClick={() => setActive(1)}>Edit Task</li>
+                    <li onClick={() => setActive(2)}>Profile</li>
                 </ul>
             </div>
 
             {/* Mobile SideNav */}
-            <div className={styles.mobile_menu_icon} onClick={()=>toggleMobileNav(active)}>
+            <div className={styles.mobile_menu_icon} onClick={() => toggleMobileNav(active)}>
                 <Menu size={24} />
             </div>
 
             <div className={`${styles.mobile_sidenav} ${mobileNavOpen ? styles.open : ''}`}>
                 <ul className={styles.mobile_menu_list}>
-                    <li onClick={()=>toggleMobileNav(1)}>User Tasks</li>
-                    <li onClick={()=>toggleMobileNav(2)}>Edit Task</li>
-                    <li onClick={()=>toggleMobileNav(3)}>Profile</li>
+                    <li onClick={() => toggleMobileNav(1)}>Edit Task</li>
+                    <li onClick={() => toggleMobileNav(2)}>Profile</li>
                 </ul>
             </div>
 

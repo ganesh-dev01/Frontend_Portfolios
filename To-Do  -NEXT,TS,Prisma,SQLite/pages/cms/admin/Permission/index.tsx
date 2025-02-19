@@ -70,6 +70,11 @@ const AdminPermission: React.FC = () => {
   const handleUpdateClick = async (userId: string) => {
     const user = users.find(user => user.id === userId);
     if (user) {
+      if (!user.permissions.view && (user.permissions.edit || user.permissions.delete)) {
+        alert('You can\'t give edit or delete access without checking view');
+        return;
+      }
+      
       const accessRights = Object.keys(user.permissions).filter(key => user.permissions[key as keyof Permissions]);
       try {
         const response = await fetch(`/api/permissions/${userId}?email=admin@example.com`, {
