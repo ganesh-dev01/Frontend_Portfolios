@@ -214,27 +214,29 @@ const UserDashboard: React.FC = () => {
                                         <td>
                                             <label>
                                                 <input
-                                                    type="checkbox"
+                                                    type="radio"
+                                                    name={`status-${task.id}`}
                                                     checked={task.status === 'PENDING'}
                                                     onChange={() => handleStatusChange(task, 'PENDING')}
                                                 /> Pending
                                             </label>
                                             <label>
                                                 <input
-                                                    type="checkbox"
+                                                    type="radio"
+                                                    name={`status-${task.id}`}
                                                     checked={task.status === 'IN_PROGRESS'}
                                                     onChange={() => handleStatusChange(task, 'IN_PROGRESS')}
-                                                /> IN_PROGRESS
+                                                /> In Progress
                                             </label>
                                             <label>
                                                 <input
-                                                    type="checkbox"
+                                                    type="radio"
+                                                    name={`status-${task.id}`}
                                                     checked={task.status === 'COMPLETED'}
                                                     onChange={() => handleStatusChange(task, 'COMPLETED')}
                                                 /> Completed
                                             </label>
                                         </td>
-
                                     </tr>
                                 ))}
                             </tbody>
