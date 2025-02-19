@@ -1,9 +1,10 @@
 import { ThemeContext } from '@/Theme/Themestate';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { IoMdAddCircle, IoMdClose } from 'react-icons/io';
 import { FaTable, FaThLarge } from 'react-icons/fa';
 import { signOut, useSession } from "next-auth/react";
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { useDrag, useDrop, DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import styles from '@/styles/user_pages/dashboard.module.css';
 import { useRouter } from 'next/router';
 
@@ -16,12 +17,18 @@ interface Task {
     status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
 }
 
+const ItemTypes = {
+    TASK: 'task',
+};
+
 const UserDashboard: React.FC = () => {
     let { theme } = useContext(ThemeContext);
     const [view, setView] = useState<'table' | 'card'>('table');
     const [tasks, setTasks] = useState<Task[]>([]);
     const [taskFormData, setTaskFormData] = useState({ title: '', description: '', deadline: '' });
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [taskToDelete, setTaskToDelete] = useState<string | null>(null);
     const [editingTask, setEditingTask] = useState<Task | null>(null);
 
     const { data: session, status } = useSession();
@@ -50,7 +57,6 @@ const UserDashboard: React.FC = () => {
     };
 
     const handleAddTask = async () => {
-        console.log("Submitting task data:", taskFormData);  // Log the form data before submitting
         try {
             const method = editingTask ? 'PUT' : 'POST';
             const url = editingTask ? `/api/tasks/${editingTask.id}` : '/api/tasks';
@@ -71,14 +77,11 @@ const UserDashboard: React.FC = () => {
 
             if (response.ok) {
                 if (editingTask) {
-                    // Update task
                     setTasks(tasks.map(task => (task.id === editingTask.id ? data : task)));
                 } else {
-                    // Add new task
                     setTasks([...tasks, data]);
                 }
 
-                // Reset form and close modal
                 setTaskFormData({ title: '', description: '', deadline: '' });
                 setEditingTask(null);
                 setShowModal(false);
@@ -91,7 +94,6 @@ const UserDashboard: React.FC = () => {
     };
 
     const handleEditTask = (task: Task) => {
-        console.log('Editing task:', task);
         setTaskFormData({
             title: task.title,
             description: task.description,
@@ -101,11 +103,20 @@ const UserDashboard: React.FC = () => {
         setShowModal(true);
     };
 
-    const handleDeleteTask = async (taskId: string) => {
+    const handleConfirmDelete = (taskId: string) => {
+        setTaskToDelete(taskId);
+        setShowDeleteModal(true);
+    };
+
+    const handleDeleteTask = async () => {
+        if (!taskToDelete) return;
+
         try {
-            const response = await fetch(`/api/tasks/${taskId}`, { method: 'DELETE' });
+            const response = await fetch(`/api/tasks/${taskToDelete}`, { method: 'DELETE' });
             if (response.ok) {
-                setTasks(tasks.filter(task => task.id !== taskId));
+                setTasks(tasks.filter(task => task.id !== taskToDelete));
+                setShowDeleteModal(false);
+                setTaskToDelete(null);
             } else {
                 console.error('Failed to delete task');
             }
@@ -136,153 +147,174 @@ const UserDashboard: React.FC = () => {
         }
     };
 
-    const onDragEnd = (result: DropResult) => {
-        const { source, destination, draggableId } = result;
-        if (!destination) return;
-        if (source.droppableId === destination.droppableId && source.index === destination.index) return;
+    const TaskCard: React.FC<{ task: Task }> = ({ task }) => {
+        const ref = useRef<HTMLDivElement>(null);
+        const [, drag] = useDrag({
+            type: ItemTypes.TASK,
+            item: { type: ItemTypes.TASK, ...task },
+        });
 
-        const task = tasks.find(t => t.id === draggableId);
-        if (task) {
-            handleStatusChange(task, destination.droppableId as 'PENDING' | 'IN_PROGRESS' | 'COMPLETED');
-        }
+        drag(ref);
+
+        return (
+            <div ref={ref} className={styles.kanbanCard}>
+                <h4>{task.title}</h4>
+                <p>{task.description}</p>
+                <small>Due: {new Date(task.deadline).toLocaleDateString()}</small>
+            </div>
+        );
+    };
+
+    const KanbanColumn: React.FC<{ status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED'; children: React.ReactNode }> = ({ status, children }) => {
+        const [, drop] = useDrop({
+            accept: ItemTypes.TASK,
+            drop: (item: any) => handleStatusChange(item, status),
+        });
+
+        return (
+            <div ref={drop as any} className={styles.kanbanColumn} data-status={status}>
+                <h3>{status.replace('_', ' ')}</h3>
+                {children}
+            </div>
+        );
     };
 
     return (
-        <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
-            {showModal && (
-                <div className={styles[`modal_${theme}`]}>
-                    <div className={styles.close_btn} onClick={() => setShowModal(false)}>
-                        <IoMdClose />
+        <DndProvider backend={HTML5Backend}>
+            <div className={`${styles[`main_${theme}`]} ${styles.main}`}>
+                {showModal && (
+                    <div className={styles[`modal_${theme}`]}>
+                        <div className={styles.close_btn} onClick={() => setShowModal(false)}>
+                            <IoMdClose />
+                        </div>
+                        <div className={styles.modal_content}>
+                            <h2 className={styles.modal_heading}>{editingTask ? 'Edit Task' : 'Add New Task'}</h2>
+                            <label className={styles.modal_label}>Title</label>
+                            <input
+                                type="text"
+                                className={styles.modal_input}
+                                value={taskFormData.title}
+                                onChange={(e) => setTaskFormData({ ...taskFormData, title: e.target.value })}
+                                placeholder="Enter task title"
+                            />
+                            <label className={styles.modal_label}>Description</label>
+                            <textarea
+                                className={styles.modal_textarea}
+                                value={taskFormData.description}
+                                onChange={(e) => setTaskFormData({ ...taskFormData, description: e.target.value })}
+                                placeholder="Enter task description"
+                            />
+                            <label className={styles.modal_label}>Deadline</label>
+                            <input
+                                type="date"
+                                className={styles.modal_input}
+                                value={taskFormData.deadline}
+                                onChange={(e) => setTaskFormData({ ...taskFormData, deadline: e.target.value })}
+                            />
+                            <button className={styles.modal_button} onClick={handleAddTask}>Submit</button>
+                        </div>
                     </div>
-                    <div className={styles.modal_content}>
-                        <h2 className={styles.modal_heading}>{editingTask ? 'Edit Task' : 'Add New Task'}</h2>
-                        <label className={styles.modal_label}>Title</label>
-                        <input
-                            type="text"
-                            className={styles.modal_input}
-                            value={taskFormData.title}
-                            onChange={(e) => setTaskFormData({ ...taskFormData, title: e.target.value })}
-                            placeholder="Enter task title"
-                        />
-                        <label className={styles.modal_label}>Description</label>
-                        <textarea
-                            className={styles.modal_textarea}
-                            value={taskFormData.description}
-                            onChange={(e) => setTaskFormData({ ...taskFormData, description: e.target.value })}
-                            placeholder="Enter task description"
-                        />
-                        <label className={styles.modal_label}>Deadline</label>
-                        <input
-                            type="date"
-                            className={styles.modal_input}
-                            value={taskFormData.deadline}
-                            onChange={(e) => setTaskFormData({ ...taskFormData, deadline: e.target.value })}
-                        />
-                        <button className={styles.modal_button} onClick={handleAddTask}>Submit</button>
+                )}
+
+                {showDeleteModal && (
+                    <div className={styles[`modal_${theme}`]}>
+                        <div className={styles.close_btn} onClick={() => setShowDeleteModal(false)}>
+                            <IoMdClose />
+                        </div>
+                        <div className={styles.modal_content}>
+                            <h2 className={styles.modal_heading}>Confirm Delete</h2>
+                            <p>Are you sure you want to delete this task?</p>
+                            <button className={styles.modal_button} onClick={handleDeleteTask}>Delete</button>
+                            <button className={styles.modal_button} onClick={() => setShowDeleteModal(false)}>Cancel</button>
+                        </div>
                     </div>
+                )}
+
+                <div className={styles.header}>
+                    <button className={styles.addtaskbtn} onClick={() => setShowModal(true)}>
+                        <IoMdAddCircle /> Add new task
+                    </button>
                 </div>
-            )}
 
-            <div className={styles.header}>
-                <button className={styles.addtaskbtn} onClick={() => setShowModal(true)}>
-                    <IoMdAddCircle /> Add new task
-                </button>
-            </div>
+                <div className={styles.navbar}>
+                    <button className={`${styles.navbtn} ${view === 'table' ? styles.active : ''}`} onClick={() => setView('table')}>
+                        <FaTable /> Table View
+                    </button>
+                    <button className={`${styles.navbtn} ${view === 'card' ? styles.active : ''}`} onClick={() => setView('card')}>
+                        <FaThLarge /> Card View
+                    </button>
+                </div>
 
-            <div className={styles.navbar}>
-                <button className={`${styles.navbtn} ${view === 'table' ? styles.active : ''}`} onClick={() => setView('table')}>
-                    <FaTable /> Table View
-                </button>
-                <button className={`${styles.navbtn} ${view === 'card' ? styles.active : ''}`} onClick={() => setView('card')}>
-                    <FaThLarge /> Card View
-                </button>
-            </div>
-
-            <div className={styles.body}>
-                {view === 'table' ? (
-                    <div className={styles.table_container}>
-                        <table className={styles.task_table}>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Created At</th>
-                                    <th>Deadline</th>
-                                    <th>Action</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tasks.map((task) => (
-                                    <tr key={task.id}>
-                                        <td>{task.title}</td>
-                                        <td>{task.description}</td>
-                                        <td>{new Date(task.createdAt).toLocaleDateString()}</td>
-                                        <td>{new Date(task.deadline).toLocaleDateString()}</td>
-                                        <td>
-                                            <button className={styles.edit_btn} onClick={() => handleEditTask(task)}>Edit</button>
-                                            <button className={styles.delete_btn} onClick={() => handleDeleteTask(task.id)}>Delete</button>
-                                        </td>
-                                        <td>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`status-${task.id}`}
-                                                    checked={task.status === 'PENDING'}
-                                                    onChange={() => handleStatusChange(task, 'PENDING')}
-                                                /> Pending
-                                            </label>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`status-${task.id}`}
-                                                    checked={task.status === 'IN_PROGRESS'}
-                                                    onChange={() => handleStatusChange(task, 'IN_PROGRESS')}
-                                                /> In Progress
-                                            </label>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    name={`status-${task.id}`}
-                                                    checked={task.status === 'COMPLETED'}
-                                                    onChange={() => handleStatusChange(task, 'COMPLETED')}
-                                                /> Completed
-                                            </label>
-                                        </td>
+                <div className={styles.body}>
+                    {view === 'table' ? (
+                        <div className={styles.table_container}>
+                            <table className={styles.task_table}>
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Created At</th>
+                                        <th>Deadline</th>
+                                        <th>Action</th>
+                                        <th>Status</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                ) : (
-                    <DragDropContext onDragEnd={onDragEnd}>
+                                </thead>
+                                <tbody>
+                                    {tasks.map((task) => (
+                                        <tr key={task.id}>
+                                            <td>{task.title}</td>
+                                            <td>{task.description}</td>
+                                            <td>{new Date(task.createdAt).toLocaleDateString()}</td>
+                                            <td>{new Date(task.deadline).toLocaleDateString()}</td>
+                                            <td>
+                                                <button className={styles.edit_btn} onClick={() => handleEditTask(task)}>Edit</button>
+                                                <button className={styles.delete_btn} onClick={() => handleConfirmDelete(task.id)}>Delete</button>
+                                            </td>
+                                            <td>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`status-${task.id}`}
+                                                        checked={task.status === 'PENDING'}
+                                                        onChange={() => handleStatusChange(task, 'PENDING')}
+                                                    /> Pending
+                                                </label>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`status-${task.id}`}
+                                                        checked={task.status === 'IN_PROGRESS'}
+                                                        onChange={() => handleStatusChange(task, 'IN_PROGRESS')}
+                                                    /> In Progress
+                                                </label>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        name={`status-${task.id}`}
+                                                        checked={task.status === 'COMPLETED'}
+                                                        onChange={() => handleStatusChange(task, 'COMPLETED')}
+                                                    /> Completed
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
                         <div className={styles.kanbanBoard}>
-                            {['PENDING', 'IN_PROGRESS', 'COMPLETED'].map(status => (
-                                <Droppable key={status} droppableId={status}>
-                                    {(provided) => (
-                                        <div className={styles.kanbanColumn} ref={provided.innerRef} {...provided.droppableProps}>
-                                            <h3>{status.replace('_', ' ')}</h3>
-                                            {tasks.filter(task => task.status === status).map((task, index) => (
-                                                <Draggable key={task.id} draggableId={task.id} index={index}>
-                                                    {(provided) => (
-                                                        <div className={styles.kanbanCard} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                            <h4>{task.title}</h4>
-                                                            <p>{task.description}</p>
-                                                            <small>Due: {new Date(task.deadline).toLocaleDateString()}</small>
-                                                        </div>
-                                                    )}
-                                                </Draggable>
-                                            ))}
-                                            {provided.placeholder}
-                                        </div>
-                                    )}
-                                </Droppable>
+                            {(['PENDING', 'IN_PROGRESS', 'COMPLETED'] as const).map(status => (
+                                <KanbanColumn key={status} status={status}>
+                                    {tasks.filter(task => task.status === status).map((task) => (
+                                        <TaskCard key={task.id} task={task} />
+                                    ))}
+                                </KanbanColumn>
                             ))}
                         </div>
-                    </DragDropContext>
-                )}
+                    )}
+                </div>
             </div>
-        </div>
+        </DndProvider>
     );
 };
 
