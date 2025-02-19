@@ -1,50 +1,39 @@
-// pages/api/tasks/[id].ts
+import { PrismaClient } from '@prisma/client';
 
-import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from "@/lib/prisma";
+const prisma = new PrismaClient();
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    const {
-        query: { id }, // Get task ID from the URL
-        body,
-        method,
-    } = req;
+export default async function handler(req, res) {
+  const { id } = req.query; // Correctly use 'id' from the query parameter
 
-    switch (method) {
-        case 'PUT':
-            // Update task with title, description, deadline, and status
-            try {
-                const updatedTask = await prisma.task.update({
-                    where: { id: String(id) }, // Find the task by id
-                    data: {
-                        title: body.title, // Update title
-                        description: body.description, // Update description
-                        deadline: body.deadline, // Update deadline
-                        status: body.status, // Update status
-                    },
-                });
-                res.status(200).json(updatedTask);
-            } catch (error) {
-                console.error('Error updating task:', error);
-                res.status(500).json({ message: 'Error updating task' });
-            }
-            break;
-        case 'DELETE':
-            // Delete task
-            try {
-                await prisma.task.delete({
-                    where: { id: String(id) },
-                });
-                res.status(200).json({ message: 'Task deleted successfully' });
-            } catch (error) {
-                console.error('Error deleting task:', error);
-                res.status(500).json({ message: 'Error deleting task' });
-            }
-            break;
-        default:
-            res.setHeader('Allow', ['PUT', 'DELETE']);
-            res.status(405).end(`Method ${method} Not Allowed`);
+  if (req.method === 'DELETE') {
+    try {
+      await prisma.task.delete({
+        where: { id: String(id) },
+      });
+      return res.status(200).json({ message: 'Task deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
-};
+  }
 
-export default handler;
+  if (req.method === 'PUT') {
+    try {
+      const { title, description, deadline } = req.body;
+      const updatedTask = await prisma.task.update({
+        where: { id: String(id) },
+        data: {
+          title,
+          description,
+          deadline,
+        },
+      });
+      return res.status(200).json(updatedTask);
+    } catch (error) {
+      console.error('Error updating task:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
+  return res.status(405).json({ error: 'Method Not Allowed' });
+}

@@ -37,7 +37,6 @@ export const authOptions: NextAuthOptions = {
 
         if (!user) throw new Error("User not found");
 
-        // ✅ Plain text password check
         if (credentials.password !== user.password) {
           throw new Error("Incorrect password");
         }
