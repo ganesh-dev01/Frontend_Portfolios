@@ -4,29 +4,36 @@ import { useContext, useState } from 'react';
 import { RiLogoutBoxRLine, RiMailLine, RiPhoneLine, RiUser3Line } from 'react-icons/ri';
 import guest_img from '@/public/guest.jpg';
 import cover_img from '@/public/cover_img.jpg';
+import { signOut, useSession } from "next-auth/react";
 import styles from '@/styles/admin_pages/admin_profile.module.css'
+import { FaUser } from 'react-icons/fa';
 
 const SubAdminProfile = () => {
   const data = useContext(ThemeContext);
   let { theme } = data;
 
-  let[showModal,setShowModal]=useState(false);
+  let [showModal, setShowModal] = useState(false);
 
-  const handleSignOut=()=>{
-      setShowModal(true);
+  const handleSignOut = async () => {
+    setShowModal(true);
+    await signOut({ callbackUrl: "/auth/signin" });
   }
 
-  console.log("theme",theme);
+  const { data: session, status } = useSession();
+
+  console.log("test2", session);
+
+  console.log("theme", theme);
 
   return (
     <div className={`${styles[`main_${theme}`]} ${styles.main_dashboard}`}>
 
-    
+
       <div className={styles.profile_header}>
         <Image src={cover_img} alt="Cover" layout="fill" objectFit="cover" />
       </div>
 
-    
+
       <div className={styles.profile_pic}>
         <img src={guest_img.src} alt="Profile Picture" className={styles.profile_pic_img} />
       </div>
@@ -35,19 +42,19 @@ const SubAdminProfile = () => {
         <div className={styles.profile_info_container}>
           <div className={styles.profile_item}>
             <RiUser3Line className={styles.icon} />
-            <p className={styles.profile_name}>{"Guest User"}</p>
+            <p className={styles.profile_name}>{session?.user.name||"Guest User"}</p>
           </div>
           <div className={styles.profile_item}>
             <RiMailLine className={styles.icon} />
-            <p>{ "No email available"}</p>
+            <p>{session?.user.email || "No email available"}</p>
           </div>
           <div className={styles.profile_item}>
-            <RiPhoneLine className={styles.icon} />
-            <p>{ "No phone available"}</p>
+            <FaUser className={styles.icon} />
+            <p>role: {session?.user?.role || 'Guest'}</p>
           </div>
         </div>
 
-     
+
         <div className={styles.btn_container}>
           <button className={styles.signout_btn} onClick={() => setShowModal(true)}>
             <RiLogoutBoxRLine className={styles.logout_icon} /> Sign Out
@@ -75,7 +82,7 @@ const SubAdminProfile = () => {
   );
 };
 
-export default SubAdminProfile; 
+export default SubAdminProfile;
 
 
 
