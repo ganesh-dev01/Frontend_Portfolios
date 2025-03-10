@@ -61,9 +61,7 @@ The application will be available at `http://localhost:3000`.
 3. Select an operation (Add, Subtract, Multiply) from the dropdown menu.
 4. Click the "Perform Operation" button to see the result in a separate table.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
