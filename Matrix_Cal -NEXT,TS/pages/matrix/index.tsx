@@ -108,11 +108,12 @@ const Matrix: React.FC = () => {
               <MenuItem value="multiply">Multiply</MenuItem>
             </Select>
           </Grid>
-          <Grid item>
+          <Grid item style={{ marginTop: '16px', marginBottom: '16px' }}>
             <Button variant="contained" color="secondary" onClick={performOperation} className={styles.operationButton}>
               Perform Operation
             </Button>
           </Grid>
+
         </Grid>
       </Box>
       <Box className={styles.tablesContainer}>
@@ -124,7 +125,7 @@ const Matrix: React.FC = () => {
                   <Typography variant="h6" className={styles.tableTitle}>
                     Table 1: Sum of Indices
                   </Typography>
-                  <MatrixTable rows={matrix1.length} columns={matrix1[0].length} matrix={matrix1} onCellChange={() => {}} />
+                  <MatrixTable rows={matrix1.length} columns={matrix1[0].length} matrix={matrix1} onCellChange={() => { }} />
                 </Box>
               </Paper>
             </Grid>
@@ -136,7 +137,7 @@ const Matrix: React.FC = () => {
                   <Typography variant="h6" className={styles.tableTitle}>
                     Table 2: Product of Indices
                   </Typography>
-                  <MatrixTable rows={matrix2.length} columns={matrix2[0].length} matrix={matrix2} onCellChange={() => {}} />
+                  <MatrixTable rows={matrix2.length} columns={matrix2[0].length} matrix={matrix2} onCellChange={() => { }} />
                 </Box>
               </Paper>
             </Grid>
@@ -150,7 +151,7 @@ const Matrix: React.FC = () => {
               <Typography variant="h6" className={styles.tableTitle}>
                 Result Matrix
               </Typography>
-              <MatrixTable rows={resultMatrix.length} columns={resultMatrix[0].length} matrix={resultMatrix} onCellChange={() => {}} />
+              <MatrixTable rows={resultMatrix.length} columns={resultMatrix[0].length} matrix={resultMatrix} onCellChange={() => { }} />
             </Box>
           )
         )}

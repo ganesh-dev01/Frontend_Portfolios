@@ -9,29 +9,29 @@
   width: 100%;
 }
 
-.formContainer {
+.main .formContainer {
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.heading {
+.main .formContainer .heading {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #333;
 }
 
-.gridContainer {
+.main .formContainer .gridContainer {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-.textField {
+.main .formContainer .gridContainer .textField {
   width: 150px;
 }
 
-.generateButton {
+.main .formContainer .gridContainer .generateButton {
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
   background-color: #f30014b0;
@@ -40,16 +40,16 @@
   transition: background-color 0.3s ease;
 }
 
-.generateButton:hover {
+.main .formContainer .gridContainer .generateButton:hover {
   color:#f30014b0;
   background-color: white;
 }
 
-.selectField {
+.main .formContainer .gridContainer .selectField {
   min-width: 150px;
 }
 
-.operationButton {
+.main .formContainer .gridContainer .operationButton {
   margin: 20px 0;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
@@ -59,7 +59,7 @@
   transition: background-color 0.3s ease;
 }
 
-.operationButton:hover {
+.main .formContainer .gridContainer .operationButton:hover {
   color: #212121;
   background-color: #fff;
   border-color: #212121;
@@ -67,14 +67,14 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.tablesContainer {
+.main .tablesContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
 
-.tableContainer {
+.main .tablesContainer .tableContainer {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
@@ -84,7 +84,7 @@
   -ms-overflow-style: none;  
 }
 
-.tableContainer::-webkit-scrollbar {
+.main .tablesContainer .tableContainer::-webkit-scrollbar {
   display: none; 
 }
 
@@ -110,7 +110,7 @@
 }
 
 @media (max-width: 768px) {
-  .heading {
+  .main .formContainer .heading  {
     font-size: 2rem;
   }
 
