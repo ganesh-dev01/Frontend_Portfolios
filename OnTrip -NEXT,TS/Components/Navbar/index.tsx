@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "@/styles/Navbar.module.css";
-import { useMediaQuery } from "@mui/material";
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 768px)"); // Detect mobile screens
+  const isMobile = useMediaQuery("(max-width: 768px)"); 
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -21,12 +20,10 @@ const Navbar: React.FC = () => {
           </IconButton>
         )}
 
-  
         <Typography variant="h6" className={styles.logo}>
           ON TRIP
         </Typography>
 
-    
         {!isMobile && (
           <Box className={styles.navLinks}>
             <Button className={styles.navItem}>Home</Button>
@@ -37,7 +34,6 @@ const Navbar: React.FC = () => {
           </Box>
         )}
 
- 
         {!isMobile && (
           <Box className={styles.authButtons}>
             <Button className={styles.loginBtn}>Login</Button>
@@ -45,8 +41,14 @@ const Navbar: React.FC = () => {
           </Box>
         )}
 
- 
-        <Drawer anchor="left" open={mobileOpen} onClose={handleDrawerToggle}>
+        <Drawer
+          anchor="left"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          PaperProps={{
+            style: { width: isMobile ? '30vw' : '250px' }
+          }}
+        >
           <List className={styles.drawer}>
             <ListItem onClick={handleDrawerToggle}>
               <ListItemText primary="Home" />

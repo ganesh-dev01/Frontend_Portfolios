@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap');
+
 .navbar {
-  background: transparent !important;
+  background-color: rgba(255, 255, 255, 0.14);
   padding: 10px 20px;
   box-shadow: none !important;
 }
@@ -22,11 +24,12 @@
 }
 
 .navbar .navItem {
+  font-family: 'Prompt', sans-serif;
   color: white !important;
+  font-weight: 500;
   font-size: 14px;
   text-transform: none !important;
 }
-
 
 .navbar .authButtons {
   display: flex;
@@ -48,24 +51,27 @@
   padding: 5px 15px !important;
 }
 
-
 .navbar .menuButton {
   display: none;
 }
-
 
 .navbar .drawer {
   width: 250px;
   padding: 10px;
 }
 
-
 @media (max-width: 768px) {
-  .navbar .navLinks, .navbar .authButtons {
-    display: none; 
+
+  .navbar .navLinks,
+  .navbar .authButtons {
+    display: none;
   }
 
   .navbar .menuButton {
-    display: block; 
+    display: block;
+  }
+
+  .navbar .drawer {
+    width: 80vw;
   }
 }
