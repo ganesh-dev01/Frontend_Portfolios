@@ -79,10 +79,10 @@
     align-items: center;
     justify-content: space-between;
     width: 70%;
-    height: 75px;
+    height: auto;
     border-radius: 20px;
     background: rgba(192, 217, 231, 0.9);
-    padding: 20px;
+    padding: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     flex-wrap: wrap;
@@ -177,6 +177,7 @@
         width: 90%;
         height: auto;
         padding: 15px;
+        flex-direction: column;
     }
 
     .bottom_bar .box {
@@ -201,6 +202,7 @@
         width: 100%;
         height: auto;
         padding: 10px;
+        flex-direction: column;
     }
 
     .bottom_bar .box {

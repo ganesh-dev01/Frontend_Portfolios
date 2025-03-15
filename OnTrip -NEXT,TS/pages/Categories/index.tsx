@@ -42,7 +42,7 @@ const Categories: React.FC = () => {
 
                 <div className={styles.textBox}>
 
-                    <div className={styles.bestPlaceBox}>
+                    <div className={styles.PlaceBox}>
                         <p className={styles.bestplaceHd}>Take The <br></br> Best Place</p>
                     </div>
 
@@ -52,7 +52,11 @@ const Categories: React.FC = () => {
                             Explore pristine beaches, enjoy relaxed activities, and pamper <br></br>yourself
                             at the many wellness retreats
                         </p>
-                        <button className={styles.btn}>See More</button>
+
+                        <div className={styles.btnBox}>
+                            <button className={styles.btn}>See More</button>
+                        </div>
+
                     </div>
 
                 </div>

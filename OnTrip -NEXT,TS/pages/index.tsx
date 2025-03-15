@@ -4,7 +4,7 @@ import Home from "./Home";
 const App: React.FC = () => {
     return (
         <div>
-            {/* <Home /> */}
+            <Home />
             <Categories />
         </div>
     )
