@@ -1,0 +1,71 @@
+.navbar {
+  background: transparent !important;
+  padding: 10px 20px;
+  box-shadow: none !important;
+}
+
+.navbar .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+}
+
+.navbar .navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .navItem {
+  color: white !important;
+  font-size: 14px;
+  text-transform: none !important;
+}
+
+
+.navbar .authButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .loginBtn {
+  color: white !important;
+  font-size: 14px;
+  text-transform: none !important;
+}
+
+.navbar .registerBtn {
+  background-color: white !important;
+  color: black !important;
+  font-size: 14px;
+  text-transform: none !important;
+  border-radius: 20px !important;
+  padding: 5px 15px !important;
+}
+
+
+.navbar .menuButton {
+  display: none;
+}
+
+
+.navbar .drawer {
+  width: 250px;
+  padding: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .navbar .navLinks, .navbar .authButtons {
+    display: none; 
+  }
+
+  .navbar .menuButton {
+    display: block; 
+  }
+}
