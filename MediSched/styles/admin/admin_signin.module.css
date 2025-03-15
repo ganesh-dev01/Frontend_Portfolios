@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 100vh;
 }
 
 .main_light {
@@ -43,7 +43,7 @@
 .main_dark .subheading {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
 }
@@ -64,7 +64,11 @@
     color: black;
 }
 
-
+.form .input_field_dark {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+}
 
 .form .signin_btn_container {
     margin-top: 30px;
@@ -87,7 +91,6 @@
     text-align: center;
 }
 
-
 .main_dark .form .signin_btn {
     background: linear-gradient(135deg, #f76c6c, #56ccf2);
     color: white;
@@ -105,4 +108,31 @@
     color: #007bff;
     font-weight: bold;
     cursor: pointer;
+}
+
+.themebtn_area {
+    position: absolute;
+    top: 3vh;
+    right: 20px;
+    padding: 10px;
+}
+
+.toggle_btn {
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.main_dark .toggle_btn {
+    color: white;
+}
+
+.toggle_btn:hover {
+    color: #f76c6c;
 }

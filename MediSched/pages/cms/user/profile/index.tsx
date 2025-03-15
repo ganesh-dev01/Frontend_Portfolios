@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
     const fetchUser = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (error || !data.user) {
-        router.push('/auth/user/signin');
+        router.push('/auth/signin');
       } else {
         setUser(data.user);
         if (data.user.email) {
@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.push('/auth/user/signin'); 
+    router.push('/auth/signin'); 
   };
 
   return (

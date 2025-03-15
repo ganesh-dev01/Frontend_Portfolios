@@ -3,14 +3,13 @@ import { TextField, Button, Typography, Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import ThemeContext from '@/Theme/Themestate';
-import styles from '@/styles/user/signin.module.css';
+import styles from '@/styles/admin/admin_signin.module.css';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { supabase } from '@/lib/supabaseClient';
 
 const Admin_Signin: React.FC = () => {
     const theme_data = useContext(ThemeContext);
     const router = useRouter();
-
 
     const { register, handleSubmit, formState: { errors } } = useForm<{ email: string; password: string }>();
     const [loading, setLoading] = useState(false);
@@ -56,6 +55,10 @@ const Admin_Signin: React.FC = () => {
                     Admin
                 </Typography>
 
+                <Typography variant="subtitle1" className={styles.subheading}>
+                    Welcome Back
+                </Typography>
+
                 <Box
                     component="form"
                     className={styles.form}
@@ -64,8 +67,7 @@ const Admin_Signin: React.FC = () => {
                     <TextField
                         label="Email"
                         fullWidth
-                        className={styles.input_field}
-                        id={styles[`input_field_${theme_data?.theme}`]}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register("email", {
                             required: "Email is required.",
                             pattern: {
@@ -75,14 +77,19 @@ const Admin_Signin: React.FC = () => {
                         })}
                         error={!!errors.email}
                         helperText={errors.email?.message as string}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     <TextField
                         label="Password"
                         type="password"
                         fullWidth
-                        className={styles.input_field}
-                        id={styles[`input_field_${theme_data?.theme}`]}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register("password", {
                             required: "Password is required.",
                             minLength: {
@@ -92,6 +99,12 @@ const Admin_Signin: React.FC = () => {
                         })}
                         error={!!errors.password}
                         helperText={errors.password?.message as string}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     {errorMsg && <p className={styles.error_text}>{errorMsg}</p>}
@@ -111,7 +124,6 @@ const Admin_Signin: React.FC = () => {
             </div>
         </div>
     );
-
 };
 
 export default Admin_Signin;

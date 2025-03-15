@@ -64,7 +64,11 @@
     color: black;
 }
 
-
+.form .input_field_dark {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+}
 
 .form .signin_btn_container {
     margin-top: 30px;
@@ -79,7 +83,7 @@
     padding: 8px 12px;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #252525;
+    background-color:#252525;
     color: white;
     border: none;
     border-radius: 10px;
@@ -91,18 +95,4 @@
 .main_dark .form .signin_btn {
     background: linear-gradient(135deg, #f76c6c, #56ccf2);
     color: white;
-}
-
-.main_light .helper_text,
-.main_dark .helper_text {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.container_light .span_text_light,
-.container_dark .span_text_dark {
-    color: #007bff;
-    font-weight: bold;
-    cursor: pointer;
 }

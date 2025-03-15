@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import ThemeContext from '@/Theme/Themestate';
 import styles from '@/styles/user/signin.module.css';
-import { FaMoon, FaSun } from 'react-icons/fa';
-import { supabase } from '@/lib/supabaseClient'; 
+import { supabase } from '@/lib/supabaseClient';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,7 +26,7 @@ const User_Signin: React.FC = () => {
                 toast.error(error.message);
             } else {
                 toast.success("Signed in successfully!");
-                setTimeout(() => router.push('/cms/user/dashboard'), 2000); 
+                setTimeout(() => router.push('/cms/user/dashboard'), 2000);
             }
         } catch (err) {
             toast.error("Something went wrong. Please try again.");
@@ -36,22 +35,17 @@ const User_Signin: React.FC = () => {
         }
     };
 
-    const changeTheme = () => {
-        theme_data?.setTheme(theme_data?.theme === "light" ? "dark" : "light");
-    };
-
     return (
         <div className={styles[`main_${theme_data?.theme}`]}>
-            {/* Light/Dark Mode Toggle Button */}
-            <div className={styles.themebtn_area}>
-                <button className={styles.toggle_btn} onClick={changeTheme}>
-                    {theme_data?.theme === "light" ? <FaMoon /> : <FaSun />}
-                </button>
-            </div>
+            <ToastContainer autoClose={1500} />
 
             <div className={styles[`container_${theme_data?.theme}`]}>
                 <Typography variant="h4" className={styles.heading}>
                     Sign In
+                </Typography>
+
+                <Typography variant="subtitle1" className={styles.subheading}>
+                    Welcome to MediSched
                 </Typography>
 
                 <Box
@@ -62,8 +56,7 @@ const User_Signin: React.FC = () => {
                     <TextField
                         label="Email"
                         fullWidth
-                        className={styles.input_field}
-                        id={styles[`input_field_${theme_data?.theme}`]}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register('email', {
                             required: 'Email is required.',
                             pattern: {
@@ -72,14 +65,19 @@ const User_Signin: React.FC = () => {
                             },
                         })}
                         error={!!errors.email}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     <TextField
                         label="Password"
                         type="password"
                         fullWidth
-                        className={styles.input_field}
-                        id={styles[`input_field_${theme_data?.theme}`]}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register('password', {
                             required: 'Password is required.',
                             minLength: {
@@ -88,6 +86,12 @@ const User_Signin: React.FC = () => {
                             },
                         })}
                         error={!!errors.password}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     <Box className={styles.signin_btn_container}>
@@ -113,7 +117,6 @@ const User_Signin: React.FC = () => {
                     </span>
                 </Typography>
             </div>
-            <ToastContainer position="top-center" autoClose={3000} />
         </div>
     );
 };

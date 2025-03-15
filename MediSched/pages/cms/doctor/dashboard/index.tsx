@@ -28,7 +28,7 @@ const Doctor_dashboard: React.FC = () => {
         if (!doctorSession) {
             toast.error("Unauthorized! Redirecting to login...", { position: "top-center" });
             setTimeout(() => {
-                router.push('/auth/doctor/signin');
+                router.push('/auth/signin');
             }, 2000);
         } else {
             setLoading(false);

@@ -4,8 +4,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import ThemeContext from '@/Theme/Themestate';
-import styles from '@/styles/user/signin.module.css';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import styles from '@/styles/doctor/doctor_signin.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,52 +30,56 @@ const Doctor_Signin: React.FC = () => {
             return;
         }
 
-
         localStorage.setItem("doctor_session", JSON.stringify(doctor));
 
         toast.success("Login Successful!", { position: "top-center" });
 
         setTimeout(() => {
-            router.push('/cms/doctor/dashboard'); 
+            router.push('/cms/doctor/dashboard');
         }, 1500);
-    };
-
-    const changeTheme = () => {
-        theme_data?.setTheme(theme_data?.theme === "light" ? "dark" : "light");
     };
 
     return (
         <div className={styles[`main_${theme_data?.theme}`]}>
-         
             <ToastContainer autoClose={1500} />
-
-            <div className={styles.themebtn_area}>
-                <button className={styles.toggle_btn} onClick={changeTheme}>
-                    {theme_data?.theme === "light" ? <FaMoon /> : <FaSun />}
-                </button>
-            </div>
 
             <div className={styles[`container_${theme_data?.theme}`]}>
                 <Typography variant="h4" className={styles.heading}>
-                    Doctor Sign-In
+                    Hello, Doctor
+                </Typography>
+
+                <Typography variant="subtitle1" className={styles.subheading}>
+                    Welcome to MediSched
                 </Typography>
 
                 <Box component="form" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <TextField
                         label="Email"
                         fullWidth
-                        className={styles.input_field}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register('email', { required: 'Email is required.' })}
                         error={!!errors.email}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     <TextField
                         label="Password"
                         type="password"
                         fullWidth
-                        className={styles.input_field}
+                        className={`${styles.input_field} ${styles[`input_field_${theme_data?.theme}`]}`}
                         {...register('password', { required: 'Password is required.' })}
                         error={!!errors.password}
+                        InputLabelProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
+                        InputProps={{
+                            style: { color: theme_data?.theme === "dark" ? "white" : "black" }
+                        }}
                     />
 
                     <Box className={styles.signin_btn_container}>

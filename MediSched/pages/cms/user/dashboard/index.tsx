@@ -24,7 +24,7 @@ const User_dashboard: React.FC = () => {
         const checkAuth = async () => {
             const { data } = await supabase.auth.getSession();
             if (!data.session) {
-                router.push('/auth/user/signin');
+                router.push('/auth/signin');
             }
         };
         checkAuth();

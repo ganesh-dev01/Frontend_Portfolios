@@ -75,7 +75,7 @@ const User_Signup: React.FC = () => {
             toast.success("Check your email for verification");
             setTimeout(() => {
                 setLoading(false);
-                router.push('/auth/user/signin');
+                router.push('/auth/signin');
             }, 2000);
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -163,7 +163,7 @@ const User_Signup: React.FC = () => {
                     </div>
                     <div className={styles.account_redirect}>
                         <p>Already have an account?
-                            <span onClick={() => router.push('/auth/user/signin')}
+                            <span onClick={() => router.push('/auth/signin')}
                                 className={styles.span_text}>
                                 Sign in
                             </span>
