@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.bottom_main {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    text-align: center;
+    background: url('/assets/bottombg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom_main .subtitle {
+    margin-top: 100px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.bottom_main .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.bottom_main .inputContainer {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+.selectWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+
+.selectWrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    min-width: 250px;
+    text-align: left;
+    padding: 15px 20px;  
+}
+
+.selectWrapper::after {
+    content: url('/assets/arrow.png'); 
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.inputContainer .dateInput {
+    font-size: 16px;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    min-width: 250px;
+    text-align: center;
+    padding: 13px 20px;
+}
+
+.inputContainer .bookButton {
+    min-width: 200px;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bookButton:hover {
+    background: #ddd;
+}
+
+@media screen and (max-width: 768px) {
+    .bottom_main .subtitle{
+        margin-top: 20px;
+    }
+    .bottom_main .title {
+        font-size: 24px;
+    }
+    .bottom_main .inputContainer {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+}

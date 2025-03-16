@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap');
+
+
+.trip_main {
+    width: 100%;
+    height: auto;
+    background-color: #E2EBF0;
+    padding: 20px;
+    text-align: center;
+}
+
+.trip_main .heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.trip_container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.trip_card {
+    width: 280px;
+    background: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 330px; 
+}
+
+.trip_card:hover {
+    transform: scale(1.05);
+}
+
+.trip_image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.trip_content {
+    padding: 15px;
+    position: relative;
+}
+
+.trip_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trip_info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Prompt', sans-serif;
+    text-align: left;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    background: #425E6F;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.rating svg {
+    margin-right: 5px;
+}
+
+.trip_details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: 'Prompt', sans-serif;
+}
+
+.trip_details span {
+    display: flex;
+    align-items: center;
+    font-family: 'Prompt', sans-serif;
+}
+
+.trip_details svg {
+    margin-right: 5px;
+}
+
+.travel_button {
+    width: 100%;
+    font-family: 'Prompt', sans-serif;
+    background: #425E6F;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.trip_card:hover .travel_button {
+    display: block;
+}
+
+.hidden_description {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 14px;
+    color: #666;
+    background: white;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.trip_card:hover .hidden_description {
+    display: block;
+    opacity: 1;
+}
